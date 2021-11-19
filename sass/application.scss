@@ -1,10 +1,116 @@
+@use 'header';
+@use 'menu.scss';
+@use 'buttons.scss' as b;
+@use "sass:color";
+
 @import 'colors';
 
-body {
-    background: red;
+:root {
+    --cornellred: #b31b1b;
 }
 
 h1 {
-    color: $lightgray;
+    
     position: relative;
+    color: var(--undefined, blue); 
 }
+
+$max: 7;
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 55px;
+
+    > div {
+        height: 50px;
+        background: #ccc;
+        border: 1px solid #aaa;
+    }
+}
+
+@for $i from 1 through $max {
+    $equ: 100% / $i - 2.5%;
+    .flex-#{$i} {
+        flex: 0 0 $equ;
+    }
+}
+
+$list1: 200px;
+$list2: 1px 2px 3px black,;
+$list3: Helvetica, Arial, san-serif;
+
+$zip1: 1px 2px 3px 4px;
+$zip2: 4em 3em 2em 1em;
+$zip3: black green blue red;
+
+$nested-list: 1px 2px 3px green, 6px 7px 8px blue, 3px 2px 1px yellow;
+
+
+.test {
+    width: percentage( .5 );
+    @include header.padding;
+    @include b.outline;
+    $cornell: #b31b1b;
+    color: $cornell;
+    
+    &:after {
+        content: '';
+        display: block;
+        background: linear-gradient(45deg, rgb(131,58,180), rgb(253,29,29), rgb(252,176,69));
+        height: 3px;
+    }
+    
+    &:hover, &:focus {
+        color: color.adjust($cornell, $saturation: -.4);
+        cursor: pointer;
+    }
+}
+
+.gradient-border {
+    height: 300px;
+    width: 250px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 1rem auto;
+
+    &.with-border {
+        color: red;
+        border-color: black;
+        border-style: solid;
+        border-width: 5px;
+        border-image: linear-gradient(45deg, rgb(0,143,104), rgb(250,224,66)) 1;
+        border-image: linear-gradient(135deg, rgb(131,58,180), rgb(253,29,29), rgb(252,176,69)) 1;
+       
+
+        span {
+            display: inline;
+            background:-webkit-repeating-radial-gradient(rgb(131,58,180), rgb(253,29,29), rgb(252,176,69), );
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}
+
+// @media (prefers-color-scheme: dark) {
+
+//     :root {
+//         background: black;
+        
+//     }
+
+//     h1 {
+//         color: white;
+//     }
+// }
+
+// @media (prefers-contrast: more){
+//     h1 {
+//         color: yellow;
+//     }
+// }
