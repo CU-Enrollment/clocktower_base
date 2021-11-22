@@ -1,4 +1,4 @@
-name: my-lando-app
+name: clocktower
 recipe: laravel
 config:
   webroot: .

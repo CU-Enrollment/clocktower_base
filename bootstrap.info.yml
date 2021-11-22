@@ -1,0 +1,12 @@
+name: Clocktower
+type: theme
+description: 'Clocktower Theme'
+core_version_requirement: ^8 || ^9
+libraries:
+  - clocktower/global-styling
+base theme: classy
+regions:
+  header: 'Header'
+  content: 'Content'
+  sidebar_first: 'Sidebar first'
+  footer: 'Footer'

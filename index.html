@@ -1,20 +1,9 @@
-<html data-theme="light">
-<title>&#128520; Clockwork</title>
+<html>
+<title>&#128520; Clocktower</title>
 <head>
 <link rel="stylesheet" href="/css/application.css">
-<script src="js/themeSelect.js"></script>
+<script src="https://kit.fontawesome.com/729a474fc8.js" crossorigin="anonymous"></script>
 
-<script type="text/javascript">
-    function swapStyle() {
-        var theme = document.documentElement.getAttribute('data-theme');
-        console.log("The theme color is currently set to: " + theme)
-        theme == 'light' ? 'dark' : 'light';
-        console.log("Now I swapped it to: " + theme);
-
-        document.documentElement.setAttribute('data-theme', theme);
-    }
-
-</script>
 </head>
 <body>
     <header></header>
@@ -69,8 +58,12 @@
             <div>test</div>
             <div>Test 3</div>
         </div>
-        <button class="btn-theme" id="themeToggle" data-theme="light" onclick="swapStyle()" >Dark Mode Activate!</button>
+        <button class="btn-theme" id="themeToggle" role="switch" aria-checked="false" aria-label="Enable Darkmode">
+            <i class="fas fa-moon"></i>
+        </button>
     </main>
     <footer></footer>
+    <script src="js/themeSelect.js"></script>
+
 </body>
 </html>

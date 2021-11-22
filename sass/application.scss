@@ -1,12 +1,21 @@
-@use 'header';
-@use 'menu.scss';
-@use 'buttons.scss' as b;
+@use 'base/type';
+@use 'component/header';
+@use 'component/menu.scss';
+@use 'component/buttons' as b;
 @use "sass:color";
+@use "base/utility";
 
-@import 'colors';
+@import 'base/colors';
 
 :root {
     --cornellred: #b31b1b;
+    
+}
+
+body {
+    &.dark-mode {
+        background: #333;
+    }
 }
 
 h1 {

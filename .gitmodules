@@ -1,0 +1,3 @@
+[submodule "Clocktower"]
+	path = Clocktower
+	url = https://github.com/orangekoi/Clocktower
