@@ -1,0 +1,11 @@
+
+global-styling:
+  version: 1.x
+  css:
+    theme:
+      css/application.css: {}
+      css/print.css: {}
+global-scripts:
+  version: 1.x
+  js:
+    js/script.js: {}

@@ -1,4 +1,0 @@
-name: clocktower
-recipe: laravel
-config:
-  webroot: .
