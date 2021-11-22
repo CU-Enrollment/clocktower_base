@@ -1,7 +1,0 @@
-  global-styling:
-                 css:
-                   theme:
-                     css/application.css: {}
-                     css/print.css: {}
-                 js:
-                   js/script.js: {}
