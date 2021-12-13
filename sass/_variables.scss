@@ -1,0 +1,16 @@
+:root {
+    --cornellred: #b31b1b;
+    
+    body {
+        &.dark-mode {
+    
+            --darkMode: true;
+            --cornellred: blue;
+        }
+
+        &.animation {
+           @import 'animation';
+        }
+    }
+
+}

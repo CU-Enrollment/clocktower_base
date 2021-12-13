@@ -1,0 +1,36 @@
+body.animation {
+
+    .menu-toggle {
+    
+    
+        &.active {
+    
+            span {
+    
+                &:nth-child(1) {
+                    width: 40px;
+                    transform: translateY(0px) rotate(45deg);
+                    transition-delay: 0.125s;
+                    
+                }
+                &:nth-child(2) {
+                    width: 40px;
+                    transform: translateY(0px) rotate(315deg);
+                    transition-delay: 0.25s;
+                }
+    
+                &:nth-child(3) {
+                    transform: translateX(60px);
+                }
+            }
+        
+    
+        }
+    }
+
+}
+
+@mixin background-shift {
+    @content;
+    
+}

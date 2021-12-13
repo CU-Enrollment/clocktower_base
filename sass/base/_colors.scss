@@ -1,4 +1,14 @@
 // Site Colors
+
+:root {
+    --menu-focus: #F7F7F7;
+}
+body.dark-mode {
+    --buttonBG: #333;
+    --buttonColor: #F7f7f7;
+    --menu-focus: #b31b1b;
+}
+
 $lightgray: rgba(245,245,245,1);
 $textblack: rgba(51,51,51,1);
 $green: green;
@@ -9,9 +19,6 @@ $success: green;
 $warning: yellow;
 $alert: red;
 
-h1 {
-    color: lighten($alert, 20%);
-}
 
 span {
     font-size: 24px;
@@ -39,7 +46,3 @@ span {
 .complement {
     color: complement($success);
 }
-
-$red: red;
-
-    @debug 'Red: ' #{$red};

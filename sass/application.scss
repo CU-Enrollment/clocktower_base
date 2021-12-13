@@ -1,28 +1,15 @@
+@use "normalize";
+@use 'variables';
 @use 'base/type';
+@use "base/utility";
 @use 'component/header';
 @use 'component/menu.scss';
 @use 'component/buttons' as b;
 @use "sass:color";
-@use "base/utility";
-
+@use "component/card";
+@use 'component/tabpanel';
 @import 'base/colors';
-
-:root {
-    --cornellred: #b31b1b;
-    
-}
-
-body {
-    &.dark-mode {
-        background: #333;
-    }
-}
-
-h1 {
-    
-    position: relative;
-    color: var(--undefined, blue); 
-}
+@import 'base/breakpoints';
 
 $max: 7;
 
@@ -60,7 +47,7 @@ $nested-list: 1px 2px 3px green, 6px 7px 8px blue, 3px 2px 1px yellow;
 .test {
     width: percentage( .5 );
     @include header.padding;
-    @include b.outline;
+    @include b.bottom-to-full-outline;
     $cornell: #b31b1b;
     color: $cornell;
     

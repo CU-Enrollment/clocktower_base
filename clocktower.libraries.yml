@@ -9,3 +9,15 @@ global-scripts:
   version: 1.x
   js:
     js/script.js: {}
+    js/themeSelect.js: {}
+    js/menu.js: {}
+    js/tabPanel.js: {}
+typekit:
+  version: 1.x
+  js:
+    //use.typekit.net/akz5utf.css: {}
+    js/custom.js: {}
+font-awesome:
+  version: 6.x
+  js:
+    //kit.fontawesome.com/729a474fc8.js: {}

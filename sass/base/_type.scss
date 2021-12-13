@@ -1,7 +1,17 @@
 h1,h2,h3,h4,h5,h6 {
-    font-family: sans-serif;
+    font-family: 'Freight-Sans', sans-serif;
+    color: var(--header, #333);
 }
 
-p, blockquote, ul, button, a {
-    font-family: serif;
+p, blockquote, ul, ol, button, a {
+    font-family: 'Freight-Sans', sans-serif;
+    font-size: 1em;
+    line-height: 1.6em;
+}
+
+
+.before {
+    display: block;
+    font-family: 'FontAwesome';
+    content: '';
 }

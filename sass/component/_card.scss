@@ -1,0 +1,11 @@
+.card-grid {
+
+    --buttonColor: red;
+    h1 {
+        color: var(--darkHeader, var(--lightHeader, #333));
+    }
+
+    h2 {
+        --header: blue;
+    }
+}

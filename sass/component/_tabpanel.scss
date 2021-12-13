@@ -1,0 +1,56 @@
+@use 'component/buttons' as b;
+
+
+.tabpanel {
+    overflow-x: hidden;
+    
+
+    [role='tablist'] {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        margin: 0 0 20px 0;
+        justify-content: center;
+        
+        button {
+            @include b.bottom-to-full-outline;
+            cursor: pointer;
+            background: transparent;
+    
+            &:focus {
+                outline: 1px dotted #000;
+            }
+        }
+      
+    }
+    
+    .tabgroup {
+        width: 100%;
+        clear: both;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        position: relative;
+    
+        [role='tabpanel'] {
+            flex: 1 0 100%;
+            background: blue;
+            height: 800px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            img {
+                position: absolute;
+            }
+
+            display: none;
+            
+            &.active {
+                display: block;
+            }
+        }
+    
+    }
+    
+}

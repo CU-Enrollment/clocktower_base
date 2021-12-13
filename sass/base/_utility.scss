@@ -12,3 +12,21 @@
 	width: 1px !important;
 	white-space: nowrap !important;            /* 3 */
 }
+
+
+// Box Shadow 
+
+.box-shadow {
+
+}
+
+
+button {
+	width: 100px;
+	height: 50px;
+	background: var(--buttonColor, #f3f3f3);
+}
+
+*, :after, :before {
+	box-sizing: inherit;
+}
