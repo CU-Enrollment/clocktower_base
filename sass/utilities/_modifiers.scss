@@ -1,0 +1,6 @@
+.shadow {
+    box-shadow:
+        0  5px 10px var(--cardShadowOne, rgba(154,160,185,0.05)),
+        0 10px 15px var(--cardShadowTwo, rgba(166,173,201,0.2));
+        
+}

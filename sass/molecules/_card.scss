@@ -1,0 +1,116 @@
+@use 'base/colors';
+@use 'base/rounded';
+@use 'utilities/modifiers';
+@use 'molecules/attribution';
+@import 'base/breakpoints';
+
+.cards {
+
+
+    .card {
+        
+        display: flex;
+        background-color: var(--cardBackground, #FFF);
+        overflow: hidden;
+        text-decoration: none;
+
+        .card-text {
+            text-decoration: none;
+        }
+
+    }
+    
+    &.list-view {
+        flex-direction: column;
+
+        .card {
+            flex-direction: row;
+
+            @include for-desktop-up {
+                --cardMargin: 1.5em 1em 1.5em 1em;
+            }  
+            
+            @include for-tablet-portrait-up {
+                --cardMargin: 1em;
+    
+            }
+            
+            margin: var(--cardMargin);
+
+            .cover-image {
+                flex: 1;
+            }
+
+            .card-text {
+                flex: 3;
+                margin-left: 50px;
+                position: relative;
+                        text-decoration: none;
+
+            }
+
+        }
+    }
+
+    &.grid-view {
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex-direction: row;
+
+        .card {
+            flex-direction: column;
+            
+            
+
+            @include for-desktop-up {
+                --cardMargin: 1em 1.5em 1em 1.5em;
+            }  
+            
+            @include for-tablet-portrait-up {
+                --cardMargin: .5em;
+    
+            }
+
+           
+            
+            margin: var(--cardMargin);
+
+            .card-text {
+                padding: 1em 1.5em;
+                color: var(--cardText, rgba(0,0,0,1));
+                min-height: 200px;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                h2 {
+                    color: var(--cardText, rgba(0,0,0,1));
+                }
+                
+            }
+    
+            &:first-of-type {
+                --topLeftRadius: 0;
+                --toprightRadius: .5em;
+                --bottomRightRadius: 0;
+                --bottomLeftRadius: .5em;
+                @extend .rounded;
+            }
+        }
+
+        a.card {
+            transform: translateY(0px);
+            transition: transform .5s ease-in-out;
+            &:hover {
+                transform: translateY(-10px);
+                transition: transform .5s ease-in-out;
+            }
+        }
+    }
+}
+
+.test-cards .card {
+    @extend .shadow;
+}

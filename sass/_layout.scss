@@ -1,3 +1,21 @@
-.container-fluid {
-    
+@import 'base/breakpoints';
+
+.container {
+    margin: 0 auto;
+
+    @include for-phone-only {
+
+    }
+
+    @include for-tablet-portrait-up {
+
+    }
+
+    @include for-desktop-up {
+        max-width: 1400px;
+    }
+
+    @include for-big-desktop-up {
+        max-width: 1920px;
+    }
 }

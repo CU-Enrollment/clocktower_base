@@ -3,11 +3,12 @@
 :root {
     --menu-focus: #F7F7F7;
 }
-body.dark-mode {
-    --buttonBG: #333;
-    --buttonColor: #F7f7f7;
-    --menu-focus: #b31b1b;
-}
+body {  
+
+
+--bodyBG: #F3F3F3;
+--buttonText: #333333;
+--buttonBG: #7c7c7c;
 
 $lightgray: rgba(245,245,245,1);
 $textblack: rgba(51,51,51,1);
@@ -19,30 +20,20 @@ $success: green;
 $warning: yellow;
 $alert: red;
 
+    &.dark-mode {
+        --bodyBG: rgba(18,18,18,1);
 
-span {
-    font-size: 24px;
-}
-.darken {
-    color: darken($green, 20%);
-}
+        --buttonBG: #5b626e;
+        --buttonText: white; 
 
-.lighten {
-    color: lighten($green, 20%);
-}
+        --menu-focus: #b31b1b;
 
-.saturate {
-    color: saturate($green, 20%);
-}
-.desaturate {
-    color: desaturate($green, 20%);
-}
-.adjust-hue {
-    color: adjust-hue($green, 20%);
-}
-.grayscale {
-    color: grayscale($green);
-}
-.complement {
-    color: complement($success);
+        // Cards
+        --cardShadowOne: rgba(0,0,0,0.25);
+        --cardShadowTwo: rgba(15,15,15,0.3);
+        --cardBackground: rgba(30,30,30,1);
+        --cardText: rgba(255,255,255,1);
+    }
+
+    background: var(--bodyBG);
 }

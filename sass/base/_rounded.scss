@@ -1,0 +1,16 @@
+
+// If pulling in, set the variables before the pull in
+
+// --topLeftRadius: 0;
+// --toprightRadius: 0;
+// --bottomRightRadius: 0;
+// --bottomLeftRadius: 0;
+
+
+.rounded {
+    border-top-left-radius: var(--topLeftRadius, 1em);
+    border-top-right-radius: var(--toprightRadius, 1em);
+    border-bottom-right-radius: var(--bottomRightRadius, 1em);
+    border-bottom-left-radius: var(--bottomLeftRadius, 1em);
+}
+

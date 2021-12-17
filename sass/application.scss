@@ -2,67 +2,52 @@
 @use 'variables';
 @use 'base/type';
 @use "base/utility";
-@use 'component/header';
-@use 'component/menu.scss';
-@use 'component/buttons' as b;
+@use 'molecules/header';
+@use 'molecules/menu.scss';
+@use 'atoms/buttons' as b;
+@use 'atoms/figure';
+@use 'atoms/cover_image';
+@use 'atoms/tags';
 @use "sass:color";
-@use "component/card";
-@use 'component/tabpanel';
-@import 'base/colors';
+@use "molecules/card";
+@use "molecules/attribution";
+@use 'organisms/tabpanel';
+@use 'base/colors';
+@use 'layout/grid';
+@use 'layout';
+@use 'atoms/links';
 @import 'base/breakpoints';
 
-$max: 7;
+// $list1: 200px;
+// $list2: 1px 2px 3px black,;
+// $list3: Helvetica, Arial, san-serif;
 
-.grid {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 55px;
+// $zip1: 1px 2px 3px 4px;
+// $zip2: 4em 3em 2em 1em;
+// $zip3: black green blue red;
 
-    > div {
-        height: 50px;
-        background: #ccc;
-        border: 1px solid #aaa;
-    }
-}
-
-@for $i from 1 through $max {
-    $equ: 100% / $i - 2.5%;
-    .flex-#{$i} {
-        flex: 0 0 $equ;
-    }
-}
-
-$list1: 200px;
-$list2: 1px 2px 3px black,;
-$list3: Helvetica, Arial, san-serif;
-
-$zip1: 1px 2px 3px 4px;
-$zip2: 4em 3em 2em 1em;
-$zip3: black green blue red;
-
-$nested-list: 1px 2px 3px green, 6px 7px 8px blue, 3px 2px 1px yellow;
+// $nested-list: 1px 2px 3px green, 6px 7px 8px blue, 3px 2px 1px yellow;
 
 
-.test {
-    width: percentage( .5 );
-    @include header.padding;
-    @include b.bottom-to-full-outline;
-    $cornell: #b31b1b;
-    color: $cornell;
+// .test {
+//     width: percentage( .5 );
+//     @include header.padding;
+//     @include b.bottom-to-full-outline;
+//     $cornell: #b31b1b;
+//     color: $cornell;
     
-    &:after {
-        content: '';
-        display: block;
-        background: linear-gradient(45deg, rgb(131,58,180), rgb(253,29,29), rgb(252,176,69));
-        height: 3px;
-    }
+//     &:after {
+//         content: '';
+//         display: block;
+//         background: linear-gradient(45deg, rgb(131,58,180), rgb(253,29,29), rgb(252,176,69));
+//         height: 3px;
+//     }
     
-    &:hover, &:focus {
-        color: color.adjust($cornell, $saturation: -.4);
-        cursor: pointer;
-    }
-}
+//     &:hover, &:focus {
+//         color: color.adjust($cornell, $saturation: -.4);
+//         cursor: pointer;
+//     }
+// }
 
 .gradient-border {
     height: 300px;
@@ -92,21 +77,3 @@ $nested-list: 1px 2px 3px green, 6px 7px 8px blue, 3px 2px 1px yellow;
         }
     }
 }
-
-// @media (prefers-color-scheme: dark) {
-
-//     :root {
-//         background: black;
-        
-//     }
-
-//     h1 {
-//         color: white;
-//     }
-// }
-
-// @media (prefers-contrast: more){
-//     h1 {
-//         color: yellow;
-//     }
-// }

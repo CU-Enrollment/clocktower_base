@@ -1,12 +1,17 @@
+:root {
+    --clocktower-sans-serif:  freight-sans-pro, sans-serif;;
+    --clocktower-serif: freight-text-pro, serif;
+}
 h1,h2,h3,h4,h5,h6 {
     font-family: 'Freight-Sans', sans-serif;
     color: var(--header, #333);
 }
 
 p, blockquote, ul, ol, button, a {
-    font-family: 'Freight-Sans', sans-serif;
+    font-family: var(--projectText, var(--clocktower-sans-serif, san-serif));
     font-size: 1em;
     line-height: 1.6em;
+
 }
 
 

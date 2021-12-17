@@ -1,0 +1,91 @@
+@import 'base/breakpoints';
+
+
+.row {
+    display: block;
+    clear: both;
+    width: 100%;
+}
+
+$columnGap: 2%;
+$rowGap: 2%;
+
+.card-grid {
+    
+    display: grid;
+    grid-column-gap: $columnGap;
+    grid-row-gap: $rowGap;
+    padding: $rowGap 2em; 
+}
+
+
+// Grid Templates for Equal Grid Columns
+
+$max: 12;
+
+@include for-phone-only {
+
+    // for small screens
+    @for $i from 1 through $max {
+        $equ: 100% / $i;
+        .grid-sm-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
+        }
+        .flex-sm-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
+        }
+    }
+}
+
+@include for-tablet-portrait-up {
+
+    // for medium screens
+    @for $i from 1 through $max {
+        $equ: 100% / $i;
+        .grid-md-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
+        }
+        .flex-md-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
+        }
+    }
+}
+
+@include for-desktop-up {
+
+    // for large screens
+    @for $i from 1 through $max {
+        $equ: 100% / $i;
+        .grid-lg-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
+        }
+        .flex-lg-#{$i} {
+            $equ: 100% / $i;
+            flex: 0 1 30%;
+        }
+    }
+}
+
+@include for-big-desktop-up {
+    @include for-desktop-up {
+
+        // for large screens
+        @for $i from 1 through $max {
+            $equ: 100% / $i;
+            .grid-xlg-#{$i} {
+                grid-template-columns: repeat($i, 1fr);
+            }
+            .flex-xlg-#{$i} {
+                grid-template-columns: repeat($i, 1fr);
+            }
+        }
+    }
+}
+
+
+
+
+
+// Grids will be based on a 12 Column Grid 
+
+// Grid 4 / 8

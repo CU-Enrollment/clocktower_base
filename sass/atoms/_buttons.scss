@@ -1,0 +1,200 @@
+@use 'variables';
+
+button {
+  border: 0;
+  background: var(--buttonBG, --buttonBackground);
+  color: var(--buttonTextColor, --buttonText);
+  padding: .5em 1.25em;
+  margin: .5em 1.25em;
+  position: relative;
+  box-sizing: border-box;
+  min-height: 45px;
+  min-width: 45px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+
+  &.outline {
+    background: transparent;
+    box-shadow: inset 0 0 0 2px var(--buttonBG, #333);
+    color: var(--buttonBG, #333);
+  }
+
+  &.rounded {
+    border-radius: .5em;
+  }
+
+  &:hover {
+    box-shadow: inset 0 0 0 2px var(--buttonHover, #333);
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 0 2px var(--buttonHover, #FFF);
+
+  }
+}
+
+
+// This is a mixin to have a solid bottom border, and on hover have it extend up on the left and right, then on the top towards the middle.
+// To extend this, use the variable --buttonBorderColor before the @mixin call. 
+@mixin bottom-to-full-outline {
+    border-bottom: 5px solid var(--buttonBorderColor, #333);
+    
+    &:after, &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: .5s ease;
+
+    }
+
+    &:before {
+        border-right: 5px solid var(--buttonBorderColor, #333);
+        border-left: 5px solid var(--buttonBorderColor, #333);
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
+
+    &:after  {
+        
+        border-top: 5px solid var(--buttonBorderColor, #333);
+        transform: scaleX(0);
+    }
+
+    &:focus, &:hover {
+
+        &:after, &:before {
+            transform: none;
+        }
+    }
+}
+
+@mixin button-full-around {
+
+  // Using inset box-shadow instead of border for sizing simplicity
+    box-shadow: inset 0 0 0 2px transparent;
+    color: var(--buttonColor, #333);
+   
+    // Required, since we're setting absolute on pseudo-elements
+    vertical-align: middle;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+ 
+    transition: color 0.25s;
+    
+    &::before,
+    &::after {
+      // Set border to invisible, so we don't see a 4px border on a 0x0 element before the transition starts
+      border: 2px solid transparent;
+      width: 0;
+      height: 0;
+    }
+  
+    // This covers the top & right borders (expands right, then down)
+    &::before {
+      top: 0;
+      left: 0;
+    }
+  
+    // And this the bottom & left borders (expands left, then up)
+    &::after {
+      bottom: 0;
+      right: 0;
+    }
+      
+    &:hover {
+      color: cyan;
+    }
+  
+    // Hover styles
+    &:hover::before,
+    &:hover::after {
+      width: 100%;
+      height: 100%;
+    }
+  
+    &:hover::before {
+      border-top-color: cyan; // Make borders visible
+      border-right-color: cyan;
+      transition:
+        width 0.25s ease-out, // Width expands first
+        height 0.25s ease-out 0.25s; // And then height
+    }
+  
+    &:hover::after {
+      border-bottom-color: cyan; // Make borders visible
+      border-left-color: cyan;
+      transition:
+        border-color 0s ease-out 0.5s, // Wait for ::before to finish before showing border
+        width 0.25s ease-out 0.5s, // And then exanding width
+        height 0.25s ease-out 0.75s; // And finally height
+    }
+    
+}
+
+@mixin button-gradient-bg {
+
+  color: var(--buttonColor, #333);
+  border-radius: 1em;
+  background-color: transparent;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border:2px solid transparent; /*2*/
+    background:linear-gradient(45deg,var(--gradientOne),var(--gradientTwo)) border-box; /*3*/
+    -webkit-mask: /*4*/
+       linear-gradient(#fff 0 0) padding-box, 
+       linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out; /*5'*/
+    mask-composite: exclude; /*5*/
+
+  }
+
+  &:hover, &:focus {
+    box-shadow: none;
+    border-image: white;
+   
+
+  }
+}
+
+.gradient-button {
+    --buttonColor: white;
+    --gradientOne: magenta ;
+    --gradientTwo: yellow;
+
+    @include button-gradient-bg;
+
+    &:after {
+      border-radius: 10px;
+    }
+    &:focus, &:hover {
+    }
+}
+
+.custom {
+  button {
+    --buttonBG: transparent;
+    @include bottom-to-full-outline;
+
+    &:hover, &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+  }
+}
