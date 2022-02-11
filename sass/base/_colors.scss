@@ -2,23 +2,38 @@
 
 :root {
     --menu-focus: #F7F7F7;
+    --cornell-red: #b31b1b;
 }
 body {  
 
 
 --bodyBG: #F3F3F3;
---buttonText: #333333;
---buttonBG: #7c7c7c;
+--focusOutline: 1,95,204;
 
-$lightgray: rgba(245,245,245,1);
-$textblack: rgba(51,51,51,1);
-$green: green;
-$cornell: #b31b1b;
+
+//Text Colors
+
+// Button Colors
+--buttonBG: #7c7c7c;
+--buttonText: #333333;
+
+// Form & Input Colors
+--formBG: 255,255,255;
+--inputBorder: 149,149,149;
+--inputSelected: 0,109,160;
+
+// Select Colurs
+--select-border: 149,149,149;
+--select-focus: blue;
+--select-arrow: var(--select-border);
+
+// Menu Colors
+--mobileMenuBG: #FFFFFF;
+--menuTextColor: #333333; // Color of Menu Text and Dropdown Carat
+
 
 // Alert and other Notification Colors
-$success: green;
-$warning: yellow;
-$alert: red;
+
 
     &.dark-mode {
         --bodyBG: rgba(18,18,18,1);
@@ -33,6 +48,13 @@ $alert: red;
         --cardShadowTwo: rgba(15,15,15,0.3);
         --cardBackground: rgba(30,30,30,1);
         --cardText: rgba(255,255,255,1);
+
+        --fieldsetBG: 240,240,240;
+
+        // Dark Mode Menu
+        --mobileMenuBG: #333333;
+        --menuTextColor: #FFFFFF;  // Color of Menu Text and Dropdown Carat
+
     }
 
     background: var(--bodyBG);

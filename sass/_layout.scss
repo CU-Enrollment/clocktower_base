@@ -1,7 +1,17 @@
 @import 'base/breakpoints';
 
+body {
+    width: 100%;
+    margin: 0;
+}
+
 .container {
-    margin: 0 auto;
+    // width: min(90%, 87.5em);
+    margin-inline: auto;
+    width: auto;
+    padding-left: clamp(5%, 7%, 10%);
+    padding-right: clamp(5%, 7%, 10%);
+    // background: blue;
 
     @include for-phone-only {
 
@@ -16,6 +26,6 @@
     }
 
     @include for-big-desktop-up {
-        max-width: 1920px;
+        max-width: 1650px;
     }
 }

@@ -1,218 +1,310 @@
 @use 'utilities/functions';
-@use 'variables' as v;
 @use '../base/breakpoints' as b;
 @use '../base/type' as t;
 // Main Menu 
 
-#main-navigation {
+nav {
+    .mobile-navigation {
 
-    color: var(--menucolor, #FFF);
-    height: auto;
-
-    // top level nav
-    > ul.menu {
-        background: #333;
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        padding-left: 0px;
-        height: auto;
-
-        @include b.for-tablet-landscape-up {
-            flex-direction: row;
-        }
-
-        .top-level {
-            flex: 1 0 auto;
-            text-align: left;
-            height: auto;
-            position: relative;
-
-            &:not(:last-of-type){
-                border-bottom: 1px solid rgb(206, 206, 206);
-            }
-            
-            @include b.for-tablet-landscape-up {
-                // text-align: center;
-            }
-
-            a {
-                color: var(--menucolor, #FFF);
-                font-size: 1.25em;
-                font-weight: 100;
-                padding: 1.5em;
-                background: transparent;
-                width: 100%;
-                // background: linear-gradient(321deg, rgba(84,84,84,1) 0%,  rgb(15, 15, 15) 100%);
-                text-decoration: none;
-                display: inline-block;
-                position: relative;
-                transition: all .5s ease-in;
-                
-                &:focus, &:hover {
-                    // outline: 0;
-                }
-
-                @include b.for-tablet-landscape-up {
-                    width: auto;
-                }
-                &:before {
-                    b.for-phone-only {
-                        @extend .before;
-                        width: .5em;
-                        height: 100%;
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        background: linear-gradient(to right, var(--menu-focus, #FFF) 50%, transparent 50%);
-                        background-size: 200% 100%;
-                        background-position: right bottom;
-                        transition: all .5s ease-out;
-                    }
-                    
-                    
-                }
-                &:hover, &:focus {
-                    // background: linear-gradient(321deg, rgba(23,23,24,1) 0%, rgba(23,23,24,1) 100%);
-
-
-                    &:before {
-                        background-position: left bottom;
-                       
-                    }
-                    
-                }
-
-            }
-
-            
-
-            &.active {
-                ul.sub-menu {
-                    display: block;
-
-                }
-            }
-
-            .toggle-menu {
         
-                background: transparent;
-                border: none;
-                cursor: pointer;
-                height: 25px;
-                width: 25px;
+
+        color: var(--menuTextColor, #333);
+        height: auto;
+        // background: var(--navBG, #FFF);
+
+        // top level nav
+        > ul.menu {
+            // background: var(--menuBG, #fff);
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            padding-left: 0px;
+            height: auto;
+
+            @include b.for-tablet-landscape-up {
+                flex-direction: row;
+            }
+
+            .top-level {
+                flex: 1 0 auto;
+                text-align: left;
+                height: auto;
                 position: relative;
-                margin-left: 10px;
-                padding: 1.5em 0px;
-                display: inline-block;
-                @include b.for-tablet-landscape-up {
-                    
+
+                &:not(:last-of-type){
+                    border-bottom: 1px solid rgb(206, 206, 206);
                 }
-                &:before {
-                    content: '\f078';
-                    color: var(--linkColor, #fff);
-                    font-family: 'FontAwesome';
+                
+                @include b.for-tablet-landscape-up {
+                    // text-align: center;
+                }
+
+                a {
+                    color: var(--menuTextColor, #333);
+                    font-size: 1.25em;
+                    font-weight: 100;
+                    padding: 1.5em;
+                    background: transparent;
+                    width: 100%;
+                    // background: linear-gradient(321deg, rgba(84,84,84,1) 0%,  rgb(15, 15, 15) 100%);
+                    text-decoration: none;
+                    display: inline-block;
+                    position: relative;
+                    transition: all .5s ease-in;
+                    
+                    &:focus, &:hover {
+                        // outline: 0;
+                    }
+
+                    @include b.for-tablet-landscape-up {
+                        width: auto;
+                    }
+                    &:before {
+                        b.for-phone-only {
+                            @extend .before;
+                            width: .5em;
+                            height: 100%;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            background: linear-gradient(to right, var(--menu-focus, #FFF) 50%, transparent 50%);
+                            background-size: 200% 100%;
+                            background-position: right bottom;
+                            transition: all .5s ease-out;
+                        }
+                        
+                        
+                    }
+                    &:hover, &:focus {
+                        // background: linear-gradient(321deg, rgba(23,23,24,1) 0%, rgba(23,23,24,1) 100%);
+
+
+                        &:before {
+                            background-position: left bottom;
+                        
+                        }
+                        
+                    }
+
+                }
+
+                &.active {
+                    ul.sub-menu {
+                        display: block;
+
+                    }
+                }
+
+                .toggle-menu {
+            
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
                     height: 25px;
                     width: 25px;
+                    position: relative;
+                    margin-left: 10px;
+                    padding: 1.5em 0px;
+                    display: inline-block;
+                    @include b.for-tablet-landscape-up {
+                        
+                    }
+                    &:before {
+                        content: '\f078';
+                        color: var(--menuTextColor, #333);
+                        font-family: 'FontAwesome';
+                        height: 25px;
+                        width: 25px;
+                    }
+                }
+
+                // Dropdown Menu, first child
+                ul.sub-menu {
+                    list-style: none;
+                    padding-left: 0px;
+                    background: var(--menuColor, rgba(0,0,0,.5));
+                    display: none;
+                    position: relative;
+
+                    li {
+                        border-bottom: 0px;
+
+                        // any other children menus
+                        > ul:first-of-type {
+                            
+                            position: absolute;
+                            top: 0;
+                            left: 100%;
+                            width: 100%;
+                            display: none;
+                            list-style: none;
+                            padding-left: 0px;
+
+                        }
+
+                        &.active {
+                            display: block;
+                            > ul {
+                                display: block;
+                            }
+                        }
+                    }
+
+                    
+                }
+            }
+        }
+    }
+
+
+    // Mobile Navigation 
+    .mobile-menu {
+        background: #FFF;
+        display: none;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+
+        &.active {
+            display: block;
+        }
+
+        .mobile-main-menu {
+            
+            background: var(--mobileMenuBG, #FFF);
+            margin-top: 3em;
+            // padding: 2em 2em 1em;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+
+            .nav-panel {
+                background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(232,232,232,.5) 100%);
+
+                position: absolute; 
+                background-color: #FFF;
+                width: auto;
+                padding: 1em 2em;
+
+                .menu-breadcrumb {
+                    border: 0px;
+                    background: none;
+                    font-size: var(--step-1);
+                    text-transform: uppercase;
+                    margin: 0em;
+                    padding: 0em;
+                    position: absolute;
+                    top: 2em;
+
+                    &:before {
+                        content: '\f104';
+                        font-family: 'FontAwesome';
+                        width: 1em;
+                        height: 1em;
+                        padding-right: .75em;
+                        font-weight: 100;
+                    }
+                }
+
+                transform: translateX(0);
+                transition: transform 500ms;
+                &.hide-right {
+                    transform: translateX(100vw);
+                    transition: transform 500ms;
+                }
+
+                &.hide-left {
+                    transform: translateX(-100vw);
+                    transition: transform 500ms;
+                }
+            }
+            
+            
+
+            a.nav-panel-header {
+
+                text-decoration: none;
+            
+                h2 {
+                    font-size: var(--step-3);
+                    color: var(--cornell-red);
+                    font-weight: 400;
+                    font-family: var(--menuFont);
+                    margin-top: 3em;
+
                 }
             }
 
-            // Dropdown Menu, first child
-            ul.sub-menu {
-                list-style: none;
-                padding-left: 0px;
-                background: var(--menuColor, rgba(0,0,0,.5));
-                display: none;
-                position: relative;
+            .mobile-navigation {
 
-                li {
-                    border-bottom: 0px;
+                ul.menu {
 
-                    // any other children menus
-                    > ul:first-of-type {
-                        
-                        position: absolute;
-                        top: 0;
-                        left: 100%;
-                        width: 100%;
-                        display: none;
-                        list-style: none;
-                        padding-left: 0px;
+                    li {
+
+                        display: flex;
+                        flex-direction: row;
+
+                        a {
+                            font-size: var(--step-2);
+                            padding: .5em 0em;
+                        }
+                    
+                        .toggle-menu {
+                            padding: 0em;
+                            margin: 0;
+                            height: auto;  
+
+                            &:before {
+                                width: 4em;
+                                height: 100%;
+                                font-size: var(--step-2);
+                                padding-left: 0em;
+                                content: '\f105';
+                                color: var(--cornell-red);
+                            }
+
+                            &:after {
+                                width: 1em;
+                                height: 65%;
+                                content: '';
+                                display: inline-block;
+                                position: absolute;
+                                border-left: 1px solid var(--menuTextColor);
+                                opacity: .25;
+                                left: 0;
+                                
+                                padding: .25em 0em;
+                                margin: auto 0;
+                            }
+                        }
 
                     }
+                    
+                }
 
-                    &.active {
-                        display: block;
-                        > ul {
-                            display: block;
+            }
+            .mobile-quick-links {
+                h3 {
+                    color: var(--cornell-red);
+                    font-family: var(--menuFont);
+                    font-size: var(--step-1);
+                    font-weight: 400;
+                }
+
+                ul {
+                    columns: 2;
+                    list-style: none;
+                    padding: 0px;
+
+                    li {
+                        a {
+                            color: var(--menuTextColor, #333);
                         }
                     }
                 }
-
-                
-            }
-        }
-    }
-}
-
-// Menu Toggle Button
-.menu-toggle {
-
-    position: relative;
-    width: 70px;
-    height: 70px;
-    background: var(--buttonBG, #fff);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border: none; 
-    border-radius: 5px;
-    overflow: hidden;
-
-    span {
-        position: absolute;
-        width: 40px;
-        height: 4px;
-        background: var(--buttonColor, #333);
-        border-radius: 4px;
-        transition: 0.5s;
-    
-        &:nth-child(1) {
-            transform: translateY(-15px);
-            width: 25px;
-            left: 15px;
-        }
-
-        &:nth-child(2) {
-            transform: translateY(15px);
-            width: 15px;
-            left: 15px;
-        }
-    }
-
-    &.active {
-
-        span {
-
-            &:nth-child(1) {
-                width: 40px;
-                transform: translateY(0px) rotate(45deg);
-                transition-delay: 0.125s;
-                
-            }
-            &:nth-child(2) {
-                width: 40px;
-                transform: translateY(0px) rotate(315deg);
-                transition-delay: 0.25s;
             }
 
-            &:nth-child(3) {
-                transform: translateX(60px);
-            }
-        }
-    
 
+        }
     }
 }

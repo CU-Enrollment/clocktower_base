@@ -2,20 +2,22 @@
 @use 'variables';
 @use 'base/type';
 @use "base/utility";
-@use 'molecules/header';
 @use 'molecules/menu.scss';
 @use 'atoms/buttons' as b;
 @use 'atoms/figure';
-@use 'atoms/cover_image';
+@use 'atoms/img';
 @use 'atoms/tags';
 @use "sass:color";
 @use "molecules/card";
+@use "molecules/branding";
 @use "molecules/attribution";
 @use 'organisms/tabpanel';
+@use 'organisms/header';
 @use 'base/colors';
 @use 'layout/grid';
 @use 'layout';
 @use 'atoms/links';
+@use 'atoms/inputs';
 @import 'base/breakpoints';
 
 // $list1: 200px;

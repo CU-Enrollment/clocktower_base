@@ -1,0 +1,266 @@
+@use 'base/colors';
+
+
+
+
+form {
+
+    background: rgb(var(--formBG, #FFF));
+    padding: 1em 3em;
+    
+
+}
+
+label, legend {
+    font-family: var(--clocktower-sans-serif);
+    color: #333;
+    font-weight: 400;
+    font-size: var(--step-0);
+    display: block;
+    padding-top: .5em;
+}
+
+
+// Text and Email Inputs  
+input[type="text"], input[type="email"] {
+    background: #FFFFFF;
+    color: #333;
+    font-family: var(--clocktower-sans-serif);
+    border: 1px solid rgb(var(--inputBorder, #959595));
+    // -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.5); 
+    // box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.05);
+    height: 2.5em;
+    border-radius: .2em;
+    padding-left: .5em;
+
+    &:focus {
+        // box-shadow: 0em 0em .75em rgba(40, 130, 201, 0.502);
+
+    }
+}
+
+label + input[type="text"], label + input[type="email"] {
+    display: block;
+    font-family: var(--clocktower-sans-serif);
+    margin-top: .72em;
+
+    &::placeholder {
+        font-style: italic;
+        color: #767676;
+    }
+}
+
+
+// Select Options
+
+label + select {
+    display: block;
+    height: 2.5em;
+    margin-top: .72em;
+    min-width: 15em;
+}
+
+select {
+
+    // Reset the select appearance
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+    z-index: 1;
+
+    //style it
+
+    font-family: var(--clocktower-sans-serif);
+
+    &::-ms-expand {
+        display: none;
+    }
+}
+
+div.select {
+    width: 100%;
+    min-width: 15ch;
+    max-width: 30ch;
+    border: 1px solid rgb(var(--select-border));
+    border-radius: 0.2em;
+    padding: 0.25em 0.5em;
+    font-size: var(--step-0);
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+    background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+    margin-top: .72em;
+    display: grid;
+    grid-template-areas: "select";
+    align-items: center;
+    position: relative;
+
+    &:after {
+        content: "\f0d7";
+        font-family: 'FontAwesome';
+        width: 0.8em;
+        height: 0.5em;
+        // background-color: rgb(var(--select-arrow));
+        // clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+        justify-self: end;
+        color: rgb(var(--select-arrow));
+        margin-top: -.5em;
+        z-index: 0;
+    }
+}
+
+select, .select:after {
+    grid-area: select;
+}
+
+select:focus + .focus {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border: 2px solid rgb(var(--focusOutline));
+    border-radius: inherit;
+  }
+
+
+fieldset {
+
+    background: rgba(var(--fieldsetBG, 255,255,255), 1);
+    border: 0em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    margin-top: .5em;
+    margin-left: .5em;
+
+    legend {
+       padding-inline-start: 0;
+       padding-inline-end: 0;
+       left: -.5em; 
+       position: relative;
+
+    }
+
+    &.radiogroup, &.checkboxes {
+        label {
+            display: flex;
+            cursor: pointer;
+            position: relative;
+            overflow:hidden;
+            margin-bottom: .375em;
+            font-size: var(--step--1);
+            margin-top: 0em;
+            padding-top: .25em;
+    
+            input {
+                position: absolute;
+                left: -9999px;
+                &:checked + span {
+                    background-color: rgba(var(--inputSelected), .1);
+                    color: rgba(var(--inputSelected), 1);
+
+                    &:before {
+                        box-shadow: inset 0 0 0 0.35em rgba(var(--inputSelected), 1);
+                        color: rgba(var(--inputSelected), 1);
+                    }
+                }
+
+                &:focus + span {
+                    background-color: rgba(var(--inputSelected), .1);
+                    border: 2px solid rgba(var(--focusOutline),.75);
+    
+                    &:before {
+                        // box-shadow: inset 0 0 0 0.35em rgba(var(--inputSelected), 1);
+                        color: rgba(var(--focusOutline), 1);
+                    }
+                    
+                }
+            }
+        }
+        span {
+            display: flex;
+            align-items: center;
+            padding: 0.375em 0.75em 0.375em 0.375em;
+            border-radius: 99em; // or something higher...
+            transition: 0.25s ease;
+            border: 2px solid transparent;
+
+            &:hover {
+                background-color: rgba(var(--inputSelected), .15);
+            }
+            &:before {
+                display: flex;
+                flex-shrink: 0;
+                content: "";
+                background-color: #fff;
+                width: 1.5em;
+                height: 1.5em;
+                border-radius: 50%;
+                margin-right: 0.375em;
+                transition: 0.25s ease;
+                box-shadow: inset 0 0 0 0.125em rgba(var(--inputBorder), .5);
+            }
+        }
+
+    }
+}
+fieldset.checkboxes { 
+
+    label {
+        
+        input {
+            
+            &:checked + span, &:focus &:checked + span {
+                
+                &:before {
+                    box-shadow: inset 0 0 0 0.15em rgba(var(--inputSelected), 1);
+                    content: "\f00c";
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+            &:focus + span {
+                background-color: transparent;
+                border: 2px solid rgba(var(--focusOutline),.75);
+
+                &:before {
+                    // box-shadow: inset 0 0 0 0.35em rgba(var(--inputSelected), 1);
+                    color: rgba(var(--inputSelected), 1);
+                }
+                
+            }
+
+            &:focus:checked + span {
+                background-color: rgba(var(--inputSelected), .15);
+
+            }
+        }
+    }
+
+    span {
+		
+		border-radius: .25em; // or something higher...
+        border: 2px solid transparent;
+
+		&:before {
+			background-color: white;
+			border-radius: 5%;
+		    font-family: 'FontAwesome';
+            color: #333;
+		}
+	}
+
+}

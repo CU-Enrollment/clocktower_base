@@ -198,3 +198,128 @@ button {
     }
   }
 }
+
+
+#userPreferences {
+  position: absolute;
+  top: 20px;
+  right: 0px;
+}
+
+
+
+// Menu Toggle Button
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  width: auto;
+  background-color: var(--menuToggleColor, transparent);
+  padding: .25em 0em;
+  margin: 0;
+
+  &.enrollment-toggle {
+    font-size: var(--step--1);
+  }
+
+  .menuText {
+      margin-left: .5em;
+  }
+
+  &.mobile-toggle {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+  }
+  .buttonWrap {
+
+      position: relative;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      // box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border: none; 
+      border-radius: 5px;
+      overflow: hidden;
+      margin-right: .75em;
+
+      span {
+          position: absolute;
+          width: 30px;
+          height: 3px;
+          background: var(--menuTextColor, #333);
+          border-radius: 4px;
+          transition: 0.5s;
+      
+          &:nth-child(1) {
+              transform: translateY(-10px);
+              width: 25px;
+              left: 5px;
+          }
+
+          &:nth-child(2) {
+              transform: translateY(10px);
+              width: 15px;
+              left: 5px;
+          }
+      }
+
+  }
+
+  &.active {
+
+      .buttonWrap {
+
+          span {
+
+              &:nth-child(1) {
+                  width: 30px;
+                  transform: translateY(0px) rotate(45deg);
+                  transition-delay: 0.125s;
+                  
+              }
+              &:nth-child(2) {
+                  width: 30px;
+                  transform: translateY(0px) rotate(315deg);
+                  transition-delay: 0.25s;
+              }
+
+              &:nth-child(3) {
+                  transform: translateX(-60px);
+              }
+          }
+      }
+
+      &.mobile-toggle {
+          z-index: 1;
+          
+
+          &.active {
+
+              background: #fff;
+              border-radius: 99em;
+              height: 4em;
+              width: 4em;
+              display: flex;
+              justify-content: center;
+
+              .buttonWrap {
+                  span {
+                      
+                      background: var(--menuTextColor, #333);
+                  }
+              }
+          }
+                  
+      }
+  
+
+  }
+
+  &:focus, &:hover {
+      box-shadow: none;
+  }
+}

@@ -1,0 +1,3 @@
+function theme_preprocess(&$variables, $hook) {
+    $variables['base_path'] = base_path();
+}

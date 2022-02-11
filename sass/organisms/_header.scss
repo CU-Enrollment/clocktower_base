@@ -1,0 +1,58 @@
+@mixin padding {
+    padding: 0px 60px;
+}
+
+header {
+    background: #FFF;
+    display: flex;
+    flex-direction: row;
+    padding: 1em 1em;
+    justify-content: space-between;
+    
+
+    .mobile-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-self: flex-end;
+
+        .utility-links {
+            display: none;
+        }
+    }
+
+    div {
+        flex-basis: 33%;
+
+        &.hdr-left {
+            a {
+                margin-left: 5px;
+                padding-bottom: 1.5em;
+                text-decoration: none;
+                display: block;
+                padding-top: .25em;
+
+                h1 {
+                    font-size: var(--step-2);
+                    font-family: var(--clocktower-sans-serif);
+                    font-weight: 400;
+                    margin: 0;
+
+                }
+            }
+        }
+
+    }
+    
+    .cu-seal {
+        position: absolute;
+        left: 50%;
+        top: 1em;
+        transform: translateX(-50%);
+    }
+
+    
+
+
+    
+}
