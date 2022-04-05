@@ -19,6 +19,10 @@ $rowGap: 2%;
 }
 
 
+.flex {
+    display: flex;
+}
+
 // Grid Templates for Equal Grid Columns
 
 $max: 12;
@@ -28,56 +32,54 @@ $max: 12;
     // for small screens
     @for $i from 1 through $max {
         $equ: 100% / $i;
-        .grid-sm-#{$i} {
+        .grid-#{$i} {
             grid-template-columns: repeat($i, 1fr);
         }
-        .flex-sm-#{$i} {
-            grid-template-columns: repeat($i, 1fr);
+        .flex-#{$i} {
+            flex: 0 1 $equ;
         }
     }
 }
 
-@include for-tablet-portrait-up {
+// @include for-tablet-portrait-up {
 
-    // for medium screens
-    @for $i from 1 through $max {
-        $equ: 100% / $i;
-        .grid-md-#{$i} {
-            grid-template-columns: repeat($i, 1fr);
-        }
-        .flex-md-#{$i} {
-            grid-template-columns: repeat($i, 1fr);
-        }
-    }
-}
+//     // for medium screens
+//     @for $i from 1 through $max {
+//         $equ: 100% / $i;
+//         .grid-md-#{$i} {
+//             grid-template-columns: repeat($i, 1fr);
+//         }
+//         .flex-md-#{$i} {
+//             grid-template-columns: repeat($i, 1fr);
+//         }
+//     }
+// }
 
 @include for-desktop-up {
 
     // for large screens
     @for $i from 1 through $max {
         $equ: 100% / $i;
-        .grid-lg-#{$i} {
+        .grid-#{$i} {
             grid-template-columns: repeat($i, 1fr);
         }
-        .flex-lg-#{$i} {
+        .flex-#{$i} {
             $equ: 100% / $i;
-            flex: 0 1 30%;
+            flex: 0 1 $equ;
         }
     }
 }
 
-@include for-big-desktop-up {
-    @include for-desktop-up {
+@include for-xl-desktop-up {
 
-        // for large screens
-        @for $i from 1 through $max {
-            $equ: 100% / $i;
-            .grid-xlg-#{$i} {
-                grid-template-columns: repeat($i, 1fr);
-            }
-            .flex-xlg-#{$i} {
-                grid-template-columns: repeat($i, 1fr);
-            }
+    // for large screens
+    @for $i from 1 through $max {
+        $equ: 100% / $i;
+        .grid-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
+        }
+        .flex-#{$i} {
+            flex: 0 1 $equ;
         }
     }
 }
@@ -89,3 +91,13 @@ $max: 12;
 // Grids will be based on a 12 Column Grid 
 
 // Grid 4 / 8
+
+
+// Flex Align
+
+.flex {
+
+    &.center {
+        justify-content: center;
+    }
+}

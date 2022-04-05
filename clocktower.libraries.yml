@@ -9,9 +9,10 @@ global-scripts:
   version: 1.x
   js:
     js/script.js: {}
-    js/themeSelect.js: {}
+    # js/themeSelect.js: {}
     js/menu.js: {}
-    js/tabPanel.js: {}
+    js/cards.js: {}
+    # js/tabPanel.js: {}
 typekit:
   version: 1.x
   js:

@@ -8,24 +8,24 @@ body {
 .container {
     // width: min(90%, 87.5em);
     margin-inline: auto;
-    width: auto;
-    padding-left: clamp(5%, 7%, 10%);
-    padding-right: clamp(5%, 7%, 10%);
+   
     // background: blue;
 
     @include for-phone-only {
-
-    }
-
-    @include for-tablet-portrait-up {
-
+        width: 375px;
+        overflow-x: hidden;
+        margin: 0 auto;
     }
 
     @include for-desktop-up {
-        max-width: 1400px;
+        max-width: 1200px;
+        padding-left: clamp(5%, 7%, 10%);
+        padding-right: clamp(5%, 7%, 10%);
+        width: auto;
+
     }
 
-    @include for-big-desktop-up {
-        max-width: 1650px;
+    @include for-xl-desktop-up {
+        max-width: 1400px;
     }
 }

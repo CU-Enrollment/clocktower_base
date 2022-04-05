@@ -1,0 +1,124 @@
+@use '../base/breakpoints' as b;
+
+footer {
+    background-color: #232323;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    gap: 5em;
+    padding: 8em 5% 8em;
+
+
+    &:before {
+        background: #FFF;
+        height: 12.5em;
+        width: 12.5em;
+        content: '';
+        border-radius: 99em;
+        position: absolute;
+        top: -10em;
+        left: 50%;
+        transform: translateX((-50%))
+    }
+
+    h2 {
+        font-size: var(--step-2);
+        font-family: var(--clocktower-serif);
+        color: var(--footerText, #FFF);
+        font-weight: 300;
+
+        &:after {
+            height: 1px;
+            width: 100%;
+            content: '';
+            background-color: #FFF;
+            display: block;
+            margin-top: 1.25em;
+        }
+    }
+
+    p, ul, a {
+        color: var(--footerText, #fff);
+        font-size: var(--step--1);
+    }
+    @include b.for-desktop-up {
+        flex-direction: row;
+    }
+
+    #block-footeraddress {
+        flex: 1 0 40%;
+
+        .ftr-wrap {
+
+            display: flex;
+            gap: 5%;
+            div {
+                flex: 1 0 45%;
+
+                &.ftr-left {
+                    p {
+                        margin-top: 0;
+                    }
+                }
+                &.ftr-right {
+                    a {
+                        display: block;
+                    }
+                }
+            }
+            .glyphicons {
+                position: relative;
+                margin-left: 1.5em;
+    
+                &:before {
+                    font-size: var(--step-0);
+                    position: absolute;
+                    top: 0;
+                    left: -1.5em;
+    
+                }
+            }
+        }
+        
+    }
+    #block-footerlinks {
+        flex: 1 0 55%;
+
+        > div {
+            display: flex;
+            flex-direction: column;
+            gap: 5em;
+            @include b.for-desktop-up {
+                flex-direction: row;
+            }
+
+            .ftr-left {
+
+                flex-basis: 30%;
+
+                
+            }
+
+            .ftr-right {
+                flex-basis: 30%;
+
+                ul {
+                    list-style: none;
+                    padding-left: 0;
+
+                    li {
+                        line-height: 3em;
+                    }
+                }
+
+            }
+            
+
+            
+
+        }
+    }
+
+    
+}

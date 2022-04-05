@@ -7,17 +7,29 @@
 @use 'atoms/figure';
 @use 'atoms/img';
 @use 'atoms/tags';
+@use 'atoms/glyphicons';
+
 @use "sass:color";
 @use "molecules/card";
 @use "molecules/branding";
 @use "molecules/attribution";
+@use "molecules/utility_nav";
+@use "molecules/title_cards";
+
+@use "molecules/search";
+@use "molecules/resources";
+@use "molecules/social";
 @use 'organisms/tabpanel';
 @use 'organisms/header';
+@use 'organisms/footer';
 @use 'base/colors';
 @use 'layout/grid';
 @use 'layout';
 @use 'atoms/links';
 @use 'atoms/inputs';
+@use 'molecules/login';
+@use 'organisms/main';
+
 @import 'base/breakpoints';
 
 // $list1: 200px;

@@ -1,4 +1,6 @@
 @use 'variables';
+@use '../base/breakpoints' as b;
+
 
 button {
   border: 0;
@@ -217,8 +219,13 @@ button {
   padding: .25em 0em;
   margin: 0;
 
-  &.enrollment-toggle {
-    font-size: var(--step--1);
+  &#enrollment-toggle {
+      display: none;
+      font-size: var(--step--1);
+
+      @include b.for-desktop-up {
+        display: flex;
+      }
   }
 
   .menuText {
@@ -227,7 +234,7 @@ button {
 
   &.mobile-toggle {
       position: absolute;
-      top: 1em;
+      top: 0;
       right: 1em;
   }
   .buttonWrap {
@@ -244,7 +251,7 @@ button {
       border: none; 
       border-radius: 5px;
       overflow: hidden;
-      margin-right: .75em;
+      // margin-right: .75em;
 
       span {
           position: absolute;
@@ -293,33 +300,52 @@ button {
           }
       }
 
-      &.mobile-toggle {
-          z-index: 1;
-          
-
-          &.active {
-
-              background: #fff;
-              border-radius: 99em;
-              height: 4em;
-              width: 4em;
-              display: flex;
-              justify-content: center;
-
-              .buttonWrap {
-                  span {
-                      
-                      background: var(--menuTextColor, #333);
-                  }
-              }
-          }
-                  
-      }
+      
   
 
   }
 
+  &#mobile-toggle {
+    z-index: 51;
+    height: 4em;
+    width: 4em;
+    border-radius: 99em;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    align-items: center;
+    padding-top: 0px;
+    position: relative;
+    right: 0;
+
+    @include b.for-desktop-up {
+      display: none;
+    }
+
+    &.active {
+
+        background: #FFF;
+        transition: background 500ms;
+        
+       
+
+        .buttonWrap {
+            span {
+                
+                background: var(--menuTextColor, #333);
+            }
+        }
+    }
+            
+}
+
+
   &:focus, &:hover {
       box-shadow: none;
   }
+}
+
+.toggle-menu {
+  width: 45px;
+  height: 45px;
 }

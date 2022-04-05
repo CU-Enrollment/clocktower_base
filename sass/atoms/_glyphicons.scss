@@ -1,0 +1,61 @@
+.glyphicons {
+    text-decoration: none;
+    
+    padding: 0 .5em;
+    &:first-of-type {
+        padding-right: .5em;
+        padding-left: 0;
+    }
+
+    &:last-of-type {
+        padding-right: 0;
+        padding-left: .5em;
+    }
+    
+    &:before {
+        font-family: 'FontAwesome';
+        display: inline-block;
+        // height: 45px;
+        // width: 45px;
+        color: #FFF;
+        font-size: var(--step-5);
+    }
+
+    &.twitter {
+        &:before {
+            content: '\f081';
+        }
+    }
+    &.facebook {
+        &:before {
+            content: '\f082';
+        }
+    }
+    &.instagram {
+        &:before {
+            content: '\e055';
+        }
+    }
+
+    &.address {
+        &:before {
+            content: '\f3c5';
+        }
+    }
+    &.email {
+        &:before {
+            content: '\f0e0';
+        }
+    }
+    &.phone {
+        &:before {
+            content: '\f879';
+        }
+    }
+    &.fax {
+        &:before {
+            content: '\f1ac';
+        }
+    }
+    
+}

@@ -1,0 +1,140 @@
+@use '../base/breakpoints' as b;
+@use '../base/type' as t;
+
+// Top Resource Links
+#top-resources {
+
+
+    h2 {
+        text-align: center;
+        font-weight: 300;
+    }
+
+    p {
+        text-align: center;
+        margin: 0 auto;
+        padding-top: 2em;
+    }
+    ul:first-of-type {
+        // background: var(--menuBG, #fff);
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        padding-left: 0px;
+        padding-top: 1.5em;
+        height: auto;
+        max-width: none;
+        width: 50%;
+        margin: 0 auto;
+        // top: 75px;
+        // z-index: 1;
+        // background: white;
+        // padding: 1em;
+
+        @include b.for-desktop-up  {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .top-level {
+            flex: 1 0 auto;
+            height: auto;
+            text-align: left;
+            display: block;
+            flex: 1 1 auto;
+            // font-size: var(--step-1);
+            text-align: center;
+            position: relative;
+            // &:before {
+            //     content: '';
+            //     display: block;
+            //     border-left: 1px solid #333;
+            // }
+            // &:after {
+
+            // }
+            padding: 0 2.5%;
+            border-left: 1px solid #d3d3d3;
+
+        
+            &:last-of-type {
+                border-right: 1px solid #d3d3d3;
+
+            }
+            &.active {
+                ul.sub-menu {
+                    display: block;
+                }
+            }
+
+            .toggle-menu {
+        
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                position: relative;
+                // margin-left: 10px;
+                margin: 0;
+                // padding: 1.5em 0px;
+                display: inline-block;
+                margin: 0 0 0 .25em;
+                padding: 0;
+                font-size: var(--step-1);
+                width: 100%;
+                // @include b.for-tablet-landscape-up {
+                    
+                // }
+                &:after {
+                    content: '\f078';
+                    color: var(--cornellRed, #b31b1b);
+                    font-family: 'FontAwesome';
+                    height: 15px;
+                    width: 15px;
+                    font-size: var(--step--1);
+                    margin-left: 1em;
+                }
+            }
+
+            // Dropdown Menu, first child
+            ul.sub-menu {
+                list-style: none;
+                padding-left: 0px;
+                background: var(--menuColor, #FFF);
+                display: none;
+                position: absolute;
+                z-index: 100;
+                max-width: unset;
+                width: 100%; 
+                left: 0;
+                
+                li {
+                    border-bottom: 0px;
+                    margin: 0 1.25em;
+
+                    // any other children menus
+                    > ul:first-of-type {
+                        
+                        position: absolute;
+                        top: 0;
+                        left: 100%;
+                        width: 100%;
+                        display: none;
+                        list-style: none;
+                        padding-left: 0px;
+
+                    }
+
+                    &.active {
+                        display: block;
+                        > ul {
+                            display: block;
+                        }
+                    }
+                }
+
+                
+            }
+        }
+    }   
+}

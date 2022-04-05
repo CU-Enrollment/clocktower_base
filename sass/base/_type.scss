@@ -28,17 +28,32 @@ h1 {
 
 h2 {
     font-size: var(--step-4);
+    font-weight: 300;
 }
 p, blockquote, ul, ol, button, a {
     font-family: var(--projectText, var(--clocktower-sans-serif, san-serif));
     font-size: var(--step-0);
     line-height: 1.8;
     font-weight: 300;
+
+}
+
+p, a {
     max-width: 65ch;
 
 }
 
-h2
+.redline {
+    &:after {
+        content: '';
+        height: 4px;
+        background: #b31b1b;
+        width: 3em;
+        display: block;
+        margin: 0 auto;
+        margin-top: .5em;
+    }
+}
 
 .before {
     display: block;
@@ -47,3 +62,8 @@ h2
 }
 
 
+
+.fa-solid {
+    font-family: 'FontAwesome';
+    font-style: normal;
+}

@@ -1,10 +1,38 @@
-@use 'atoms/buttons' as b;
+@use 'atoms/buttons' as buttons;
+@use 'base/breakpoints' as b;
 
+.hero {
+
+    display: flex; 
+    flex-direction: column;
+    @include b.for-desktop-up {
+
+        display: grid;
+        width: 100vw;
+    }
+    position: relative;
+    margin-top: -1.5em;
+
+
+    @include b.for-desktop-up {
+        .clipped-bg {
+            height: 85vh;
+            width: 100vw;
+            position: absolute;    
+            background-color: #333333;
+            clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
+        }
+    }
 
 .tabpanel {
     overflow-x: hidden;
-    
+    margin: 0 1em;
+    display: grid;
 
+    .tabs {
+        display: none !important;
+    }
+    
     [role='tablist'] {
         list-style: none;
         padding: 0;
@@ -13,7 +41,7 @@
         justify-content: center;
         
         button {
-            @include b.bottom-to-full-outline;
+            @include buttons.bottom-to-full-outline;
             cursor: pointer;
             background: transparent;
     
@@ -33,12 +61,16 @@
         position: relative;
     
         [role='tabpanel'] {
-            flex: 1 0 100%;
+            // flex: 1 0 100%;
             // background: blue;
             // height: 800px;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
+            // display: flex;
+            // align-items: center;
+            // flex-direction: column;
+
+            display: grid;
+            margin-top: 3em;
+
 
             .tab-image-large {
                 width: clamp(320px, 100%, 990px);
@@ -64,117 +96,105 @@
             &.active {
                 display: block;
             }
-        }
-    
-    }
-    
-}
 
+            h2 {
+                font-family: var(--clocktower-serif);
+                color: var(--tabPanelText, #FFF);
+                font-size: var(--step-7);
+                font-weight: 500;
+                position: relative;
+                z-index: 10;
+                margin: 0;
+                padding-bottom: .3em;
+            }
 
-.hero {
-
-    display: grid;
-    width: 100vw;
-    position: relative;
-    margin-top: -1.5em;
-
-    .clipped-bg {
-        height: 85vh;
-        width: 100vw;
-        position: absolute;    
-        background-color: #333333;
-        clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
-    }
-
-    .tabpanel {
-        display: grid;
-
-        .tabs {
-            display: none !important;
-        }
-    
-        .tabgroup {
-
-            [role="tabpanel"] {
-            
-                display: grid;
-                grid-template-columns: [padding-left] 5% [text-start] 15% [image-one-start] 30% [image-one-center] 15% [image-two-start text-end] 15% [image-one-end] 15% [padding-right] 5%;
-                grid-template-rows: [top-padding] 10% [header] 20% [content-area] 30% [image-two-top] 30% [bottom-padding] 10%;
-
-                h2 {
-                    font-family: var(--clocktower-serif);
-                    color: var(--tabPanelText, #FFF);
-                    font-size: var(--step-7);
-                    font-weight: 500;
-                    grid-column: text-start / image-two-start;
-                    grid-row: header / content-area;
-                    position: relative;
-                    z-index: 10;
-                    margin: 0;
-                    align-self: end;
-                    padding-bottom: .3em;
-                }
-
-                .tab-body-text {
-                    grid-row: content-area;
-                    grid-column: text-start / text-end;
-                    align-self: start;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-
-                    p, button {
-                        font-family: var(--clocktower-sans-serif);
-                        color: var(--tabPanelText, #FFF);
-                        font-size: var(--step-2);
-                        
-                        position: relative;
-                        z-index: 10;
-                    }
-    
-                    p {
-                        max-width: 75%;
-                        align-self: baseline;
-                        margin-top: 0;
-    
-                    }
-    
-                    button {
-                        @include b.button-full-around;
-                        width: auto;
-                        height: auto;
-                        background: transparent;
-                        color: var(--tabPanelText, #FFF); 
-                        box-shadow: inset 0 0 0 2px var(--tabPanelText, #FFF);
-                        // min-width: clamp(3em, 8em, 10em);
-                        margin: 0;
-                        border-radius: .25em;
-                        
-                        &:before, &:after {
-                            border-radius: .25em;
-                        }
-                    }
-                }
+            p, button {
                 
-                .image-mask {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;                   
+                font-family: var(--clocktower-sans-serif);
+                color: var(--tabPanelText, #FFF);
+                font-size: var(--step-2);        
+                position: relative;
+                z-index: 10;
+            }
 
-                    &.tab-image-large {
-                        z-index: 1;
-                        grid-column: image-one-start / image-one-end;
-                        grid-row: header;
-                        align-self: self-start;
-                    }
+            p {
+                max-width: 75%;
+                align-self: baseline;
+                margin-top: 0;
 
-                    &.tab-image-small {
-                        z-index: 2;
-                        grid-column: image-one-start / padding-right;
-                        grid-row: content-area;
-                        margin-top: 15%;
-                        justify-self: end;
-                    }
-                    
+            }
+
+            button {
+                @include buttons.button-full-around;
+                width: auto;
+                height: auto;
+                background: transparent;
+                color: var(--tabPanelText, #FFF); 
+                box-shadow: inset 0 0 0 2px var(--tabPanelText, #FFF);
+                // min-width: clamp(3em, 8em, 10em);
+                margin: 0;
+                border-radius: .25em;
+                
+                &:before, &:after {
+                    border-radius: .25em;
                 }
             }
         }
+        
+        .image-mask {
+
+            &.tab-image-large {
+               
+            }
+
+            &.tab-image-small {
+                
+            }
+            
+        }
+
+        @include b.for-desktop-up {
+            grid-template-columns: [padding-left] 5% [text-start] 15% [image-one-start] 30% [image-one-center] 15% [image-two-start text-end] 15% [image-one-end] 15% [padding-right] 5%;
+            grid-template-rows: [top-padding] 10% [header] 20% [content-area] 30% [image-two-top] 30% [bottom-padding] 10%;
+
+            h2 {
+                grid-column: text-start / image-two-start;
+                grid-row: header / content-area;
+                align-self: end;
+
+            }
+
+            p, button {
+                grid-row: content-area;
+                grid-column: text-start / text-end;
+                align-self: start;
+            }
+            
+            button {
+                
+            }
+
+            .image-mask {
+                &.tab-image-large {
+                    z-index: 1;
+                    grid-column: image-one-start / image-one-end;
+                    grid-row: header;
+                    align-self: self-start;
+                }
+
+                &.tab-image-small {
+                    z-index: 2;
+                    grid-column: image-one-start / padding-right;
+                    grid-row: content-area;
+                    margin-top: 15%;
+                    justify-self: end;
+                }
+            }
+        }   
+    }
+    
     }
 }

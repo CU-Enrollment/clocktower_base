@@ -1,9 +1,25 @@
-.cu-seal {
-    height: 120px;
-    width: 120px;
-    align-self: center;
-    background: white;
-    z-index: 1;
-    border-radius: 99em;
-    padding: 1em;
-}
+@use '../base/breakpoints' as b;
+
+
+// .cu-seal {
+//     z-index: 1;
+//     align-self: center;
+
+
+//     img {
+//         background: white;
+        
+//         height: 74px;
+//         width: 74px;
+//         border-radius: 99em;
+//         padding: 1em;
+//         width: 73px;
+//         height: 73px;
+
+//         @include b.for-xl-desktop-up {
+//             height: 108px;
+//             width: 108px;
+//         }
+//     }
+    
+// }
