@@ -12,7 +12,8 @@ global-scripts:
     # js/themeSelect.js: {}
     js/menu.js: {}
     js/cards.js: {}
-    # js/tabPanel.js: {}
+    js/tabPanel.js: {}
+    js/clocktower_tabPanel.js: {}
 typekit:
   version: 1.x
   js:

@@ -1,0 +1,31 @@
+clocktower.small: 
+  label: for-phone-only
+  mediaQuery: '(max-width: 599px)'
+  weight: 0
+  multipliers: 
+    - 1x
+    - 2x
+
+clocktower.medium: 
+  label: for-tablet-portrait-up
+  mediaQuery: '(min-width: 600px)'
+  weight: 1
+  multipliers: 
+    - 1x
+    - 2x
+
+clocktower.large: 
+  label: for-desktop-up
+  mediaQuery: '(min-width: 980px)'
+  weight: 1
+  multipliers: 
+    - 1x
+    - 2x
+
+clocktower.xl: 
+  label: for-desktop-up
+  mediaQuery: '(min-width: 1280px)'
+  weight: 1
+  multipliers: 
+    - 1x
+    - 2x

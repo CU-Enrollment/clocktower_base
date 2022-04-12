@@ -149,6 +149,9 @@
   
       // Remove tabindex attribute
       tab.removeAttribute('tabindex');
+
+      
+      tab.classList.add('active');
   
       // Set the tab as selected
       tab.setAttribute('aria-selected', 'true');
@@ -171,6 +174,7 @@
         tabs[t].setAttribute('tabindex', '-1');
         tabs[t].setAttribute('aria-selected', 'false');
         tabs[t].removeEventListener('focus', focusEventHandler);
+        tabs[t].classList.remove('active');
       };
   
       for (p = 0; p < panels.length; p++) {

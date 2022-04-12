@@ -79,12 +79,6 @@ p, a {
   /* 3 */
 }
 
-button {
-  width: 100px;
-  height: 50px;
-  background: var(--buttonColor, #f3f3f3);
-}
-
 *, :after, :before {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
@@ -454,6 +448,8 @@ nav > ul.menu .top-level ul.sub-menu li.active > ul {
 }
 button {
   border: 0;
+}
+button.btn-standard {
   background: var(--buttonBG, --buttonBackground);
   color: var(--buttonTextColor, --buttonText);
   padding: 0.5em 1.25em;
@@ -467,20 +463,20 @@ button {
   text-align: center;
   cursor: pointer;
 }
-button.outline {
+button.btn-standard.outline {
   background: transparent;
   -webkit-box-shadow: inset 0 0 0 2px var(--buttonBG, #333);
           box-shadow: inset 0 0 0 2px var(--buttonBG, #333);
   color: var(--buttonBG, #333);
 }
-button.rounded {
+button.btn-standard.rounded {
   border-radius: 0.5em;
 }
-button:hover {
+button.btn-standard:hover {
   -webkit-box-shadow: inset 0 0 0 2px var(--buttonHover, #333);
           box-shadow: inset 0 0 0 2px var(--buttonHover, #333);
 }
-button:focus {
+button.btn-standard:focus {
   -webkit-box-shadow: inset 0 0 0 2px var(--buttonHover, #FFF);
           box-shadow: inset 0 0 0 2px var(--buttonHover, #FFF);
 }
@@ -677,6 +673,14 @@ button:focus {
     display: none;
   }
 }
+.menu-toggle#mobile-toggle .buttonWrap span {
+  background: #FFFFFF;
+}
+@media (min-width: 600px) {
+  .menu-toggle#mobile-toggle .buttonWrap span {
+    background: #333;
+  }
+}
 .menu-toggle#mobile-toggle.active {
   background: #FFF;
   -webkit-transition: background 500ms;
@@ -734,26 +738,6 @@ body.dark-mode {
   --fieldsetBG: 240,240,240;
   --mobileMenuBG: #333333;
   --menuTextColor: #FFFFFF;
-}
-
-.gradient-mask {
-  position: relative;
-}
-.gradient-mask img {
-  position: relative;
-}
-.gradient-mask:after {
-  content: "";
-  left: 0;
-  top: 0;
-  bottom: 4px;
-  right: 0;
-  display: block;
-  position: absolute;
-  background: #020024;
-  background: linear-gradient(125deg, rgba(2, 0, 36, 0.6) 0%, rgba(53, 60, 78, 0) 85%);
-  z-index: 1;
-  mix-blend-mode: multiply;
 }
 
 .cover-image {
@@ -1225,9 +1209,11 @@ body.dark-mode {
   color: var(--menuText, #333);
 }
 
-#block-info-for > div {
-  width: 60%;
-  margin: 0 auto;
+@media (min-width: 600px) {
+  #block-info-for > div {
+    width: 60%;
+    margin: 0 auto;
+  }
 }
 #block-info-for h2 {
   text-align: center;
@@ -1471,80 +1457,133 @@ body.dark-mode {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background: #FFF;
   position: relative;
   margin-top: -1.5em;
+}
+@media (min-width: 600px) {
+  .hero {
+    margin-top: -3em;
+  }
 }
 @media (min-width: 980px) {
   .hero {
     display: -ms-grid;
     display: grid;
     width: 100vw;
+    padding-top: 4em;
+    overflow: hidden;
+  }
+}
+.hero .clipped-bg {
+  height: 33vh;
+  width: 100vw;
+  position: absolute;
+  background-color: #333333;
+  background-image: url("./../images/pattern.png");
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
+  display: none;
+}
+@media (min-width: 600px) {
+  .hero .clipped-bg {
+    display: block;
   }
 }
 @media (min-width: 980px) {
   .hero .clipped-bg {
-    height: 85vh;
-    width: 100vw;
-    position: absolute;
-    background-color: #333333;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
+    min-height: 500px;
+  }
+}
+@media (min-width: 1280px) {
+  .hero .clipped-bg {
+    min-height: 600px;
   }
 }
 .hero .tabpanel {
   overflow-x: hidden;
   margin: 0 1em;
-  display: -ms-grid;
-  display: grid;
 }
-.hero .tabpanel .tabs {
-  display: none !important;
+@media (min-width: 600px) {
+  .hero .tabpanel {
+    padding-top: 3em;
+  }
+}
+@media (min-width: 980px) {
+  .hero .tabpanel {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 80% 20%;
+    grid-template-columns: 80% 20%;
+    padding-top: 0;
+    margin: 0;
+  }
+}
+.hero .tabpanel .tabs [role=tab] {
+  text-align: left;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.5em 1em;
+  color: #FFF;
+}
+@media (min-width: 980px) {
+  .hero .tabpanel .tabs [role=tab] {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+.hero .tabpanel .tabs [role=tab].active {
+  background: #FFF;
+  color: #333;
+}
+.hero .tabpanel .tabs [role=tab].active:before {
+  content: "";
+  display: block;
+  position: absolute;
+  color: #FFF;
+  font-family: "FontAwesome";
+  font-size: 2em;
+  left: -0.25em;
+}
+.hero .tabpanel .tabs [role=tab]:not(.active):hover {
+  background: #d7d7d7;
+  color: #333;
 }
 .hero .tabpanel [role=tablist] {
   list-style: none;
   padding: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   margin: 0 0 20px 0;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  position: absolute;
+  z-index: 2;
+  padding-top: 3em;
+  display: none;
 }
 .hero .tabpanel [role=tablist] button {
-  border-bottom: 5px solid var(--buttonBorderColor, #333);
   cursor: pointer;
   background: transparent;
 }
-.hero .tabpanel [role=tablist] button:after, .hero .tabpanel [role=tablist] button:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
-}
-.hero .tabpanel [role=tablist] button:before {
-  border-right: 5px solid var(--buttonBorderColor, #333);
-  border-left: 5px solid var(--buttonBorderColor, #333);
-  -webkit-transform: scaleY(0);
-          transform: scaleY(0);
-  -webkit-transform-origin: bottom;
-          transform-origin: bottom;
-}
-.hero .tabpanel [role=tablist] button:after {
-  border-top: 5px solid var(--buttonBorderColor, #333);
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-}
-.hero .tabpanel [role=tablist] button:focus:after, .hero .tabpanel [role=tablist] button:focus:before, .hero .tabpanel [role=tablist] button:hover:after, .hero .tabpanel [role=tablist] button:hover:before {
-  -webkit-transform: none;
-          transform: none;
-}
 .hero .tabpanel [role=tablist] button:focus {
   outline: 1px dotted #000;
+}
+@media (min-width: 980px) {
+  .hero .tabpanel [role=tablist] {
+    padding-top: 2em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 .hero .tabpanel .tabgroup {
   width: 100%;
@@ -1554,43 +1593,381 @@ body.dark-mode {
   display: flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: relative;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  overflow: hidden;
+}
+.hero .tabpanel .tabgroup:before {
+  display: inline-block;
+  height: 3em;
+  width: 1px;
+  margin: 0 auto;
+  background-color: #cecece;
+  content: "";
+}
+@media (min-width: 600px) {
+  .hero .tabpanel .tabgroup:before {
+    display: none;
+  }
+}
+@media (min-width: 600px) {
+  .hero .tabpanel .tabgroup {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 .hero .tabpanel .tabgroup [role=tabpanel] {
   display: -ms-grid;
   display: grid;
-  margin-top: 3em;
-  display: none;
+  -ms-grid-rows: ()[1fr];
+  grid-template-rows: repeat(1fr);
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
 }
-.hero .tabpanel .tabgroup [role=tabpanel] .tab-image-large {
-  width: clamp(320px, 100%, 990px);
-  overflow: hidden;
+.hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
 }
-.hero .tabpanel .tabgroup [role=tabpanel] .tab-image-small {
-  width: clamp(280px, 100%, 480px);
-  overflow: hidden;
+@media (min-width: 600px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] {
+    -ms-grid-columns: 100%;
+    grid-template-columns: 100%;
+    -ms-grid-rows: [image-one] 35% [content-area] 55%;
+    grid-template-rows: [image-one] 35% [content-area] 55%;
+    margin: 0 10%;
+    padding-top: 5%;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(2) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(3) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(4) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 1;
+  }
+}
+@media (min-width: 980px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] {
+    -ms-grid-columns: [text-start] 10% [image-one-start] 35% [image-one-center] 17.5% [image-two-start text-end] 17.5% [image-one-end] 10%;
+    grid-template-columns: [text-start] 10% [image-one-start] 35% [image-one-center] 17.5% [image-two-start text-end] 17.5% [image-one-end] 10%;
+    -ms-grid-rows: [header] 50% [content-area] 50%;
+    grid-template-rows: [header] 50% [content-area] 50%;
+    margin: 0;
+    padding-top: 0;
+    display: none;
+    padding-bottom: 10%;
+    position: relative;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(2) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(3) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(4) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 4;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(5) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(6) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 6;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(7) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 7;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(8) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 8;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(9) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 9;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(10) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 10;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(11) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 11;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(12) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(13) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(14) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 3;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(15) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 4;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(16) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 5;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(17) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 6;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(18) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 7;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(19) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 8;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(20) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 9;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(21) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 10;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(22) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 11;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(23) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(24) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 2;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(25) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(26) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 4;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(27) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 5;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(28) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 6;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(29) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 7;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(30) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 8;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(31) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 9;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(32) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 10;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(33) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 11;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(34) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 1;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(35) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 2;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(36) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 3;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(37) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 4;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(38) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 5;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(39) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 6;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(40) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 7;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(41) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 8;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(42) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 9;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(43) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 10;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] > *:nth-child(44) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 11;
+  }
+}
+.hero .tabpanel .tabgroup [role=tabpanel]:not(:last-of-type):after {
+  width: 75%;
+  height: 1px;
+  background: #cecece;
+  margin: 1em auto;
+  content: "";
+  display: block;
+}
+@media (min-width: 600px) {
+  .hero .tabpanel .tabgroup [role=tabpanel]:not(:last-of-type):after {
+    width: 50%;
+    margin: 3em auto;
+  }
+}
+@media (min-width: 980px) {
+  .hero .tabpanel .tabgroup [role=tabpanel]:not(:last-of-type):after {
+    display: none;
+  }
 }
 .hero .tabpanel .tabgroup [role=tabpanel] img {
   width: 100%;
 }
-.hero .tabpanel .tabgroup [role=tabpanel].active {
-  display: block;
+@media (min-width: 600px) {
+  .hero .tabpanel .tabgroup [role=tabpanel].active {
+    display: -ms-grid;
+    display: grid;
+  }
 }
-.hero .tabpanel .tabgroup [role=tabpanel] h2 {
+.hero .tabpanel .tabgroup [role=tabpanel] .panel-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 1em;
+}
+@media (min-width: 600px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text {
+    grid-row: content-area;
+    margin-top: 3em;
+  }
+}
+@media (min-width: 980px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text {
+    grid-row: header;
+    grid-column: text-start/image-two-start;
+    margin-top: 5%;
+  }
+}
+@media (min-width: 1280px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text {
+    grid-row: header;
+    grid-column: text-start/text-end;
+    margin-top: 3em;
+  }
+}
+.hero .tabpanel .tabgroup [role=tabpanel] .panel-text span {
+  text-transform: uppercase;
+  color: #b31b1b;
+  margin: 0 auto;
+  display: block;
+  font-weight: 600;
+  font-family: var(--clocktower-sans-serif);
+  font-size: var(--step--1);
+  margin-bottom: 1em;
+}
+@media (min-width: 980px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text span {
+    display: none;
+  }
+}
+.hero .tabpanel .tabgroup [role=tabpanel] .panel-text h2 {
   font-family: var(--clocktower-serif);
-  color: var(--tabPanelText, #FFF);
-  font-size: var(--step-7);
-  font-weight: 500;
+  color: #333;
+  font-size: var(--step-6);
+  font-weight: 600;
   position: relative;
   z-index: 10;
   margin: 0;
-  padding-bottom: 0.3em;
+  padding-bottom: 0.5em;
+  text-align: center;
 }
-.hero .tabpanel .tabgroup [role=tabpanel] p, .hero .tabpanel .tabgroup [role=tabpanel] button {
+.hero .tabpanel .tabgroup [role=tabpanel] .panel-text h2:after {
+  content: "";
+  height: 4px;
+  background: #b31b1b;
+  width: 2.5em;
+  display: block;
+  margin: 0 auto;
+  margin-top: 0.5em;
+}
+@media (min-width: 600px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text h2 {
+    font-weight: 500;
+  }
+}
+@media (min-width: 980px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text h2 {
+    text-align: left;
+    color: var(--tabPanelText, #FFF);
+    -ms-flex-item-align: start;
+        -ms-grid-row-align: start;
+        align-self: start;
+    font-size: var(--step-5);
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text h2:after {
+    display: none;
+  }
+}
+@media (min-width: 1280px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text h2 {
+    font-size: var(--step-7);
+  }
+}
+.hero .tabpanel .tabgroup [role=tabpanel] .panel-text p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1602,710 +1979,191 @@ body.dark-mode {
       -ms-flex-align: start;
           align-items: flex-start;
   font-family: var(--clocktower-sans-serif);
-  color: var(--tabPanelText, #FFF);
-  font-size: var(--step-2);
+  font-size: var(--step-1);
   position: relative;
   z-index: 10;
+  color: #333333;
+  text-align: center;
 }
-.hero .tabpanel .tabgroup [role=tabpanel] p {
-  max-width: 75%;
+@media (min-width: 600px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text p {
+    font-size: var(--step-2);
+  }
+}
+@media (min-width: 980px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text p {
+    color: var(--tabPanelText, #FFF);
+    text-align: left;
+    max-width: 70%;
+  }
+}
+@media (min-width: 1280px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text p {
+    max-width: 80%;
+  }
+}
+.hero .tabpanel .tabgroup [role=tabpanel] .panel-text p {
   -ms-flex-item-align: baseline;
       align-self: baseline;
   margin-top: 0;
 }
-.hero .tabpanel .tabgroup [role=tabpanel] button {
-  -webkit-box-shadow: inset 0 0 0 2px transparent;
-          box-shadow: inset 0 0 0 2px transparent;
-  color: var(--buttonColor, #333);
-  vertical-align: middle;
-  -webkit-transition: color 0.25s;
-  transition: color 0.25s;
+@media (min-width: 600px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text p {
+    max-width: 65ch;
+  }
+}
+@media (min-width: 980px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text p {
+    -ms-flex-item-align: start;
+        -ms-grid-row-align: start;
+        align-self: start;
+    max-width: 80%;
+    font-size: var(--step-1);
+  }
+}
+.hero .tabpanel .tabgroup [role=tabpanel] .panel-text a.cta-button {
+  border-bottom: 5px solid var(--buttonBorderColor, #333);
+  border-bottom: 1px solid;
   width: auto;
   height: auto;
   background: transparent;
-  color: var(--tabPanelText, #FFF);
   -webkit-box-shadow: inset 0 0 0 2px var(--tabPanelText, #FFF);
           box-shadow: inset 0 0 0 2px var(--tabPanelText, #FFF);
-  margin: 0;
-  border-radius: 0.25em;
+  margin: 0 auto;
+  color: var(--tabPanelText, #b31b1b);
+  margin-bottom: 2em;
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-decoration: none;
+  padding: 1em;
+  z-index: 2;
 }
-.hero .tabpanel .tabgroup [role=tabpanel] button::before, .hero .tabpanel .tabgroup [role=tabpanel] button::after {
+.hero .tabpanel .tabgroup [role=tabpanel] .panel-text a.cta-button:after, .hero .tabpanel .tabgroup [role=tabpanel] .panel-text a.cta-button:before {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.hero .tabpanel .tabgroup [role=tabpanel] button::before, .hero .tabpanel .tabgroup [role=tabpanel] button::after {
-  border: 2px solid transparent;
-  width: 0;
-  height: 0;
-}
-.hero .tabpanel .tabgroup [role=tabpanel] button::before {
   top: 0;
   left: 0;
-}
-.hero .tabpanel .tabgroup [role=tabpanel] button::after {
-  bottom: 0;
-  right: 0;
-}
-.hero .tabpanel .tabgroup [role=tabpanel] button:hover {
-  color: cyan;
-}
-.hero .tabpanel .tabgroup [role=tabpanel] button:hover::before, .hero .tabpanel .tabgroup [role=tabpanel] button:hover::after {
   width: 100%;
   height: 100%;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
-.hero .tabpanel .tabgroup [role=tabpanel] button:hover::before {
-  border-top-color: cyan;
-  border-right-color: cyan;
-  -webkit-transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
-  transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
+.hero .tabpanel .tabgroup [role=tabpanel] .panel-text a.cta-button:before {
+  border-right: 5px solid var(--buttonBorderColor, #333);
+  border-left: 5px solid var(--buttonBorderColor, #333);
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
 }
-.hero .tabpanel .tabgroup [role=tabpanel] button:hover::after {
-  border-bottom-color: cyan;
-  border-left-color: cyan;
-  -webkit-transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
-  transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
+.hero .tabpanel .tabgroup [role=tabpanel] .panel-text a.cta-button:after {
+  border-top: 5px solid var(--buttonBorderColor, #333);
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
 }
-.hero .tabpanel .tabgroup [role=tabpanel] button:before, .hero .tabpanel .tabgroup [role=tabpanel] button:after {
-  border-radius: 0.25em;
+.hero .tabpanel .tabgroup [role=tabpanel] .panel-text a.cta-button:focus:after, .hero .tabpanel .tabgroup [role=tabpanel] .panel-text a.cta-button:focus:before, .hero .tabpanel .tabgroup [role=tabpanel] .panel-text a.cta-button:hover:after, .hero .tabpanel .tabgroup [role=tabpanel] .panel-text a.cta-button:hover:before {
+  -webkit-transform: none;
+          transform: none;
+}
+.hero .tabpanel .tabgroup [role=tabpanel] .panel-text a.cta-button:before {
+  border-right: 1px solid var(--buttonBorderColor, #333);
+  border-left: 1px solid var(--buttonBorderColor, #333);
+}
+.hero .tabpanel .tabgroup [role=tabpanel] .panel-text a.cta-button:after {
+  border-top: 1px solid var(--buttonBorderColor, #333);
 }
 @media (min-width: 980px) {
-  .hero .tabpanel .tabgroup {
-    -ms-grid-columns: [padding-left] 5% [text-start] 15% [image-one-start] 30% [image-one-center] 15% [image-two-start text-end] 15% [image-one-end] 15% [padding-right] 5%;
-    grid-template-columns: [padding-left] 5% [text-start] 15% [image-one-start] 30% [image-one-center] 15% [image-two-start text-end] 15% [image-one-end] 15% [padding-right] 5%;
-    -ms-grid-rows: [top-padding] 10% [header] 20% [content-area] 30% [image-two-top] 30% [bottom-padding] 10%;
-    grid-template-rows: [top-padding] 10% [header] 20% [content-area] 30% [image-two-top] 30% [bottom-padding] 10%;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(1) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(2) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 2;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(3) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 3;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(4) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 4;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(5) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 5;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(6) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 6;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(7) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 7;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(8) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 8;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(9) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 9;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(10) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 10;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(11) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 11;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(12) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 12;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(13) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 13;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(14) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 14;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(15) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 15;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(16) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 1;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(17) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 2;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(18) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 3;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(19) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 4;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(20) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 5;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(21) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 6;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(22) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 7;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(23) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 8;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(24) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 9;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(25) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 10;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(26) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 11;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(27) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 12;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(28) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 13;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(29) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 14;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(30) {
-    -ms-grid-row: 2;
-    -ms-grid-column: 15;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(31) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 1;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(32) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 2;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(33) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 3;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(34) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 4;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(35) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 5;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(36) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 6;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(37) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 7;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(38) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 8;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(39) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 9;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(40) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 10;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(41) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 11;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(42) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 12;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(43) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 13;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(44) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 14;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(45) {
-    -ms-grid-row: 3;
-    -ms-grid-column: 15;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(46) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 1;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(47) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 2;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(48) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 3;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(49) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 4;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(50) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 5;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(51) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 6;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(52) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 7;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(53) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 8;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(54) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 9;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(55) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 10;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(56) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 11;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(57) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 12;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(58) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 13;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(59) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 14;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(60) {
-    -ms-grid-row: 4;
-    -ms-grid-column: 15;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(61) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 1;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(62) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 2;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(63) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 3;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(64) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 4;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(65) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 5;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(66) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 6;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(67) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 7;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(68) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 8;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(69) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 9;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(70) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 10;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(71) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 11;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(72) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 12;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(73) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 13;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(74) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 14;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(75) {
-    -ms-grid-row: 5;
-    -ms-grid-column: 15;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(76) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 1;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(77) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 2;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(78) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 3;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(79) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 4;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(80) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 5;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(81) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 6;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(82) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 7;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(83) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 8;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(84) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 9;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(85) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 10;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(86) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 11;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(87) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 12;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(88) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 13;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(89) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 14;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(90) {
-    -ms-grid-row: 6;
-    -ms-grid-column: 15;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(91) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 1;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(92) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 2;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(93) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 3;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(94) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 4;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(95) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 5;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(96) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 6;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(97) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 7;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(98) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 8;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(99) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 9;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(100) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 10;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(101) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 11;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(102) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 12;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(103) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 13;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(104) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 14;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(105) {
-    -ms-grid-row: 7;
-    -ms-grid-column: 15;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(106) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 1;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(107) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 2;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(108) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 3;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(109) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 4;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(110) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 5;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(111) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 6;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(112) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 7;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(113) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 8;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(114) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 9;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(115) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 10;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(116) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 11;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(117) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 12;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(118) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 13;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(119) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 14;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(120) {
-    -ms-grid-row: 8;
-    -ms-grid-column: 15;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(121) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 1;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(122) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 2;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(123) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 3;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(124) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 4;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(125) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 5;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(126) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 6;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(127) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 7;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(128) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 8;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(129) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 9;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(130) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 10;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(131) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 11;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(132) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 12;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(133) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 13;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(134) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 14;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(135) {
-    -ms-grid-row: 9;
-    -ms-grid-column: 15;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(136) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 1;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(137) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 2;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(138) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 3;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(139) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 4;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(140) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 5;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(141) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 6;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(142) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 7;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(143) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 8;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(144) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 9;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(145) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 10;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(146) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 11;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(147) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 12;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(148) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 13;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(149) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 14;
-  }
-  .hero .tabpanel .tabgroup > *:nth-child(150) {
-    -ms-grid-row: 10;
-    -ms-grid-column: 15;
-  }
-  .hero .tabpanel .tabgroup h2 {
-    grid-column: text-start/image-two-start;
-    grid-row: header/content-area;
-    -ms-grid-row-align: end;
-        align-self: end;
-  }
-  .hero .tabpanel .tabgroup p, .hero .tabpanel .tabgroup button {
-    grid-row: content-area;
-    grid-column: text-start/text-end;
-    -ms-grid-row-align: start;
+  .hero .tabpanel .tabgroup [role=tabpanel] .panel-text a.cta-button {
+    color: var(--tabPanelText, #FFF);
+    text-transform: initial;
+    -ms-flex-item-align: start;
+        -ms-grid-row-align: start;
         align-self: start;
+    width: auto;
+    margin: 1em 0;
   }
-  .hero .tabpanel .tabgroup .image-mask.tab-image-large {
-    z-index: 1;
+}
+.hero .tabpanel .tabgroup [role=tabpanel] .image-mask {
+  overflow: hidden;
+}
+.hero .tabpanel .tabgroup [role=tabpanel] .image-mask.tab-image-large {
+  width: clamp(320px, 100%, 990px);
+  padding-bottom: 0px;
+  z-index: 1;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  padding-top: 1em;
+}
+@media (min-width: 600px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .image-mask.tab-image-large {
+    padding-bottom: 1em;
+    padding-top: 0;
+  }
+}
+@media (min-width: 980px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .image-mask.tab-image-large {
+    padding-bottom: 0em;
+    position: relative;
     grid-column: image-one-start/image-one-end;
     grid-row: header;
     -ms-grid-row-align: self-start;
         align-self: self-start;
   }
-  .hero .tabpanel .tabgroup .image-mask.tab-image-small {
-    z-index: 2;
-    grid-column: image-one-start/padding-right;
-    grid-row: content-area;
-    margin-top: 15%;
-    -ms-grid-column-align: end;
-        justify-self: end;
+  .hero .tabpanel .tabgroup [role=tabpanel] .image-mask.tab-image-large img {
+    position: relative;
+  }
+  .hero .tabpanel .tabgroup [role=tabpanel] .image-mask.tab-image-large:after {
+    content: "";
+    left: 0;
+    top: 0;
+    bottom: 4px;
+    right: 0;
+    display: block;
+    position: absolute;
+    background: #020024;
+    background: linear-gradient(125deg, rgba(2, 0, 36, 0.6) 0%, rgba(53, 60, 78, 0) 85%);
+    z-index: 1;
+    mix-blend-mode: multiply;
   }
 }
-
+@media (min-width: 1280px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .image-mask.tab-image-large {
+    grid-column: image-one-start/image-one-end;
+    grid-row: header;
+    -ms-grid-row-align: self-start;
+        align-self: self-start;
+  }
+}
+.hero .tabpanel .tabgroup [role=tabpanel] .image-mask.tab-image-large:after {
+  background: #000000;
+  background: -webkit-gradient(linear, left top, right top, from(black), color-stop(85%, rgba(0, 0, 0, 0)));
+  background: linear-gradient(90deg, black 0%, rgba(0, 0, 0, 0) 85%);
+}
+.hero .tabpanel .tabgroup [role=tabpanel] .image-mask.tab-image-small {
+  width: clamp(280px, 100%, 480px);
+  display: none;
+  z-index: 2;
+  grid-column: image-two-start/padding-right;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  display: none;
+  position: relative;
+}
+@media (min-width: 600px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .image-mask.tab-image-small {
+    grid-row: content-area;
+  }
+}
+@media (min-width: 980px) {
+  .hero .tabpanel .tabgroup [role=tabpanel] .image-mask.tab-image-small {
+    display: block;
+    -ms-grid-row: content-area;
+        grid-row-start: content-area;
+    position: absolute;
+  }
+}
 header {
   background: #FFF;
   display: -webkit-box;
@@ -2326,10 +2184,12 @@ header:before {
   background-color: #333333;
   content: "";
   display: block;
+  background-image: url("./../images/pattern.png");
+  background-repeat: repeat;
   -webkit-mask-image: url("./../images/HeroCutout.png");
           mask-image: url("./../images/HeroCutout.png");
 }
-@media (min-width: 980px) {
+@media (min-width: 600px) {
   header:before {
     display: none;
   }
@@ -2402,6 +2262,7 @@ header .hdr-wrap div.hdr-left a {
   display: block;
   padding-top: 0;
   margin: 0;
+  z-index: 1;
 }
 @media (min-width: 1380px) {
   header .hdr-wrap div.hdr-left a {
@@ -2414,6 +2275,12 @@ header .hdr-wrap div.hdr-left a h1 {
   margin: 0;
   font-weight: 400;
   line-height: 1.25em;
+  color: white;
+}
+@media (min-width: 600px) {
+  header .hdr-wrap div.hdr-left a h1 {
+    color: var(--menuTextColor, #333);
+  }
 }
 @media (min-width: 1380px) {
   header .hdr-wrap div.hdr-left a h1 {
@@ -2473,16 +2340,15 @@ header .hdr-brand:before {
   position: absolute;
   z-index: 1;
 }
-header .hdr-brand:after {
-  content: "";
-  width: 100%;
-  height: 40%;
-  bottom: 0;
-  position: absolute;
-  z-index: 1;
-  left: 0;
+@media (min-width: 600px) {
+  header .hdr-brand {
+    margin-top: -5em;
+  }
 }
 @media (min-width: 980px) {
+  header .hdr-brand {
+    margin-top: 0;
+  }
   header .hdr-brand:after {
     background: var(--heroBG, #333);
   }

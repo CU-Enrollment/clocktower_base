@@ -1,200 +1,481 @@
 @use 'atoms/buttons' as buttons;
 @use 'base/breakpoints' as b;
+@use 'atoms/img' as img;
 
 .hero {
 
     display: flex; 
     flex-direction: column;
+    background: #FFF;
+    position: relative;
+    margin-top: -1.5em;
+    
+
+    @include b.for-tablet-portrait-up {
+        margin-top: -3em;
+        
+    }
+
+    
+
     @include b.for-desktop-up {
 
         display: grid;
         width: 100vw;
+        padding-top: 4em;
+        overflow: hidden;
+
     }
-    position: relative;
-    margin-top: -1.5em;
+   
 
+    .clipped-bg {
+        height: 33vh;
+        width: 100vw;
+        position: absolute;    
+        background-color: #333333;
+        background-image: url("./../images/pattern.png");
+        clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
+        display: none; 
 
-    @include b.for-desktop-up {
-        .clipped-bg {
-            height: 85vh;
-            width: 100vw;
-            position: absolute;    
-            background-color: #333333;
-            clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
-        }
-    }
-
-.tabpanel {
-    overflow-x: hidden;
-    margin: 0 1em;
-    display: grid;
-
-    .tabs {
-        display: none !important;
-    }
-    
-    [role='tablist'] {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        margin: 0 0 20px 0;
-        justify-content: center;
-        
-        button {
-            @include buttons.bottom-to-full-outline;
-            cursor: pointer;
-            background: transparent;
-    
-            &:focus {
-                outline: 1px dotted #000;
-            }
-        }
-      
-    }
-    
-    .tabgroup {
-        width: 100%;
-        clear: both;
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        position: relative;
-    
-        [role='tabpanel'] {
-            // flex: 1 0 100%;
-            // background: blue;
-            // height: 800px;
-            // display: flex;
-            // align-items: center;
-            // flex-direction: column;
-
-            display: grid;
-            margin-top: 3em;
-
-
-            .tab-image-large {
-                width: clamp(320px, 100%, 990px);
-                // height: clamp(540px);
-                overflow: hidden;
-
-            }
-
-            .tab-image-small {
-                width: clamp(280px, 100%, 480px);
-                // height: clamp(320px);
-                overflow: hidden;
-
-            }
-            
-            img {
-                // position: absolute;
-                width: 100%;
-            }
-
-            display: none;
-            
-            &.active {
-                display: block;
-            }
-
-            h2 {
-                font-family: var(--clocktower-serif);
-                color: var(--tabPanelText, #FFF);
-                font-size: var(--step-7);
-                font-weight: 500;
-                position: relative;
-                z-index: 10;
-                margin: 0;
-                padding-bottom: .3em;
-            }
-
-            p, button {
-                
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;                   
-                font-family: var(--clocktower-sans-serif);
-                color: var(--tabPanelText, #FFF);
-                font-size: var(--step-2);        
-                position: relative;
-                z-index: 10;
-            }
-
-            p {
-                max-width: 75%;
-                align-self: baseline;
-                margin-top: 0;
-
-            }
-
-            button {
-                @include buttons.button-full-around;
-                width: auto;
-                height: auto;
-                background: transparent;
-                color: var(--tabPanelText, #FFF); 
-                box-shadow: inset 0 0 0 2px var(--tabPanelText, #FFF);
-                // min-width: clamp(3em, 8em, 10em);
-                margin: 0;
-                border-radius: .25em;
-                
-                &:before, &:after {
-                    border-radius: .25em;
-                }
-            }
-        }
-        
-        .image-mask {
-
-            &.tab-image-large {
-               
-            }
-
-            &.tab-image-small {
-                
-            }
-            
+        @include b.for-tablet-portrait-up {
+            display: block;
         }
 
         @include b.for-desktop-up {
-            grid-template-columns: [padding-left] 5% [text-start] 15% [image-one-start] 30% [image-one-center] 15% [image-two-start text-end] 15% [image-one-end] 15% [padding-right] 5%;
-            grid-template-rows: [top-padding] 10% [header] 20% [content-area] 30% [image-two-top] 30% [bottom-padding] 10%;
+            min-height: 500px;
+        }
 
-            h2 {
-                grid-column: text-start / image-two-start;
-                grid-row: header / content-area;
-                align-self: end;
-
-            }
-
-            p, button {
-                grid-row: content-area;
-                grid-column: text-start / text-end;
-                align-self: start;
-            }
-            
-            button {
-                
-            }
-
-            .image-mask {
-                &.tab-image-large {
-                    z-index: 1;
-                    grid-column: image-one-start / image-one-end;
-                    grid-row: header;
-                    align-self: self-start;
-                }
-
-                &.tab-image-small {
-                    z-index: 2;
-                    grid-column: image-one-start / padding-right;
-                    grid-row: content-area;
-                    margin-top: 15%;
-                    justify-self: end;
-                }
-            }
-        }   
+        @include b.for-large-desktop-up {
+            min-height: 600px;
+        }
     }
+
+    .tabpanel {
+        overflow-x: hidden;
+        margin: 0 1em;
+
+
+        @include b.for-tablet-portrait-up {
+            padding-top: 3em;
+        }
+
+        @include b.for-desktop-up {
+            display: grid;
+            grid-template-columns: 80% 20%;
+            padding-top: 0;
+            margin: 0;
+        }
+
+        .tabs {
+            // display: none !important;
+            [role='tab'] {
+                text-align: left;
+                position: relative;
+                align-items: center;
+                padding: .5em 1em;
+                color: #FFF;
+
+                @include b.for-desktop-up {
+                    display: flex;
+                }
+
+                &.active {
+                    background: #FFF;
+                    color: #333;
+                    &:before {
+                        content: '\f0d9';
+                        display: block;
+                        position: absolute;
+                        color: #FFF;
+                        font-family: 'FontAwesome';
+                        font-size: 2em;
+                        left: -.25em;
+                    }
+                }
+
+                &:not(.active) {
+                    &:hover {
+                        background: #d7d7d7;
+                        color: #333;
+                    }
+                    
+                }
+            }
+        }
     
+        [role='tablist'] {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            grid-column: 2;
+            justify-content: left;
+            position: absolute;
+            z-index: 2;
+            padding-top: 3em;
+            display: none;
+
+            button {
+                // @include buttons.bottom-to-full-outline;
+                cursor: pointer;
+                background: transparent;
+                
+                &:focus {
+                    outline: 1px dotted #000;
+                }
+            }
+
+            @include b.for-desktop-up {
+                padding-top: 2em;
+                display: flex;
+                flex-direction: column;
+            }
+        
+        }
+    
+        .tabgroup {
+            width: 100%;
+            clear: both;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            position: relative;
+            grid-column: 1/3;
+            overflow: hidden;
+        
+            &:before {
+                display: inline-block;
+                height: 3em;
+                width: 1px;
+                margin: 0 auto;
+
+                background-color: #cecece;
+                content: '';
+
+                @include b.for-tablet-portrait-up {
+                    display: none;
+                }
+            }
+
+            @include b.for-tablet-portrait-up {
+                flex-direction: column;
+            }
+
+            [role='tabpanel'] {
+                // flex: 1 0 100%;
+                // background: blue;
+                // height: 800px;
+                display: grid;
+                // align-items: center;
+                grid-template-rows: repeat(1fr);
+                grid-template-columns: 1fr;
+
+                @include b.for-tablet-portrait-up {
+                    grid-template-columns: 100%;
+                    grid-template-rows: [image-one] 35% [content-area] 55%;
+                    margin: 0 10%;
+                    padding-top: 5%;
+                }
+                @include b.for-desktop-up {
+                    grid-template-columns: [text-start] 10% [image-one-start] 35% [image-one-center] 17.5% [image-two-start text-end] 17.5% [image-one-end] 10%;
+                    grid-template-rows: [header] 50% [content-area] 50%;
+                    margin: 0;
+                    padding-top: 0;
+                    display: none;
+                    padding-bottom: 10%;
+                    position: relative;
+                }
+                
+                @include b.for-large-desktop-up {
+                    // grid-template-rows: [header] 20% [content-area] 1fr [image-two-top] 30%;
+                }
+                
+                
+                &:not(:last-of-type) {
+                    &:after {
+                        width: 75%;
+                        height: 1px;
+                        background: #cecece;
+                        margin: 1em auto;
+                        content: '';
+                        display: block;
+
+                        @include b.for-tablet-portrait-up {
+                            width: 50%;
+                            margin: 3em auto;
+                        }
+                        @include b.for-desktop-up {
+                            display: none;
+                        }
+        
+                    }
+
+                }
+                
+               
+                
+                img {
+                    // position: absolute;
+                    width: 100%;
+                }
+
+                
+                &.active {
+                    @include b.for-tablet-portrait-up {
+
+                        display: grid;
+                    }
+                }
+                   
+                .panel-text {
+
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 1em; 
+                    
+                    @include b.for-tablet-portrait-up {
+                        grid-row: content-area;
+                        margin-top: 3em; 
+
+                    }
+
+                    @include b.for-desktop-up {
+                        grid-row: header;
+                        grid-column: text-start / image-two-start;
+                        margin-top: 5%;
+                    }
+
+                    @include b.for-large-desktop-up {
+                        grid-row: header;
+                        grid-column: text-start / text-end;
+                        margin-top: 3em;
+                    }
+
+                    span {
+                        text-transform: uppercase;
+                        color: #b31b1b;
+                        margin: 0 auto;
+                        display: block;
+                        font-weight: 600;
+                        font-family: var(--clocktower-sans-serif);
+                        font-size: var(--step--1);
+                        margin-bottom: 1em;
+    
+    
+                        @include b.for-tablet-portrait-up {
+                        }
+    
+                        @include b.for-desktop-up {
+                            display: none;
+    
+    
+                        }
+    
+                        @include b.for-large-desktop-up {
+    
+                        }
+                    }
+
+                    h2 {
+                        font-family: var(--clocktower-serif);
+                        color: #333;
+                        font-size: var(--step-6);
+                        font-weight: 600;
+                        position: relative;
+                        z-index: 10;
+                        margin: 0;
+                        padding-bottom: .5em;
+                        text-align: center;
+        
+                        &:after {
+                            content: '';
+                            height: 4px;
+                            background: #b31b1b;
+                            width: 2.5em;
+                            display: block;
+                            margin: 0 auto;
+                            margin-top: .5em;
+                        }
+        
+                        @include b.for-tablet-portrait-up {
+                            font-weight: 500;
+                            
+                           
+        
+                        }
+
+                        @include b.for-desktop-up {
+                            text-align: left;
+                            color: var(--tabPanelText, #FFF);
+                            align-self: start;
+                            font-size: var(--step-5);
+
+                            &:after {
+                                display: none;
+                            }
+                        }
+
+                        @include b.for-large-desktop-up {
+                            font-size: var(--step-7);
+                        }
+                    }
+        
+                    p {
+                        
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;                   
+                        font-family: var(--clocktower-sans-serif);
+                        font-size: var(--step-1);        
+                        position: relative;
+                        z-index: 10;
+                        color: #333333;
+                        text-align: center;
+                        
+                        @include b.for-tablet-portrait-up {
+                            font-size: var(--step-2);        
+        
+        
+                        }
+
+                        @include b.for-desktop-up {
+                            color: var(--tabPanelText, #FFF);
+                            text-align: left;
+
+                            max-width: 70%;
+
+                        }
+
+                        @include b.for-large-desktop-up {
+                            max-width: 80%;
+                        }
+                    }
+        
+                    p {
+                        align-self: baseline;
+                        margin-top: 0;
+        
+                        @include b.for-tablet-portrait-up {
+                            max-width: 65ch;
+                        }
+
+                        @include b.for-desktop-up {
+                            align-self: start;
+                            max-width: 80%;
+                            font-size: var(--step-1);        
+                        }
+                        
+        
+                    }
+
+                    a.cta-button {
+                        @include buttons.bottom-to-full-outline;
+                        border-bottom: 1px solid;
+                        width: auto;
+                        height: auto;
+                        background: transparent;
+                        box-shadow: inset 0 0 0 2px var(--tabPanelText, #FFF);
+                        // min-width: clamp(3em, 8em, 10em);
+                        margin: 0 auto;
+                        color: var(--tabPanelText, #b31b1b); 
+                        margin-bottom: 2em;
+                        text-align: center;
+                        display: block;
+                        text-transform: uppercase;
+                        font-weight: 400;
+                        text-decoration: none;
+                        padding: 1em;
+                        z-index: 2;
+                        
+                        &:before {
+                            border-right: 1px solid var(--buttonBorderColor, #333);
+                            border-left: 1px solid var(--buttonBorderColor, #333);
+                        } 
+                        
+                        &:after {
+                            border-top: 1px solid var(--buttonBorderColor, #333);
+                        }
+                        
+                        @include b.for-tablet-portrait-up {
+        
+                        }
+
+                        @include b.for-desktop-up {
+                            color: var(--tabPanelText, #FFF); 
+                            text-transform: initial;
+
+                            align-self: start;
+                            width: auto;
+                            margin: 1em 0;
+                        }
+                    }
+                }
+
+
+                .image-mask {
+
+                    overflow: hidden;
+
+                    &.tab-image-large {
+                        width: clamp(320px, 100%, 990px);
+                        padding-bottom: 0px;
+                        z-index: 1;
+                        grid-row-start: 1;
+                        padding-top: 1em;
+
+                        @include b.for-tablet-portrait-up {
+                            padding-bottom: 1em;
+                            padding-top: 0;
+
+                        }
+                        @include b.for-desktop-up {
+                            padding-bottom: 0em;
+
+                            @include img.gradient-mask;
+
+                            grid-column: image-one-start / image-one-end;
+                            grid-row: header;
+                            align-self: self-start;
+                        }
+                        
+                        @include b.for-large-desktop-up {
+
+                            grid-column: image-one-start / image-one-end;
+                            grid-row: header;
+                            align-self: self-start;
+                        }
+
+
+                        &:after {
+                            background: #000000; 
+                            background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 85%);
+                        }
+                    }
+        
+                    &.tab-image-small {
+                        width: clamp(280px, 100%, 480px);
+                        display: none; 
+                        z-index: 2;
+                        grid-column: image-two-start / padding-right;
+                        // margin-top: 10%;
+                        justify-self: end;
+                        display: none;
+                        position: relative;
+
+                        @include b.for-tablet-portrait-up {
+                            grid-row: content-area;
+                        }
+                        @include b.for-desktop-up {
+                            display: block;
+                            grid-row-start: content-area;
+                            position: absolute;
+                        }
+                       
+                        img {
+
+                        }
+                    }
+                }
+            }  
+        }
     }
 }

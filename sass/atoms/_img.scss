@@ -1,6 +1,6 @@
 @use 'base/colors' as b;
 
-.gradient-mask {
+@mixin gradient-mask {
     position: relative;
 
     img {
