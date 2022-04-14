@@ -1,3 +1,12 @@
+@use '../base/breakpoints' as b;
+
+:root {
+    --toggle: 1;
+    --playState: running;
+}
+
+
+
 body.animation {
 
     .menu-toggle {
@@ -28,9 +37,35 @@ body.animation {
         }
     }
 
+
+    
+
 }
+
+// @if (var(--playState) == "running") {
 
 @mixin background-shift {
     @content;
+    
+}
+
+
+@keyframes fadeIn {
+    0% {opacity:0; }
+    100% {opacity:1; }
+}
+
+@keyframes shiftUp {
+    0% {transform: translateY(var(--dist))}
+    100% {transform: translateY(0px);}
+}
+
+@keyframes shiftRight {
+    0% {transform: translateX(var(--dist, 0));}
+    100% {transform: translateX(0px);}
+}
+
+
+@keyframes cardFlip {
     
 }

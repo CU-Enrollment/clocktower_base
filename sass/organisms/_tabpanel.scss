@@ -177,11 +177,11 @@
                 }
                 @include b.for-desktop-up {
                     grid-template-columns: [text-start] 10% [image-one-start] 35% [image-one-center] 17.5% [image-two-start text-end] 17.5% [image-one-end] 10%;
-                    grid-template-rows: [header] 50% [content-area] 50%;
+                    grid-template-rows: [header] 60% [content-area] 40%;
                     margin: 0;
                     padding-top: 0;
                     display: none;
-                    padding-bottom: 10%;
+                    margin-bottom: 15%;
                     position: relative;
                 }
                 
@@ -210,20 +210,9 @@
                     }
 
                 }
-                
-               
-                
                 img {
                     // position: absolute;
                     width: 100%;
-                }
-
-                
-                &.active {
-                    @include b.for-tablet-portrait-up {
-
-                        display: grid;
-                    }
                 }
                    
                 .panel-text {
@@ -231,7 +220,9 @@
                     display: flex;
                     flex-direction: column;
                     margin-top: 1em; 
-                    
+                    z-index: 2;
+                    opacity: 0;
+
                     @include b.for-tablet-portrait-up {
                         grid-row: content-area;
                         margin-top: 3em; 
@@ -242,6 +233,7 @@
                         grid-row: header;
                         grid-column: text-start / image-two-start;
                         margin-top: 5%;
+                        
                     }
 
                     @include b.for-large-desktop-up {
@@ -421,6 +413,7 @@
                         z-index: 1;
                         grid-row-start: 1;
                         padding-top: 1em;
+                        opacity: 0;
 
                         @include b.for-tablet-portrait-up {
                             padding-bottom: 1em;
@@ -449,10 +442,13 @@
                             background: #000000; 
                             background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 85%);
                         }
+
+                        img {
+                            aspect-ratio: 16 / 9;
+                        }
                     }
         
                     &.tab-image-small {
-                        width: clamp(280px, 100%, 480px);
                         display: none; 
                         z-index: 2;
                         grid-column: image-two-start / padding-right;
@@ -460,7 +456,9 @@
                         justify-self: end;
                         display: none;
                         position: relative;
-
+                        aspect-ratio: 4 / 3;
+                        opacity: 0;
+                        
                         @include b.for-tablet-portrait-up {
                             grid-row: content-area;
                         }
@@ -468,12 +466,73 @@
                             display: block;
                             grid-row-start: content-area;
                             position: absolute;
+
+                        }
+
+                        @include b.for-large-desktop-up {
+                            width: 525px;
+
                         }
                        
                         img {
-
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
                         }
                     }
+                }
+          
+
+                &.active {
+
+                    @include b.for-tablet-portrait-up {
+
+                        display: grid;
+                    }
+
+                    .panel-text {
+                        opacity: 1;
+                        --dist: calc( var(--toggle) * 10%); 
+            
+                        animation: fadeIn 1s infinite;
+                        animation-play-state: var(--playState);
+            
+                        animation: shiftUp 1.25s;
+                        animation-play-state: var(--playState);
+                        
+                        animation-fill-mode: forwards;
+            
+            
+                    }
+            
+                    .tab-image-large {           
+                        opacity: 1;
+                        --dist: calc( var(--toggle) * 10%); 
+            
+                        animation: fadeIn 1s infinite;
+                        animation-play-state: var(--playState);
+            
+                        animation: shiftUp 1s;
+                        animation-play-state: var(--playState);
+            
+                    }
+            
+                    .tab-image-small {
+                        opacity: 1;
+            
+                        --dist: calc( var(--toggle) * 10%); 
+            
+                        animation: fadeIn 1s infinite;
+                        animation-play-state: var(--playState);
+            
+                        
+                        animation: shiftUp 1s;
+                        animation-play-state: var(--playState);
+            
+                        // transform: translateX(0px);
+            
+                    }
+
                 }
             }  
         }

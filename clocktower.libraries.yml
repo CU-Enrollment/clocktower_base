@@ -9,7 +9,7 @@ global-scripts:
   version: 1.x
   js:
     js/script.js: {}
-    # js/themeSelect.js: {}
+    js/siteOptions.js: {}
     js/menu.js: {}
     js/cards.js: {}
     js/tabPanel.js: {}

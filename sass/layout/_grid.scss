@@ -1,4 +1,4 @@
-@import 'base/breakpoints';
+@use 'base/breakpoints' as b;
 
 
 .row {
@@ -27,7 +27,7 @@ $rowGap: 2%;
 
 $max: 12;
 
-@include for-phone-only {
+@include b.for-phone-only {
 
     // for small screens
     @for $i from 1 through $max {
@@ -55,7 +55,7 @@ $max: 12;
 //     }
 // }
 
-@include for-desktop-up {
+@include b.for-desktop-up {
 
     // for large screens
     @for $i from 1 through $max {
@@ -70,7 +70,7 @@ $max: 12;
     }
 }
 
-@include for-xl-desktop-up {
+@include b.for-xl-desktop-up {
 
     // for large screens
     @for $i from 1 through $max {
@@ -99,5 +99,61 @@ $max: 12;
 
     &.center {
         justify-content: center;
+    }
+}
+
+
+
+
+
+// Layout Grid in CSS Grid. This is the main layout grid of content
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow-x: hidden;
+
+    @include b.for-tablet-portrait-up {
+
+    }
+
+    @include b.for-desktop-up {
+        width: clamp(980px, 1100px, 1250px);
+        margin: 0 auto;
+        grid-template-columns: [expanded-left] 7.5% [content] 1fr [expanded-right] 7.5%; 
+    }
+
+    @include b.for-large-desktop-up {
+        width: clamp(1280px, 1320px, 1350px);
+        margin: 0 auto;
+
+    }
+
+    @include b.for-xl-desktop-up {
+        width: clamp(1380px, 1400px, 1600px);
+        margin: 0 auto;
+
+    }
+
+
+    .grid-expanded {
+        grid-column: 1 / 4;
+    }
+
+    .grid-content {
+        grid-column: content;
+
+    }
+
+    .grid-expanded-right {
+        grid-column: 2 / 4;
+    }
+    
+    .grid-expanded-left {
+        grid-column: 1 / 3;
+    }
+
+    &--fluid {
+        width: 100%;
     }
 }

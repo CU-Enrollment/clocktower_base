@@ -1,4 +1,4 @@
-@import 'base/breakpoints';
+@use 'base/breakpoints' as b;
 
 body {
     width: 100%;
@@ -11,13 +11,13 @@ body {
    
     // background: blue;
 
-    @include for-phone-only {
+    @include b.for-phone-only {
         width: 375px;
         overflow-x: hidden;
         margin: 0 auto;
     }
 
-    @include for-desktop-up {
+    @include b.for-desktop-up {
         max-width: 1200px;
         padding-left: clamp(5%, 7%, 10%);
         padding-right: clamp(5%, 7%, 10%);
@@ -25,7 +25,18 @@ body {
 
     }
 
-    @include for-xl-desktop-up {
+    @include b.for-xl-desktop-up {
         max-width: 1400px;
     }
+}
+
+
+
+
+@mixin absCenter {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+    
 }
