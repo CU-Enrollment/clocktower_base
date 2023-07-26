@@ -1,2 +1,19 @@
 {
+    "name": "cu-enrollment/clocktower_base",
+    "description": "Base CSS/SASS/JS for the Clocktower Theme",
+    "type": "drupal-custom-theme",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "CuEnrollment\\ClocktowerBase\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Joe Williams",
+            "email": "jrw354@cornell.edu"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
 }
