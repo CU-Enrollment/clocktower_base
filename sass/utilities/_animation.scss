@@ -14,11 +14,11 @@ body.animation {
     
         &.active {
     
-            span {
+            span.buttonWrap {
     
                 &:nth-child(1) {
                     width: 40px;
-                    transform: translateY(0px) rotate(45deg);
+                    transform: translateY(0px) rotate(0deg);
                     transition-delay: 0.125s;
                     
                 }
@@ -49,6 +49,10 @@ body.animation {
     
 }
 
+@keyframes rotateUp {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(180deg);}
+}
 
 @keyframes fadeIn {
     0% {opacity:0; }
@@ -68,4 +72,20 @@ body.animation {
 
 @keyframes cardFlip {
     
+}
+
+@keyframes slideInRight {
+    0%{ max-width: 0; }
+    100% {max-width: 100%;}
+}
+
+@keyframes slideOutRight {
+    0%{ max-width: 0; transform: translateX(100%);}
+    100% {max-width: 0; transform: translateX(100%);}
+}
+
+
+@keyframes appearRight {
+    0% {transform: translateX(100%);}
+    100% {transform: translateX(0%);}
 }

@@ -1,11 +1,593 @@
-#search {
-    background: transparent;
-    border: 0;
-    font-size: var(--step--1);
-    padding: 0;
-    margin: 0;
-    min-width: 0;
-    min-height: 0;
-    width: auto;
-    height: auto;
+@use '../base/breakpoints' as b;
+@use '../atoms/mixins' as m;
+
+
+#search-utility {
+    position: absolute;
+    z-index: 50;
+    
+    .search-wrapper {
+        position: relative;
+        // display: flex;
+        // flex-direction: row;
+        height: 50px;
+        width: 45px;
+        align-items: center;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+
+        .search-toggle {
+            background-color: transparent;
+            cursor: pointer;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: var(--step-0);
+
+            &:before {
+                font-family: var(--font-awesome);
+                display: block;
+                cursor: pointer;
+    
+            }
+
+            &:focus {
+                &:before {
+                    color: hsla(var(--text-black),1);
+                }
+            }
+
+            &#open-search {
+                &:before {
+                    content: '\f002';
+                    color: hsla(var(--text-black),1);
+                }
+            }
+
+            &#cancel-search {
+
+                position: relative;
+                right: -.5em;
+                left: unset;
+                top: unset;
+                color: var(--black, #333);
+                transform: unset;
+                &:before {
+                    content: '\f00d';
+                }
+            }
+        }
+
+        form {
+            position: relative;
+            flex-direction: row;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            background: #FFF;
+            padding: 0;
+            // top: 50%;
+            // right: 0;
+            // transform: translate(100vw, 0%);
+            display: none;                
+
+
+            .form-actions {
+                position: absolute;
+                height: 50px;
+                width: 50px;
+                right: 3em;
+                top: 0;
+                display: flex;
+                align-items: center;
+
+                input[type="submit"] {
+                    font-family: var(--font-awesome);
+                    background: transparent;
+                    border-radius: 25px;
+                    color: #b31b1b;
+                    font-size: var(--step-0);
+                    width: auto;
+                    height: auto;
+                    margin: 0;
+                    padding: 0;
+                    
+
+                    &:hover, &:focus {
+                        box-shadow: none;
+                        outline: 1px solid hsla(var(--link-blue),1);
+                        outline-offset: -5px;
+                    }
+                    // height: 50px;
+                }
+            }
+
+            
+            .form-item {
+                // margin: 0 1em;
+                height: 50px;
+                width: 90%;
+                box-sizing: border-box;
+                position: relative;
+
+                &:focus-within{
+
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        border: 2px solid #5699d4;
+                        top: 2px;
+                        bottom: 2px;
+                        left: 2px;
+                        right: 2px;
+                    }
+                }
+
+               
+                
+                input[type='search'] {
+                    width: 100%;
+                    height: 50px;
+                    font-size: var(--step-1);
+                    font-family: var(--clocktower-sans-serif);
+                    font-weight: var(--extra-light-weight);
+                    border: 0;
+                    width: 100%;
+                    padding-left: .5em;
+                    outline: 0;
+                    
+                    &::placeholder {
+                        font-style: italic;
+                    }
+                       
+                        
+                
+                   
+                }
+
+
+                span {
+                    width: 100%;
+
+                    input[type="search"] {
+                        width: 100%;
+                        height: 2em;
+                        padding-left: 1em;
+                    }
+                }
+
+
+                label {
+                    
+                    // Hiding the label until I can find where it exists in drupal
+                        border: 0 !important;
+                        clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+                        -webkit-clip-path: inset(50%) !important;
+                            clip-path: inset(50%) !important;  /* 2 */
+                        height: 1px !important;
+                        margin: -1px !important;
+                        overflow: hidden !important;
+                        padding: 0 !important;
+                        position: absolute !important;
+                        width: 1px !important;
+                        white-space: nowrap !important;            /* 3 */
+                    
+                }
+            }
+
+            
+        }
+
+
+
+        &.active {
+            width: 45em;
+
+            #search-toggle {
+                left: unset;
+                right: 0;
+            }
+            form {
+                max-width: 100%;
+                // transform: translate(0%, -50%);
+                animation: cubic-bezier(1, 0, 0, 1);
+                display: flex;
+
+            }
+        }
+        
+    }
 }
+
+
+
+#open-search-mobile {
+    padding-right: .5em;
+    &:before {
+
+        color: #333;
+    }
+    @include b.for-desktop-up {
+        display: none;
+    }
+}
+
+
+#mobile-search {
+    z-index: 10000;
+    display: none;
+    position: absolute;
+    // width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background: hsla(0deg, 100%, 0%, 0.95);
+    // padding-top: 3em;    
+    overflow: hidden;
+    &.active {
+        display: block;
+    }
+
+   
+    #close-mobile-search {
+        background-color: transparent;
+        border-radius: 99em;
+        font-size: var(--step-4);
+        z-index: 100;
+        top: 1em;
+        right: 1em;
+
+        color: hsla(var(--text-white), 1);
+
+        .buttonWrap {
+            color: hsla(var(--text-white),1);
+           
+            span {
+                background: hsla(var(--text-white),1);
+            } 
+            
+        }
+    }
+    
+    .views-exposed-form {
+        // height: 100%;
+        // width: 100%;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        // padding: 0 2em;
+
+        form {
+            background-color: transparent;
+            // padding: 0 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            // margin-top: 3em;
+            padding: 0;
+
+
+            h2 {
+                color: hsla(var(--text-white),1);
+                font-size: var(--step-5);
+                white-space:break-spaces;
+                display: inline;
+                padding: 0 5%;
+
+            }
+
+            .form-item {
+                // padding: 0 1em;
+                // width: 100vw;
+                width: 100%;
+
+                
+                label {
+                    font-size: var(--step-3);
+                    font-weight: var(--regular-weight);
+                    font-family: var(--clocktower-sans-serif);
+                    margin-bottom: 1em;
+                    color: hsla(var(--text-white), 1);
+    
+                }
+
+            
+                    display: flex;
+                    // width: 100%;
+
+                    input[type='search'] {
+                        // width: 100%;
+                        height: 3.5em;
+                        background: transparent;
+                        border: 0;
+                        border-bottom: 2px solid #FFF;
+                        font-size: var(--step-2);
+                        color: hsla(var(--text-white),1);
+                        display: inline;
+                        flex-shrink: 1;
+                        max-width: 350px;
+                        margin: 0 auto;
+                        border-radius: 0;
+                    }
+            
+                
+            }
+
+            .form-wrap {
+                padding: 0 5%;
+                .form-actions {
+                    margin-top: 1em;
+                    // padding: 0 1em;
+                    display: flex;
+                    width: 100%;
+                    position: relative;
+    
+                    input[type='submit'] {
+    
+                        
+                        text-align: center;
+                        background: transparent;
+                        border: 1px solid hsla(var(--carnelian),1);
+                        color: hsla(var(--text-white),1);
+                        border-radius: .25em;
+                        width: 100px;
+                        // height: 50px;
+                        font-family: var(--font-awesome);
+                        margin: 0;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: var(--step-3);
+                    }
+                }
+            }
+        }
+    }
+    @include b.for-desktop-up {
+        display: none;
+    }
+}
+
+
+.search-page {
+
+    .views-exposed-form {
+
+        form {
+            padding: 0;
+            position: relative;
+            margin-top: 2em;
+            .form-item {
+
+                width: 100%;
+                height: 100%;
+
+
+                label {
+                    
+                    // Hiding the label until I can find where it exists in drupal
+                        border: 0 !important;
+                        clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+                        -webkit-clip-path: inset(50%) !important;
+                            clip-path: inset(50%) !important;  /* 2 */
+                        height: 1px !important;
+                        margin: -1px !important;
+                        overflow: hidden !important;
+                        padding: 0 !important;
+                        position: absolute !important;
+                        width: 1px !important;
+                        white-space: nowrap !important;            /* 3 */
+                    
+                }
+
+                input[type='text'] {
+                    width: 100%;
+                    height: 4em;
+                    font-size: var(--step-0);
+                    padding: .25em 1em;
+                    box-sizing: border-box;
+
+                    span {
+                    }
+                
+                }
+                
+               
+            }
+
+            .form-actions {
+
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                
+                input[type="submit"] {
+                    font-family: var(--font-awesome);
+                    background: transparent;
+                    border: transparent;
+                    color: hsla(var(--carnelian), 1);
+                    font-size: var(--step-1);
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    height: 100%;
+                    justify-content: center;
+                    min-width: 3em;
+                }
+            }
+        }
+    }
+
+    .search-result {
+        @include m.boxShadowLight; 
+        border: 1px solid #eee;
+        margin: 2em 0;
+        padding: 1em 2em;
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: .25em;
+
+            a {
+                color: hsla(var(--link-blue),1);
+                font-size: var(--step-1);
+                
+            }
+        }
+
+        p {
+            margin-top: 0;
+            max-width: unset;
+            strong {
+                font-weight: var(--regular-weight);
+                background-color: hsla(var(--highlighted), 1);
+            }
+        }
+    }
+
+   
+}
+
+
+
+// Majors search 
+form.views-exposed-form {
+    padding: 0;
+    position: relative;
+    margin-top: 2em;
+    grid-column:1/4;
+    margin: 0 1em;
+    // gap: 1em;
+    padding: 1em 2.5em;
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+
+    @include b.for-desktop-up {
+        align-items: end;
+        flex-direction: row;
+    }
+    .form-item {
+
+        // width: 100%;
+        // height: 100%;
+        box-sizing: border-box;
+        display: inline-block;
+        
+        @include b.for-desktop-up {
+            margin: 0 .5em;
+            
+        }
+        label {
+            
+            // Hiding the label until I can find where it exists in drupal
+                // border: 0 !important;
+                // clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+                // -webkit-clip-path: inset(50%) !important;
+                //     clip-path: inset(50%) !important;  /* 2 */
+                // height: 1px !important;
+                // margin: -1px !important;
+                // overflow: hidden !important;
+                // padding: 0 !important;
+                // position: absolute !important;
+                // width: 1px !important;
+                // white-space: nowrap !important;            /* 3 */
+                font-size: var(--step--1);
+                margin-bottom: 1em;
+        }
+
+        input[type='search'], input[type='text'] {
+            width: 100%;
+            height: 2em;
+            font-size: var(--step-0);
+            padding: .25em 1em;
+            box-sizing: border-box;
+            &::-ms-clear, &::-ms-reveal, &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration {
+                display: none;
+            }
+            
+
+            span {
+            }
+        
+        }
+        
+
+        &.js-form-type-textfield {
+            width: 100%;
+
+            @include b.for-desktop-up {
+                flex: 1 1 40%;
+
+            }
+        }
+       
+        &.js-form-type-select {
+            width: 100%;
+
+            @include b.for-desktop-up {
+                flex: 1 1 20%;
+
+            }
+
+            select {
+
+                background: #fff;
+            }
+        }
+
+       
+    }
+
+    .form-actions {
+
+        position: relative;
+        top: 0;
+        right: 0;
+        // height: 100%;
+        display: inline-block;
+        width: 100%;
+
+
+        @include b.for-desktop-up {
+            width: auto;
+
+        }
+        input[type="submit"] {
+
+            background: hsla(var(--carnelian), 1);
+            color: hsla(var(--text-white), 1);
+            border-radius: .25em;
+            font-family: var(--font-awesome);
+            font-size: var(--step-1);
+            padding: 0;
+            height: 100%;
+            justify-content: center;
+            width: 100px;
+            height: 45px;
+            margin: 1em 0;
+            display: flex;
+            
+            @include b.for-desktop-up {
+                background: transparent;
+                border: transparent;
+                color: hsla(var(--carnelian), 1);
+                margin: 0;
+                width: 3em;
+                &:hover, &:focus {
+                    box-shadow: unset;
+                    background-color: hsla(var(--carnelian),1);
+                    color: hsla(var(--text-white),1);
+                }
+            }
+        }
+    }
+}
+
+

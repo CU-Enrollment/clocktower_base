@@ -1,0 +1,92 @@
+@use '../base/breakpoints' as b;
+
+.list-view {
+
+    .card {
+
+        &.listing-card {
+
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin-bottom: 1.5em;
+            align-items: center;
+            // &:after {
+                //     content: '';
+                //     display: block;
+                //     width: 100%;
+                //     height: 1px;
+                //     background: red;
+                //     bottom: 0;
+                //     position: absolute;
+                // }
+                @include b.for-tablet-portrait-up {
+                align-items: flex-start;
+                margin: 1em 0;
+
+                flex-direction: row;
+                // margin-left: 0;
+                padding: 1em 0;
+                // gap: 2%;
+
+                &:after {
+                    display: none;
+                }
+            }
+
+
+            .cover-image {
+                
+                flex: 1 1 25%;
+                overflow: hidden;
+                padding-bottom: 1em;
+
+
+                img {
+
+                    width: 100%;
+                    height: 250px;
+                    width: 250px;
+                    
+                    
+                    @include b.for-tablet-portrait-up {
+
+                    }
+                    object-fit: cover;
+                }
+            }
+    
+            .card-text {
+                margin: 0;
+                padding-left: 0;
+                flex: 1 1 70%;
+                box-sizing: border-box;
+                text-align: center;
+
+                @include b.for-tablet-portrait-up {
+                    padding-left: 2em;
+                    text-align: left;
+                }
+    
+                h4 {
+                    margin-top: 0;
+                }
+                h3 {
+                    margin-top: 0;
+                    font-size: var(--step-2);
+                    color: hsla(var(--text-black));
+                }
+
+                p {
+                    font-size: var(--step-0);
+                    padding-bottom: 1em;
+                }
+
+                .link-button {
+                }
+            }
+            
+        }
+        
+    }
+}

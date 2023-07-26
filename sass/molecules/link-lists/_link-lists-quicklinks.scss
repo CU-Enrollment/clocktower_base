@@ -1,0 +1,81 @@
+@use 'base/breakpoints' as b;
+@use 'atoms/gradients' as g;
+
+.link-list {
+    &--quicklinks {
+        list-style: none;
+        padding-left: 0;
+        
+        li {
+            
+           
+            a {
+                text-decoration: none;
+                padding: 1em 0 !important;
+                display: block !important;
+                position: relative !important;
+                font-family: var(--clocktower-sans-serif);
+                font-size: var(--step-0);
+                text-decoration: none;
+                background-image: unset !important;
+                color: hsla(var(--text-black), 1) !important;
+                overflow: visible !important;
+
+                &:after {
+                    content: '\f054';
+                    font-family: var(--font-awesome);
+                    position: relative;
+                    color: hsla(var(--carnelian),1);
+                    left: 2%;
+                    transition: left 500ms ease-in-out;
+
+                 }
+                &:hover {
+                    color: hsla(var(--carnelian),1) !important;
+
+                    &:after {
+                        left: 5%;
+                        transition: left 500ms ease-in-out;
+                    }
+                }
+                
+            }
+
+            &:not(:last-child) {
+                a {
+                    &:before {
+                        content: '';
+                        width: 100%;
+                        height: 1px;
+                        background-color: #d0d0d0;
+                        position: absolute;
+                        left: 0;
+                        bottom: -.25em;
+                    }
+                }
+            }
+
+            &.menu-item {
+                a {
+                    padding: .25em 0 !important;
+                }
+            }
+        }
+
+        &.two-col {
+            
+            li {
+
+                a {
+                    height: 100%;
+                    // line-height: 1.25 !important;
+                    &:before {
+                        content: unset !important;
+                    }
+                }
+            }
+        }
+        
+    }
+
+}

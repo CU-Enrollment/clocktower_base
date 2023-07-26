@@ -1,0 +1,472 @@
+
+// .layout-builder__layout {
+//     display: block;
+//     border: 1px dotted darkgrey;
+//     width: 100%;
+//     // flex-direction: column;
+// }
+
+:root {
+    --drupalLightBlue: 212,243,250;
+    --drupalDarkBlue: 67,133,167;
+}
+#toolbar-administration {
+
+    #toolbar-tab {
+        .trigger {
+            color: #333;
+        }
+
+        .toolbar-tray {
+           
+            a {
+                font-size: var(--step--1) !important;
+            }
+                    
+                
+            
+        }
+    }
+
+    .toolbar-menu {
+        max-width: unset;
+
+    }
+}
+
+
+
+.layout-builder__link--add {
+    background: none;
+    background-color: rgb(var(--drupalLightBlue));
+    border: 2px dashed rgb(var(--drupalDarkBlue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgb(var(--drupalDarkBlue));
+    width: 100%;
+    text-align: center;
+    padding: 2em 0em;
+    margin: 2em auto;
+    font-size: var(--step-1);
+
+    &:hover, &:focus {
+        border-bottom: 2px solid rgb(var(--drupalDarkBlue));
+        color: white;
+        background-color: rgb(var(--drupalDarkBlue));
+    }
+
+    &:before {
+        content: '\f055';
+        font-family: var(--font-awesome);
+        display: inline-block;
+        padding-right: 1em;
+        position: relative;
+
+    }
+    
+
+}
+
+
+
+#block-admissions-local-tasks {
+    min-height: 5em;
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-bottom: 3em;
+    // background-color: #f4f4f4;
+    outline: 1px dashed #d6d6d6;
+    outline-offset: 1px;
+    justify-content: space-between;
+    z-index: 0;
+    .trigger {
+        position: relative !important;
+        border-radius: 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: auto !important;
+        width: auto !important;
+        color: #FFF;
+        background: #FFF;
+        padding: 0;
+        margin: 0;
+        border: 1px solid rgb(var(--drupalDarkBlue));
+        
+        &.visually-hidden {
+            
+        }
+        &:before {
+            font-family: var(--font-awesome);
+            content: '\f303';
+            font-style: normal;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(var(--drupalDarkBlue));
+            height: 45px;
+            width: 45px;
+            position: relative;
+            top: 0;
+            left: 0;
+            text-indent: 0;
+        }
+    
+        &:hover, &:focus {
+            border-radius: 0px;
+    
+            &:before {
+                background-color: rgb(var(--drupalDarkBlue));
+                color: #FFF;
+            }
+        }
+    }
+
+    .contextual {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        position: relative;
+
+        li {
+            a {
+                display: initial;
+                line-height: initial;
+                font-family: var(--clocktower-sans-serif);
+            }
+        }
+
+    }
+    ul {
+        display: inline;
+        list-style: none;
+        padding-right: 0;
+        z-index: 10;
+        position: relative;
+        justify-content: center;
+
+
+        &:first-of-type {
+            // margin: 0 auto;
+        }
+
+        &.contextual-links {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            li {
+                a {
+                    display: inline-block;
+                }
+            }
+
+        }
+
+        li {
+            display: inline-block;
+            line-height: 100%;
+            a {
+                display: block;
+                background-color: #fff;
+                color: rgb(var(--drupalDarkBlue));
+                padding: .5em 1em;
+                margin: 0 .5em;
+                text-decoration: none;
+                border: 1px solid rgb(var(--drupalDarkBlue));
+                font-size: 1em;
+                line-height: 1.8em;
+                font-weight: var(--light-weight);
+                border-radius: .15em;
+
+                &:hover, &:focus {
+                    background-color: rgb(var(--drupalDarkBlue));
+                    color: #FFF;
+                }
+
+            }
+        }
+    }
+    
+}
+
+
+.layout-builder__link--remove {
+    margin-left: 1em;
+    
+}
+.layout-builder__layout.container {
+    border: 2px dashed lightgray;
+    margin: 1em auto;
+    padding: 1em;
+    overflow: hidden;
+
+    .layout-builder__link--add {
+        grid-column: content;
+    }
+    
+    &.layout--threecol-section {
+        margin: 1em auto;
+        overflow-x: show;
+
+        .card-flex.row-view {
+            flex-direction: row;
+            justify-content: space-evenly;
+
+            > div {
+                overflow: hidden;
+                border: 2px solid darkgrey;
+                padding: .25em;
+                background-color: #f3f3f3;
+
+                a.layout-builder__link--add {
+                    width: 98%;
+                    
+                }
+            }
+           
+        }
+        
+    }
+
+    // {
+        // grid-column: content;
+    // }
+
+     
+}
+
+.layout-builder__region {
+    height: 100%;
+}
+
+// Hidden help text on edit 
+
+#block-admissions-help {
+    display: none;
+}
+
+
+.layout-builder-form {
+    
+    #edit-submit {
+        margin-left: 0;
+    }
+    #edit-submit, #edit-discard-changes, #edit-revert {
+        background-color:transparent;
+        border: 1px solid rgb(var(--drupalDarkBlue));
+        color: rgb(var(--drupalDarkBlue));
+
+        &:hover, &:focus {
+            background: rgb(var(--drupalDarkBlue));
+            color: white;
+            border: 1px solid rgb(var(--drupalDarkBlue));
+            box-shadow: none;
+        }
+    }
+
+    .js-form-item-toggle-content-preview {
+        margin: 1em 0;
+        padding-top: 1em;
+        &:before {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: #f3f3f3;
+            display: block;
+        }
+        input {
+            position: inline-block;
+
+        }
+
+        label {
+            display: inline-block;
+        }
+    }
+
+    [data-drupal-messages] {
+        background: rgb(var(--drupalLightBlue));
+        color: rgb(var(--drupalDarkBlue));
+        padding: 1em;
+        border: 2px solid rgb(var(--drupalDarkBlue));
+        font-family: var(--clocktower-sans-serif);
+        text-align: center;
+        a {
+            color: rgb(var(--drupalDarkBlue));
+            font-weight: var(--semiBold);
+        }
+    }
+
+    .js-form-type-vertical-tabs {
+        input {
+            display: inline-block;
+        }
+
+        label {
+            display: inline-block;
+        }
+    }
+}
+.contextual-region {
+}
+
+[data-drupal-messages] {
+    color: red;
+}
+
+
+
+// Layout Builder Modal
+
+#layout-builder-modal {
+    .layout-builder-configure-block {
+        font-size: var(--step-0);
+        font-family: var(--clocktower-sans-serif);
+
+        .js-form-item-settings-admin-label {
+            
+           
+            label {
+                &:after {
+                    content: ':';
+                    display: inline;
+                }
+
+            }
+        }
+        
+        .js-form-item {
+            padding-bottom: 1em;
+            // margin-bottom: 1em;
+            background-color: rgba(var(--drupalLightBlue), .25);
+
+            label {
+                padding-right: 1em;
+                padding-top: 0px;
+                padding-bottom: .5em;
+                font-weight: var(--semiBold);
+                font-size: var(--step--1);
+                padding: 1em;
+                margin-bottom: 1em;
+                background-color: rgb(var(--drupalDarkBlue));
+                color: #FFF;
+
+
+                &:after {
+                    content: ':';
+                    display: inline;
+                }
+            }
+
+            span {
+                margin-left: 1em;
+            }
+
+            .description {
+                font-size: var(--step--1);
+                color: #333;
+                margin-left: 1em;
+                margin-top: .75em;
+
+                a {
+                    font-size: var(--step--1);
+                    color: #333;
+                }
+            }
+            
+
+        }
+
+        .js-form-type-checkbox {
+            input {
+                position: relative;
+                float: inline-block;
+                appearance: auto;
+                opacity: 1;
+                width: initial;
+                height: initial;
+                top: 0;
+                left: 0;
+            }
+            label {
+                position: relative;
+                display: inline-block;
+                background-color: transparent;
+                padding: 0;
+                color: #333;
+
+                &:after {
+                    content: '';
+                }
+            }
+
+        }
+
+        select {
+            background: #FFFFFF;
+            color: #333;
+            font-family: var(--clocktower-sans-serif);
+            border: 1px solid rgb(var(--inputBorder, #959595));
+            // -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.5); 
+            // box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.05);
+            height: 2.5em;
+            border-radius: .2em;
+            padding-left: .5em;
+            width: auto;
+
+        }
+        
+        // Font awesome details
+        details {
+            margin: 1em;
+        }
+
+        textarea {
+            margin-left: 1em;
+        }
+
+        .form-submit {
+            background: #f3f3f3;
+            color: rgb(var(--drupalDarkBlue));
+            border-radius: .15em;
+            // width: 50%;
+            border: 1px solid rgb(var(--drupalDarkBlue));
+            margin-top: 2em;
+           
+           &:hover, &:focus {
+               background-color: rgb(var(--drupalDarkBlue));
+               color: #FFF;
+               border: rgb(var(--drupalDarkBlue)) !important;
+               box-shadow: none;
+           }
+        }
+    }
+}
+
+// Drupal Forms
+
+// .layout-builder-configure-block {
+// .js-form-item {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+// }
+
+// }
+
+
+
+.toolbar-tray-open {
+    &.toolbar-horizontal {
+        #main-navigation {
+            .nav-wrap {
+
+                top: 80px;
+            }
+        }
+    }
+}

@@ -1,0 +1,163 @@
+@use 'atoms/buttons' as buttons;
+@use 'base/breakpoints' as b;
+@use 'atoms/img' as i;
+@use 'layout/grid';
+
+
+.article-view-header {
+    padding-top: 2em;
+    width: 100%;
+    padding-bottom: 3em;
+    h1 {
+        margin: 0 auto;
+        position: relative;
+        padding-bottom: 0em;
+        text-align: center;
+        font-size: var(--step-6);
+        font-weight: var(--regular-weight);
+
+        
+    }
+
+    .block-breadcrumbs {
+
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        position: relative;
+        height: 2em;
+        width: 1px;
+        background-color: #333;
+        margin: 0 auto 1em;
+        bottom: 0;
+        transform: translateY(50%);
+
+        @include b.for-desktop-up {
+            margin: 0em auto 3em;
+            height: 4em;
+
+        }
+    }
+}
+
+.article-view {
+
+   
+        display: flex;
+        flex-direction: column;
+    
+    @include b.for-desktop-up {
+        display: grid;
+        grid-template-columns: [image] 375px [body] 1fr [sidebar] 15%;
+    }
+
+    .image {
+        // margin: 0 5% 2em;
+
+        width: 375px;
+        height: 500px;
+        overflow: hidden;
+
+        picture {
+            display: block;
+            height: auto;
+            width: 100%;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            margin: 0;
+
+            @include b.for-desktop-up {
+
+            }
+
+            img {
+                width: auto;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .body {
+
+        margin: 0 5%;
+
+        @include b.for-desktop-up {
+            margin-right: 2em;
+            margin-left: 100px;
+        }
+        .intro-header {
+            margin: 0;
+            
+            &:before {
+                display: none;
+            }
+            h2 {
+                padding: 0;
+                text-align: left;
+                max-width: unset;
+            }
+        }
+
+        .intro-paragraph {
+            margin: 0;
+
+            @include b.for-desktop-up {
+
+                margin-bottom: 1em;
+            }
+
+            p {
+
+                text-align: left;
+                font-size: var(--step-1);
+                padding-top: 1em;
+            }
+        }
+
+        p {
+            padding-bottom: .5em;
+        }
+
+    }
+
+    .sidebar {
+        position: relative;
+        margin: 0 5%;
+        @include b.for-desktop-up {
+            margin: unset;
+            padding-left: 2em;
+
+        }
+
+        @include b.for-desktop-up {
+
+            &:before {
+                position: absolute;
+                left: .5em;
+                display: block;
+                content: '';
+                height: 400px;
+                background-color: #cdcdcd;
+                width: 1px;
+            }
+        }
+
+        .sidebar-item {
+
+            margin-bottom: 1em;
+            h4 {
+                font-family: var(--clocktower-serif);
+                margin-top: 0;
+                margin-bottom: .25em;
+            }
+            span {
+                font-size: var(--step-0);
+                font-style: italic;
+            }
+        }
+    }
+
+}

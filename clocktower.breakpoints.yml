@@ -23,7 +23,15 @@ clocktower.large:
     - 2x
 
 clocktower.xl: 
-  label: for-desktop-up
+  label: for-large-desktop-up
+  mediaQuery: '(min-width: 1280px)'
+  weight: 1
+  multipliers: 
+    - 1x
+    - 2x
+
+clocktower.xxl: 
+  label: for-xl-desktop-up
   mediaQuery: '(min-width: 1280px)'
   weight: 1
   multipliers: 

@@ -1,4 +1,5 @@
-@use 'base/colors' as b;
+@use 'atoms/colors' as c;
+@use 'base/breakpoints' as b;
 
 @mixin gradient-mask {
     position: relative;
@@ -7,31 +8,67 @@
         position: relative;
     }
     
-    &:after {
+    // &:after {
+    //     content: '';
+    //     left: 0;
+    //     top: 0;
+    //     bottom: 4px;
+    //     right: 0;
+    //     display: block;
+    //     position: absolute;
+    //     background: rgb(2,0,36);
+    //     background: linear-gradient(125deg, rgba(2,0,36,.6) 0%, rgba(53,60,78,0) 85%);
+    //     z-index: 1;
+    //     mix-blend-mode: multiply;
+    // }
+    &:before {
         content: '';
-        left: 0;
-        top: 0;
-        bottom: 4px;
-        right: 0;
+        height: 100%;
+        width: 100%;
+        bottom: 0;
         display: block;
         position: absolute;
-        background: rgb(2,0,36);
-        background: linear-gradient(125deg, rgba(2,0,36,.6) 0%, rgba(53,60,78,0) 85%);
+        background-image: linear-gradient(270deg, rgba(28, 25, 25, 0) 20%, rgba(28, 25, 25, 0.75) 100%);
         z-index: 1;
         mix-blend-mode: multiply;
     }
 }
 
 
-.cover-image {
-    object-fit: cover;
-    overflow: hidden;
-    width: 100%;
-    height: 250px;
-    object-position: center center;
 
-    img {
-        max-width: 100%;
-        min-height: 100%;
+
+@mixin cover-image {
+
+    .cover-image {
+        object-fit: cover;
+        overflow: hidden;
+        width: 100%;
+        min-height: 250px;
+        object-position: center center;
+    
+        img {
+            max-width: 100%;
+            min-height: 100%;
+        }
+
+        &.full {
+                    
+            @include b.for-desktop-up {
+              width: 100%;
+              height: 100%;
+            }
+           
+            overflow: hidden;
+            position: relative;
+            
+    
+            img {
+                // height: 100%;
+                // width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+            
+        }
     }
 }

@@ -1,0 +1,236 @@
+@use 'atoms/mixins' as m;
+@use 'base/breakpoints' as b;
+
+.accordion-group {
+    position: relative;
+    // max-width: 95%;
+    margin: 0 auto;
+    width: 100%;
+
+
+    @include b.for-desktop-up {
+        min-width: 50%;
+        // max-width: 800px;
+        width: 100%;
+        // margin-top: 1em;
+        // margin-left: 0;
+        // margin-right: 0;
+        // margin-bottom: 3em;
+
+    }
+    .expand-all {
+        background: transparent;
+        color: hsla(var(--carnelian), 1);
+        padding: .25em 1em;
+        position: relative;
+        left: 100%;
+        transform: translateX(-100%);
+        border: 1px solid hsla(var(--carnelian), 1);
+        border-radius: .5em;
+        min-width: 5em;
+        margin-bottom: 1em;
+        cursor: pointer;
+        &:focus, &:hover {
+            background: hsla(var(--carnelian), 1);
+            color: hsla(var(--text-white), 1);
+            
+        }
+        &.collapse-all {
+            background: hsla(var(--carnelian), 1);
+            color: hsla(var(--text-white), 1);
+        }
+    }
+
+    .accordion-item {
+        position: relative;
+        padding: .5em;
+        
+       
+        &:after {
+            content: '';
+            width: 100%;
+            height: 1px;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: hsla(var(--text-black),.10);
+            // --gradient-color-one: var(--carnelian), 1;
+            // --gradient-color-two: hsla(0,85%,54%,1);
+            // @include m.linearGradient;
+        }
+
+        &:hover {
+            background: hsla(var(--highlighted), .25);
+            h3 {
+                button {
+
+                    color: hsla(var(--carnelian), 1);
+                }
+            }
+            
+            &:after {
+                height: 2px;
+                background-color: hsla(var(--carnelian), 1);
+                
+            }
+        }
+
+        h3 {
+    
+            width: 100%;
+            display: flex;
+            margin-bottom: 0;
+            font-weight: var(--light-weight);
+            margin-top: 0;
+            
+
+            button {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                background: transparent; 
+                color: hsla(var(--text-black),1);
+                font-weight: var(--light-weight);
+                position: relative;
+                width: 100%;
+                padding: .5em 1.5em .5em .25em;
+                font-size: var(--step-1);
+                text-align: left;
+                cursor: pointer;
+                
+                &:after {
+                    content: '\e59b';
+                    height: 25px;
+                    width: 25px;
+                    display: block;
+                    font-family: var(--font-awesome);
+                    transform: rotate(45deg);
+                    font-size: var(--step-0);
+                }
+                
+                span {
+                    font-weight: var(--light-weight);
+                    max-width: 85%;
+
+                }
+                
+    
+            }
+        }
+
+        .accordion-panel {
+            background: transparent;
+            // padding: 2em 2.5em;
+            display: none;
+            padding-left: 2em;
+            padding-bottom: 2em;
+            h4 {
+                margin-top: 2em;
+                margin-bottom: 0;
+                font-family: var(--clocktower-sans-serif);
+                font-weight: var(--semi-bold-weight);
+                // max-width: 75%;
+
+            }
+            p, ul, dl {
+                font-size: var(--step-0);
+                // max-width: 75%;
+            }
+        }
+
+        &.active {
+
+            &:before {
+                display: block;
+                content: '';
+                height: 100%;
+                width: 2px;
+                background-color: hsla(var(--carnelian), 1);
+            }
+            h3 {
+                button {
+                    color: hsla(var(--carnelian), 1);
+                    font-weight: var(--regular-weight);
+                    
+                    &:before {
+                        display: none;
+                    }
+                    &:after {
+                        transform: rotate(0deg);
+                    }
+                }
+            }
+            .accordion-panel {
+                display: block;
+                position: relative;
+
+
+                // &:before {
+                //     position: absolute;
+                //     height: 70%;
+                //     left: .5em;
+                //     display: block;
+                //     content: '';
+                //     width: 2px;
+                //     --gradient-color-one: 304,0%,75%, 1;
+                //     --gradient-color-two: 0,100%,100%, 1;
+                //     @include m.linearGradient;
+                // }
+            }
+        }
+    }
+
+    &.reduced {
+
+        .accordion-item {
+
+            &:hover {
+                background: transparent;
+            }
+            .action-items {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .accordion-trigger, a {
+                    font-size: var(--step--1);
+                    display: inline;
+                    background: transparent;
+                    border: 1px solid hsla(var(--carnelian),1);
+                    border-radius: .25em;
+                    color: hsla(var(--carnelian), 1);
+                    padding: .25em .5em;
+                    margin: .5em;
+                    text-decoration: none;
+                    line-height: 1;
+                    i {
+                        padding-right: .25em;
+                    }
+                    
+                    &:hover, &:focus {
+                        background-color: hsla(var(--text-white));
+                        color: hsla(var(--carnelian),1);
+                    }
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+
+            .accordion-panel {
+                margin-top: 1em;
+                padding: 1em;
+                background: hsla(var(--text-black),.05);
+            }
+
+            &:after {
+                display: none;
+            }
+        }
+        .expand-all {
+            display: none;
+        }
+    }
+}

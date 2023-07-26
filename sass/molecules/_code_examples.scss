@@ -1,0 +1,93 @@
+@use '../base/breakpoints' as b;
+
+pre {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+    border: 1px solid #cfcfcf;
+    border-radius: .25em;
+    margin-top: 3em;
+    code {
+        
+    }
+
+    button.copy-code {
+        position: absolute;
+        background-color: #FFF;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        border: 1px solid hsla(var(--carnelian),1);
+        color: hsla(var(--carnelian), 1);
+        cursor: pointer;
+        // height: 40px;
+        // width: 40px;
+        border-radius: 99em;
+        align-self: flex-end;
+        padding: .25em;
+        
+
+        &:before {
+            display: block;
+            font-size: var(--step--1);
+            font-family: var(--font-awesome);
+            height: 25px;
+            width: 25px;
+            margin: 0 auto;
+        }
+
+        &[data-status="copy"] {
+            &:before {
+
+                content: '\f0c5';
+            }
+
+
+        }
+
+        &[data-status="ready"] {
+            &:before {
+                content: '\f00c';
+                
+            }
+        }
+        
+
+        &:hover {
+            background: hsla(var(--carnelian), 1);
+
+            &:before {
+                color: #FFF;
+            }
+        }
+    }
+}
+
+.example {
+
+    display: block;
+    // align-items: center;
+    // justify-items: center;
+    padding: 2em;
+
+    border-radius: .25em;
+    background: #f8f8f8;
+
+    &--dark {
+        background: #333;
+        
+        p {
+    
+        }
+        // min-height: 3em;
+    }
+}
+
+
+.card-example {
+    min-height: 200px;
+    min-width: 200px;
+    background: #FFF;
+    
+}

@@ -1,0 +1,72 @@
+@use '../../../base/breakpoints' as b;
+
+// @property --num {
+//     syntax: "<integer>";
+//     initial-value: 0;
+//     inherits: false;
+// }
+
+.cards {
+
+    .card {
+
+        
+        &.quick-fact--number {
+            background-color: hsla(var(--carnelian),1);
+
+            .card-content {
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                box-sizing: border-box;
+                height: 100%;
+                span {
+                    color: hsla(var(--text-white),1);
+                    // transition: --num 1s;
+                    // --num: attr(data-number);
+                    
+                    // counter-reset: num var(--num);
+                    
+                    // &:after {
+                        //     content: counter(num);
+                        // }
+                    &.statistic {
+                        font-size: var(--step-7);
+                    }
+                }
+
+                h3 {
+                    position: relative;
+                    margin-top: 0;
+                    padding-top: 1em;
+                    color: hsla(var(--text-white),1);
+
+                    &.line-top {
+                        &:before {
+                            
+                            content: "";
+                            top: -.5em;
+                            border-bottom: 3px solid hsl(var(--text-white));
+                            display: block;
+                            height: 0.25em;
+                            position: absolute;
+                            margin: 0.5em auto;
+                            width: 3em;
+                            left: 0%;
+                            // transform: translateX(-50%);
+                        
+                        }
+                    }
+                }
+
+                p {
+                    text-align: left;
+                    font-size: var(--step-0);
+                    color: hsal(var(--text-white));
+                }
+                    
+            }
+            
+        }
+    }
+}

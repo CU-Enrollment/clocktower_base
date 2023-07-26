@@ -1,0 +1,179 @@
+@use 'atoms/colors';
+@use 'base/rounded';
+@use 'utilities/modifiers';
+// @use 'layout' as l;
+@use 'molecules/attribution';
+@use 'atoms/mixins' as m;
+
+@use 'base/breakpoints' as b;
+// @use '../atoms/deco' as d;
+
+.cards {
+
+    &.major-cards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        // padding: 1em;
+        max-width: unset;
+        padding: 0;
+        .card--major {
+            // width: 100%;
+            // aspect-ratio: 3/4;
+            flex: 0 0 100%;
+            min-height: 600px;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            box-sizing: border-box;
+            
+            @include b.for-tablet-portrait-up {
+                flex: 0 0 50%;    
+            }
+
+            @include b.for-desktop-up {
+                flex: 0 0 33%;        
+            }
+            .card-content {
+                // @include b.for-desktop-up {
+                //     margin: 1em;
+                // }
+
+                @include m.box-shadow;
+
+                position: relative;
+                margin: 1em;
+                // height: 100%;
+                align-self: stretch;
+                display: flex;
+                flex-direction: column;
+                box-sizing: border-box;
+                justify-content: space-between;
+                width: 100%;
+                padding: 1em 2em;
+
+                @include b.for-desktop-up {
+                    
+                    display: flex;
+                    max-width: 100%;
+                }
+
+                .card-text {
+                    margin: 0;
+                    display: grid;
+                    line-break: loose;
+                    h2 {
+                        margin-top: 0;
+                        margin-bottom: 0;
+                        position: relative;
+                        align-self: flex-end;
+                        padding-bottom: .5em;
+                        font-size: var(--step-3);
+                        word-wrap: break-word;
+                        line-height: 1.4;
+                        &:after {
+                            display: block;
+                            height: 3px;
+                            width: 100%;
+                            position: absolute;
+                            bottom: 0;
+                            content: "";
+                            @include m.linearGradient;
+                            --gradient-color-one: 0,74%,40%,1;
+                            --gradient-color-two: 0,74%,32%,1;
+                        }
+                    }
+    
+                    p {
+                        font-size: var(--step-0);
+                    }
+                }
+                .icon {
+
+                    .fontawesome-icon {
+
+                        font-size: var(--step-2);
+                        border: 2px solid hsla(var(--carnelian), 1);
+                        aspect-ratio: 1/1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 99em;
+                        color: hsla(var(--carnelian), 1);     
+                        height: 4rem;
+                        width: 4rem;
+                        padding: .25rem;
+                        
+                    }
+                  
+                }
+
+                .school-tags {
+                    display: flex;
+                    flex-direction: row;
+                    // gap: .25em;
+                    // margin-bottom: 5em;
+
+                    ul {
+                        padding-left: 0;
+                        li {
+                            display: inline-block;
+                        }
+                        .tag {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-family: var(--clocktower-sans-serif);
+                            font-size: var(--step--2);
+                            padding: .5em;
+                            
+                            div {
+                                // height: 40px;
+                                // width: 40px;
+                                background: #F7f7f7;
+                                padding: .5em;
+                                // border-radius: 99em;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+                        }
+                    }
+                }
+
+                .major-link {
+                    text-align: center;
+                    width: 100%;
+                    position: relative;
+                    bottom: -1em;
+                    left: 0;
+                    a {
+                        display: inline-block;
+                        margin: 1em auto 2em;
+                    }
+                    
+                }
+
+                
+            }
+                .major-restrictions {
+
+                    font-family: var(--clocktower-sans-serif);
+                    font-size: var(--step--1);
+                    display: block;
+                    line-height: 1.8;
+                    margin-top: 1em;
+                    margin-bottom: 1em;
+                    // border-radius: 1.5em;
+                    // border: 1px solid hsla(var(--carnelian), 1);
+                    text-decoration: none;
+                    color: hsla(var(--carnelian), 1);
+                    text-transform: uppercase;
+                    text-align: left;
+                
+                }
+        
+        }
+    }
+}

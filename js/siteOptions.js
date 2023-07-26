@@ -24,18 +24,21 @@ if (themeMode === 'dark') {
     enableDarkMode();
 }
 
-themeToggle.addEventListener('click', () => {
-    console.log("DARK MODE");
-    themeMode = localStorage.getItem("themeMode");
+if (themeToggle != null) {
 
-    if (themeMode !== 'dark'){
-        enableDarkMode();
-    }
-    else {
-        enableLightMode();
-
-    }
-});
+    themeToggle.addEventListener('click', () => {
+        console.log("DARK MODE");
+        themeMode = localStorage.getItem("themeMode");
+    
+        if (themeMode !== 'dark'){
+            enableDarkMode();
+        }
+        else {
+            enableLightMode();
+    
+        }
+    });
+}
 
 
 
@@ -65,25 +68,29 @@ if (animationStatus == 'paused') {
     stopAnimation();
 }
 
-animationToggle.addEventListener('click', () => {
-    console.log("ANIMATION MODE");
-    console.log(animationStatus)
-    // check if dark mode is enabled
-    animationStatus = localStorage.getItem("animationStatus");
-    console.log(animationStatus);
+if (animationToggle != null) {
 
-    if (animationStatus === 'running'){
-        // console.log(animationStatus)
-        console.log("i'm playing, but I should pause");
-        stopAnimation();
+    animationToggle.addEventListener('click', () => {
+        console.log("ANIMATION MODE");
+        console.log(animationStatus)
+        // check if dark mode is enabled
+        animationStatus = localStorage.getItem("animationStatus");
+        console.log(animationStatus);
+    
+        if (animationStatus === 'running'){
+            // console.log(animationStatus)
+            console.log("i'm playing, but I should pause");
+            stopAnimation();
+    
+        }
+        if (animationStatus === 'paused') {
+            console.log("I'm paused but should play");
+            enableAnimation();
+    
+            
+        }
+    });
+}
 
-    }
-    if (animationStatus === 'paused') {
-        console.log("I'm paused but should play");
-        enableAnimation();
-
-        
-    }
-});
 
 

@@ -1,0 +1,269 @@
+@use 'base/breakpoints' as b;
+@use 'atoms/img' as i;
+
+
+.overlap-card {
+
+    --button-border-color: 0, 0%, 100%;
+    --accent-primary: 33.7,94%, 54%;
+
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+
+    @include b.for-tablet-portrait-up {
+        display: grid;
+        grid-template-columns: [left-bleed] 10% [content] 1fr [right-bleed] 10%;
+        grid-template-rows: [top-bleed] 3em [image] 1fr [text] 1fr [bottom-bleed] 3em;
+
+        &:before {
+            content: '';
+            background: #ddd;
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            justify-self: center;
+            // grid-column: 1 / 5;
+            grid-row: 1 / 5;
+        }
+    }
+
+    @include b.for-desktop-up {
+        grid-template-columns: [left-padding] 12.5% [left] 40% [overlap] 10% [right] 30% [right-padding] 5%;
+        grid-template-rows: [top-bleed] 50px [content] 800px [bottom-bleed] 50px;
+        
+    }
+
+    @include b.for-large-desktop-up {
+        
+       
+    }
+
+    
+   
+    .panel-text {
+        
+        display: flex;
+        align-items: center;
+
+        @include b.for-tablet-portrait-up {
+            grid-row: text;
+            grid-column: content;
+
+        }
+
+        @include b.for-desktop-up {
+            grid-row: content;
+            grid-column: left / right;
+            justify-self: flex-end;
+        }
+        @include b.for-large-desktop-up {
+            
+        }
+        .text-wrap {
+
+            background: url("./../images/pattern.png");
+            color: hsla(var(--text-white), 1);
+            text-align: center;
+            padding: 3em 2em 5em;
+            z-index: 0;
+            &:after {
+                display: block;
+                content: ' ';
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                // background: var(--darkBackground, #333);
+                z-index: 0;
+            }
+
+            &:before {
+                z-index: 1;
+            }
+
+            // &.line-left {
+            //     &:before {
+            //         left: 50%;
+            //         height: 8.5em;
+
+            //         @include b.for-desktop-up {
+            //             left: 5em;
+            //             height: initial;
+
+            //         }
+            //     }
+            // }
+            @include b.for-tablet-portrait-up {
+                // background: var(--darkBackground, #333);
+
+            }
+
+            @include b.for-desktop-up {
+            }
+           
+            @include b.for-desktop-up {
+                padding: 5em;
+                // margin-left: 5em;
+                text-align: left;
+                grid-column: left;
+                grid-row: content;
+            }
+        
+    
+            h2 {
+                color: white;
+                font-weight: var(--extraLight);
+                // margin-top: 1.5em;
+                position: relative;
+                z-index: 1;
+                margin-top: .25em;
+
+                margin-bottom: .25em;
+
+                @include b.for-desktop-up {
+                    margin-bottom: 0;
+                    margin-left: 1em;
+                    margin-top: .5em;
+
+                }
+            }
+    
+            p, a {
+                color: white;
+                font-size: var(--step-0);
+                font-family: var(--clocktower-sans-serif);
+                position: relative;
+                z-index: 1;
+                margin-top: .5em;
+
+
+
+                @include b.for-desktop-up {
+                    margin-left: 3em;
+                    margin-right: 7em;
+                    margin-top: initial;
+                }
+            }
+
+            a.link-button {
+                margin-top: 1em;
+                display: inline-block;
+            }
+        }
+    }
+   
+    .panel-image {
+        @include i.cover-image;
+        // @include i.gradient-mask;
+        // background: rgb(0,0,0);
+        // background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+        
+        height: 100%; 
+        max-width: unset;
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-top: 3em;
+
+        @include b.for-tablet-portrait-up {
+            grid-row: image;
+            grid-column: content;
+            
+            &:after {
+                bottom: -1px;
+            }
+        }
+
+        @include b.for-desktop-up {
+            // aspect-ratio: 3 / 4;
+            grid-column: overlap / right-bleed;
+            grid-row: content;
+            // height: 100%;
+        }
+        
+
+        .gallery-grid {
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+
+            @include b.for-desktop-up {
+                // gap: 1em;
+
+            }
+
+            .cover-image.full {
+                // aspect-ratio: 4 / 3;
+                overflow: hidden;
+                min-height: unset;
+    
+                @include b.for-desktop-up {
+                    // aspect-ratio: 3 / 4;
+    
+                }
+
+                &.image {
+                    
+                    &-1, &-2 {
+                        grid-row: 1;
+                        // width: 200px;
+                        height: 150px;
+                        aspect-ratio: 4 / 3;
+                        align-self: self-end;
+
+                        img {
+                            width: 100%;
+                            height: auto;
+                            min-height: 150px;
+                            object-position: center;
+                            object-fit: cover;
+                            
+                            @include b.for-desktop-up {
+                                object-fit: contain;
+
+                            }
+                        }
+                    }
+                    &-1 {
+                        grid-column: 1;
+                       
+                    }
+
+                    &-2 {
+                        grid-column: 2;
+                        
+                    }
+
+                    &-3 {
+                        grid-row: 2;
+                        grid-column: 1/3;
+                        aspect-ratio: 16 / 9;
+                    
+                        img {
+                            width: 100%;
+                            object-position: bottom;
+            
+                            @include b.for-tablet-portrait-up {
+                                object-position: center;
+            
+                            }
+                            @include b.for-desktop-up {
+                                object-position: left;
+                                object-fit: cover;
+                            }
+                        }
+                    }
+                }
+
+
+                
+            }
+        }
+    
+       
+    }
+}

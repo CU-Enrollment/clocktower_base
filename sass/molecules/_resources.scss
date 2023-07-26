@@ -1,13 +1,27 @@
 @use '../base/breakpoints' as b;
-@use '../base/type' as t;
+// @use '../base/type' as t;
 
-// Top Resource Links
+
 #top-resources {
-
-
+    .layout__region {
+        overflow: visible;
+    }
+}
+// Top Resource Links
+.resource-menu {
+    z-index: 10000;
+    
+    @include b.for-phone-only {
+        margin: 0 1em 3em;
+    }    
+    margin-bottom: 5em; 
+    
+    .layout__region {
+        overflow: visible;
+    }
     h2 {
         text-align: center;
-        font-weight: 300;
+        font-weight: var(--light-weight);
     }
 
     p {
@@ -16,25 +30,34 @@
         padding-top: 2em;
     }
     ul:first-of-type {
-        // background: var(--menuBG, #fff);
+
+        @include b.for-phone-only {
+            width: 100%;
+            padding: 0 2em;
+            box-sizing: border-box;
+        }
         list-style: none;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         padding-left: 0px;
-        padding-top: 1.5em;
+        // padding-top: 1.5em;
         height: auto;
         max-width: none;
         width: 50%;
         margin: 0 auto;
-        // top: 75px;
-        // z-index: 1;
-        // background: white;
-        // padding: 1em;
-
+       
         @include b.for-desktop-up  {
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
+            width: 75%;
+            
+        }
+
+        @include b.for-large-desktop-up {
+            width: 60%;
+            padding-top: 2em;
+
         }
 
         .top-level {
@@ -43,31 +66,61 @@
             text-align: left;
             display: block;
             flex: 1 1 auto;
-            // font-size: var(--step-1);
             text-align: center;
             position: relative;
-            // &:before {
-            //     content: '';
-            //     display: block;
-            //     border-left: 1px solid #333;
-            // }
-            // &:after {
+            padding: .5em 0;
+            // border-bottom: 1px solid #ccc;
+            z-index: 1;
+            
+            
+           
+            &:before {
+                position: absolute;
+                background: #ccc;
+                left: 0;
+                content: '';
+                z-index: 0;
+                width: 100%;
+                height: 1px;
+                bottom: 0;
 
-            // }
-            padding: 0 2.5%;
-            border-left: 1px solid #d3d3d3;
-
-        
-            &:last-of-type {
-                border-right: 1px solid #d3d3d3;
-
+                @include b.for-desktop-up {
+                    height: 30%;
+                    width: 1px;
+                    top: 50%;
+                    transform: translate(0, -50%);
+    
+                }
+                
             }
-            &.active {
-                ul.sub-menu {
-                    display: block;
+
+            
+
+
+            &:first-of-type {
+
+                @include b.for-desktop-up {
+
+                    &:before {
+                        display: none;
+                        // left: -2px;
+                    }   
                 }
             }
+            
+           
 
+            @include b.for-desktop-up {
+             
+
+                &:before {
+
+                }
+                &:last-of-type {
+    
+                }
+            }
+           
             .toggle-menu {
         
                 background: transparent;
@@ -75,42 +128,135 @@
                 cursor: pointer;
                 position: relative;
                 // margin-left: 10px;
-                margin: 0;
+                margin: .5em 0 0;
                 // padding: 1.5em 0px;
-                display: inline-block;
-                margin: 0 0 0 .25em;
+                display: flex;
                 padding: 0;
                 font-size: var(--step-1);
                 width: 100%;
                 // @include b.for-tablet-landscape-up {
-                    
+                    align-items: center;
+                    justify-content: center;
                 // }
+                color: hsla(var(--text-black),1);
+
                 &:after {
                     content: '\f078';
-                    color: var(--cornellRed, #b31b1b);
-                    font-family: 'FontAwesome';
-                    height: 15px;
-                    width: 15px;
+                    color: hsla(var(--carnelian),1);
+                    font-family: var(--font-awesome);
                     font-size: var(--step--1);
                     margin-left: 1em;
+                    display: inline-block;
                 }
             }
+
+            &.active {
+
+
+                .toggle-menu {
+                    // background: linear-gradient(180deg, rgb(235, 235, 235) 0%, rgb(255, 255, 255) 100%);
+                    &:after {
+                        transform: rotate(180deg);
+                    }
+                }
+                ul.sub-menu {
+                    display: block;
+                    position: relative;
+                    
+
+                    @include b.for-desktop-up {
+                        position: absolute;
+                        box-shadow:
+                        0  5px 10px var(--cardShadowOne, rgba(154,160,185,0.05)),
+                        0 10px 15px var(--cardShadowTwo, rgba(166,173,201,0.2));
+                    }
+                                
+                }
+            }
+
 
             // Dropdown Menu, first child
             ul.sub-menu {
                 list-style: none;
                 padding-left: 0px;
-                background: var(--menuColor, #FFF);
+                background: hsla(var(--menu-background), 1);
                 display: none;
                 position: absolute;
                 z-index: 100;
                 max-width: unset;
                 width: 100%; 
                 left: 0;
-                
+                padding: 1.25em 0 0;
+                // margin-top: 1em;
+                // padding: 1.5em 0;
+            
                 li {
                     border-bottom: 0px;
-                    margin: 0 1.25em;
+                    // margin: 0 1.25em;
+                    line-height: 3em;
+                    
+                    
+                    
+                    
+                    a {
+                        display: block;
+                        color: hsla(var(--text-black),1);
+                        text-decoration: none;
+                        font-size: var(--step-1);
+                        padding: .5em 1em;
+                        position: relative;
+                        animation: unset;
+                        background: transparent;
+                        &:before {
+                            content: unset;
+                        }
+
+                        
+                        &:after {
+                            bottom: 0;
+                            content: '';
+                            width: 100%;
+                            height: 1px;
+                            background-color: rgb(240, 240, 240);
+                            display: block;
+                            position: absolute;
+
+                            @include b.for-desktop-up {
+                                width: 50%;
+
+                                left: 50%;
+                                transform: translate(-50%, 0);
+
+                            }
+
+                        
+                        }
+
+                        
+                        
+
+                        &:hover, &:focus  {
+                            background: #b31b1b;
+                            color: white;
+                        
+                            &:after {
+                                
+                                background-color: transparent;
+                                
+                            }
+                        }
+
+                       
+                    }
+
+                    &:last-of-type {
+                        a {
+                            &:after {
+                                content: unset;
+                            }
+                        }
+                    }
+
 
                     // any other children menus
                     > ul:first-of-type {

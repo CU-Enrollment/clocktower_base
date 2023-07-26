@@ -1,0 +1,681 @@
+@use 'atoms/buttons' as buttons;
+@use 'base/breakpoints' as b;
+@use 'atoms/img' as i;
+
+
+
+.tabpanel {
+
+    &--regular {
+
+        // margin-top: 2em;
+        position: relative;
+
+        // &:before {
+        //     width: 50%;
+        //     background-color: hsla(var(--text-black), 0.25);
+        //     position: absolute;
+        //     top: 0em;
+        //     left: 50%;
+        //     content: '';
+        //     transform: translateX(-50%);
+        //     height: 1px;
+
+        // }
+        [role='tablist'] {
+            padding: 0;
+            // margin: 0 0 20px .6em;
+            position: relative;
+            z-index: 2;
+            padding-top: 3em;
+            display: none;
+
+            .tab-indicator {
+                display: block;
+                position: absolute;
+                content: '';
+                height: 5px;
+                background: hsla(var(--carnelian), 1);
+                bottom: -3px;
+                left: 0;
+                outline: none;
+                transition: left 500ms ease-in-out;
+            }
+    
+    
+            @include b.for-desktop-up {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                position: relative;
+            }
+    
+            [role='tab'] {
+                flex: 1 1 0;
+                font-size: var(--step-2);
+                color: hsla(var(--text-black), .55);
+                cursor: pointer;
+                padding: .5em 1em;
+                background-color: transparent;
+                border-bottom: 1px solid hsla(var(--text-black), .5);
+                position: relative;
+
+
+                &.active {
+                    position: relative;
+                    color: hsla(var(--carnelian), 1);
+                }
+                //     &:after {
+                //         display: block;
+                //         position: absolute;
+                //         content: '';
+                //         width: 100%;
+                //         height: 5px;
+                //         background: hsla(var(--carnelian), 1);
+                //         bottom: -3px;
+                //         left: 0;
+                //         outline: none;
+                //     }
+                // }
+
+                
+
+                &:hover:not(.active) {
+
+                    color: hsla( var(--text-black), .75);
+                    
+                    &:after {
+                        display: block;
+                        position: absolute;
+                        content: '';
+                        width: 100%;
+                        height: 2px;
+                        background: hsla(var(--text-black), .75);
+                        bottom: -2px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                    
+                }
+            }
+    
+        }
+    
+        .tabgroup {
+
+            margin: 3em 1em;
+
+
+            [role='tabpanel'] {
+                display: none;
+                
+                &.active {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+
+.hero {
+
+    display: flex; 
+    flex-direction: column;
+    // background: #FFF;
+    position: relative;
+    margin-top: -1.5em;
+    
+
+    @include b.for-tablet-portrait-up {
+        margin-top: 1em;
+        
+    }
+
+    @include b.for-large-desktop-up {
+
+        display: grid;
+        width: 100%;
+        padding-top: 5em;
+        overflow: hidden;
+
+    }
+   
+    .clipped-bg {
+        min-height: 25vh;
+        width: 100%;
+        position: absolute;    
+        background-color: #333333;
+        background-image: var(--pattern);
+        clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
+        display: none; 
+
+        @include b.for-tablet-portrait-up {
+            display: block;
+            min-height: 30vh;
+        }
+
+        @include b.for-desktop-up {
+            min-height: 15%;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+        }
+
+        @include b.for-large-desktop-up {
+            min-height: 80%;
+        }
+
+        @include b.for-xl-desktop-up {
+            min-height: 100%;
+
+        }
+    }
+    
+
+    .tabpanel {
+        // overflow-x: hidden;
+        margin: 0;
+        grid-column: 1 / 4;
+        position: relative;
+        
+        @include b.for-tablet-portrait-up {
+            padding-top: 3em;
+        }
+
+        @include b.for-desktop-up {
+            padding-top: 5em;
+        }
+        @include b.for-large-desktop-up {
+            display: grid;
+            grid-template-columns: 85% 15%;
+            padding-top: 0;
+            margin: 0;
+            // margin-top: 2.5em;
+        }
+
+        .tabs {
+            // display: none !important;
+            [role='tab'] {
+                text-align: left;
+                position: relative;
+                align-items: center;
+                // padding: .5em 1em;
+                color: #FFF;
+                font-size: var(--step-0);
+
+                &:focus {
+                    span {
+
+                        outline: 5px auto -webkit-focus-ring-color;
+                    }
+
+                    &:not(:focus-visible) {
+                        span {
+                            outline: none;
+                        }
+                    }
+                }
+                @include b.for-large-desktop-up {
+                    display: flex;
+                    width: 100%;
+
+                    span {
+                        padding: .5em 1em;
+                    }
+                }
+
+                &.active {
+                    background: #FFF;
+                    color: #333;
+                    &:before {
+                        content: '\f0d9';
+                        display: block;
+                        position: absolute;
+                        color: #FFF;
+                        font-family: var(--font-awesome);
+                        font-size: 2em;
+                        left: -.25em;
+                        font-weight: 900;
+                    }
+                }
+
+                &:not(.active) {
+                    &:hover {
+                        background: #d7d7d7;
+                        color: #333;
+                        width: 100%;
+                    }
+                    
+                }
+            }
+        }
+    
+        [role='tablist'] {
+            list-style: none;
+            padding: 0;
+            // margin: 0 0 20px .6em;
+            grid-column: 2;
+            justify-content: left;
+            position: absolute;
+            z-index: 2;
+            padding-top: 3em;
+            display: none;
+
+            button {
+                // @include buttons.bottom-to-full-outline;
+                cursor: pointer;
+                background: transparent;
+                
+                &:focus {
+                    // outline: 1px dotted #000;
+                    outline: none;
+
+                    &:not(:focus-visible) {
+                    }
+                }
+            }
+
+            @include b.for-large-desktop-up {
+                padding-top: 2em;
+                display: flex;
+                flex-direction: column;
+                left: -1px;
+            }
+        
+        }
+    
+        .tabgroup {
+            width: 100%;
+            clear: both;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            position: relative;
+            grid-column: 1/3;
+            overflow: hidden;
+        
+            &:before {
+                display: inline-block;
+                height: 3em;
+                width: 1px;
+                margin: 0 auto;
+
+                background-color: #cecece;
+                content: '';
+
+                @include b.for-tablet-portrait-up {
+                    display: none;
+                }
+            }
+
+            @include b.for-tablet-portrait-up {
+                flex-direction: column;
+            }
+
+            [role='tabpanel'] {
+                // flex: 1 0 100%;
+                // background: blue;
+                // height: 800px;
+                // align-items: center;
+                grid-template-rows: repeat(1fr);
+                grid-template-columns: 1fr;
+                display: grid;
+
+                @include b.for-tablet-portrait-up {
+                   
+                    margin: 0 10%;
+
+                    &:first-of-type {
+                        padding-top: 5%;
+                    }
+                }
+
+                @include b.for-desktop-up {
+
+                    &:first-of-type {
+                        padding-top: unset;
+                    }
+
+                    position: relative;
+                    padding-top: 5%;
+
+                }
+                @include b.for-large-desktop-up {
+                    grid-template-columns: [text-start] 10% [image-one-start] 35% [image-one-center] 22.5% [image-two-start text-end] 17.5% ;
+                    grid-template-rows: [header] 55% [content-area] 45%;
+                    margin: 0;
+                    padding-top: 0;
+                    display: none;
+                    margin-bottom: 10em;
+                    position: relative;
+                }
+                
+                @include b.for-large-desktop-up {
+                    // grid-template-rows: [header] 20% [content-area] 1fr [image-two-top] 30%;
+                }
+                
+                
+                &:not(:last-of-type) {
+                    &:after {
+                        width: 75%;
+                        height: 1px;
+                        background: #cecece;
+                        margin: 1em auto;
+                        content: '';
+                        display: block;
+
+                        @include b.for-tablet-portrait-up {
+                            width: 50%;
+                            margin: 1.5em auto 2em;
+                        }
+
+                        @include b.for-desktop-up {
+                            display: none;
+
+                        }
+                        @include b.for-large-desktop-up {
+                        }
+        
+                    }
+
+                }
+                img {
+                    // position: absolute;
+                    // min-width: 100%;
+                    // min-height: 100%;
+                    object-fit: cover;
+                    width: auto;
+                    height: auto;
+                }
+                   
+                .panel-text {
+
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 1em; 
+                    z-index: 2;
+                    opacity: 1;
+
+                    @include b.for-tablet-portrait-up {
+                        grid-row: content-area;
+                    }
+
+                    @include b.for-desktop-up {
+                        padding-left: .25em;
+                    }
+                    @include b.for-large-desktop-up {
+                        opacity: 0;
+                        grid-row: header;
+                        grid-column: text-start / text-end;
+                        margin-top: 5em;
+                        text-shadow: 1px 1px 2px #373737, 1px 1px 12px #000;                        
+                    }
+
+
+                    span {
+                        text-transform: uppercase;
+                        color: #b31b1b;
+                        margin: 2em auto .5em;
+                        display: block;
+                        font-weight: var(--regular-weight);
+                        font-family: var(--clocktower-sans-serif);
+                        font-size: var(--step--1);
+                        // margin-bottom: 1em;
+    
+    
+                        @include b.for-tablet-portrait-up {
+                        }
+    
+                        @include b.for-large-desktop-up {
+                            display: none;
+    
+    
+                        }
+    
+                    }
+
+                    h2 {
+                        font-family: var(--clocktower-serif);
+                        color: #333;
+                        font-size: var(--step-6);
+                        font-weight: var(--regular-weight);
+                        position: relative;
+                        z-index: 10;
+                        margin: 0;
+                        padding-bottom: .5em;
+                        text-align: center;
+        
+                        &:after {
+                            content: '';
+                            height: 4px;
+                            background: #b31b1b;
+                            width: 2.5em;
+                            display: block;
+                            margin: 0 auto;
+                            margin-top: .5em;
+                        }
+        
+                        @include b.for-tablet-portrait-up {
+                            font-weight: var(--regular-weight);
+                            font-size: var(--step-5);
+                           
+        
+                        }
+
+                        @include b.for-large-desktop-up {
+                            text-align: left;
+                            color: var(--tabPanelText, #FFF);
+                            align-self: start;
+                            // font-size: var(--step-7);
+                            font-size: var(--step-4);
+
+                            &:after {
+                                display: none;
+                            }
+                        }
+
+                        @include b.for-xl-desktop-up {
+                            font-size: var(--step-6);
+                        }
+                        
+                    }
+        
+                    p {
+                        
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;                   
+                        font-family: var(--clocktower-sans-serif);
+                        font-size: var(--step-1);        
+                        position: relative;
+                        z-index: 10;
+                        color: #333333;
+                        text-align: center;
+                        margin-top: 0;
+                        align-self: center;
+
+                        font-weight: var(--light-weight);
+
+
+                        @include b.for-tablet-portrait-up {
+                            font-size: var(--step-2);        
+                            max-width: 65ch;
+
+                        }
+
+                        @include b.for-desktop-up {
+                            font-weight: var(--regular-weight);
+                            font-size: var(--step-1);
+                        }
+                        @include b.for-large-desktop-up {
+                            color: var(--tabPanelText, #FFF);
+                            text-align: left;
+                            max-width: 60%;
+                            align-self: start;
+                            font-size: var(--step-2);        
+
+                        }
+
+                        @include b.for-xl-desktop-up {
+                            font-size: var(--step-2);
+
+                        }
+
+                    }
+        
+                    
+                }
+
+
+                .tab-image {
+
+                    overflow: hidden;
+
+                    &--large {
+                        width: clamp(320px, 100%, 990px);
+                        padding-bottom: 0px;
+                        z-index: 1;
+                        grid-row-start: 1;
+                        padding-top: 1em;
+                        min-height: 100%;
+                        opacity: 1;
+                        aspect-ratio: 4/3;
+                                    
+                        @include b.for-tablet-portrait-up {
+                            padding-bottom: 1em;
+                            padding-top: 0;
+                            // min-height: 500px;
+                            // margin-bottom: 1em;
+                            aspect-ratio: 16/9;
+                            
+
+                        }
+                        @include b.for-large-desktop-up {
+                            opacity: 0;
+                            min-height: unset;
+                            padding-bottom: 0em;
+                            grid-column: image-one-start / 5;
+                            grid-row: 1/3;
+                            align-self: self-start;
+                            background-color: #FFF;
+                            width: 100%;
+                            position: relative;
+                           
+                        }
+                        
+                        &:after {
+                            background: #000000; 
+                            background: linear-gradient(90deg, rgba(0, 0, 0, .85) 0%, rgba(0, 0, 0, 0) 85%);
+                        }
+
+                        img {
+                           
+                            // object-fit: cover;
+                            object-fit: cover;
+
+                            // @include b.for-tablet-portrait-up {
+                                // width: 600px;
+                                width: 100%;
+                                height: 100%;
+                            // }
+
+                            @include b.for-large-desktop-up {
+                                object-fit: cover;
+                               
+                            }
+                        }
+                    }
+        
+                    &--small {
+                        display: none; 
+                        z-index: 2;
+                        grid-column: image-two-start / padding-right;
+                        // margin-top: 10%;
+                        justify-self: end;
+                        display: none;
+                        position: relative;
+                        aspect-ratio: 4 / 3;
+                        opacity: 0;
+                        
+                        @include b.for-tablet-portrait-up {
+                            grid-row: content-area;
+                        }
+                        @include b.for-large-desktop-up {
+                            display: block;
+                            grid-row-start: content-area;
+                            position: absolute;
+
+                        }
+                       
+                        img {
+                            object-fit: cover;
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                }
+          
+
+                &.active {
+
+                    @include b.for-tablet-portrait-up {
+
+                        display: grid;
+                    }
+
+                    .panel-text {
+                        opacity: 1;
+                        --dist: calc( var(--toggle) * 10%); 
+            
+                        animation: fadeIn 1s infinite;
+                        animation-play-state: var(--playState);
+            
+                        animation: shiftUp 1.25s;
+                        animation-play-state: var(--playState);
+                        
+                        animation-fill-mode: forwards;
+            
+                        
+                    }
+            
+                    .tab-image {
+
+                        &--large {           
+                            opacity: 1;
+                            --dist: calc( var(--toggle) * 10%); 
+    
+                            @include b.for-desktop-up {
+                            }
+                            @include b.for-large-desktop-up {
+                                animation: fadeIn 1s infinite;
+                                animation-play-state: var(--playState);
+                    
+                                animation: shiftUp 1s;
+                                animation-play-state: var(--playState);
+                            }
+                
+                        }
+                
+                        &--small {
+                            opacity: 1;
+                
+                            --dist: calc( var(--toggle) * 10%); 
+                
+                            animation: fadeIn 1s infinite;
+                            animation-play-state: var(--playState);
+                
+                            
+                            animation: shiftUp 1s;
+                            animation-play-state: var(--playState);
+                                
+                        }
+                    }
+
+                }
+            }  
+        }
+    }
+}
+
+

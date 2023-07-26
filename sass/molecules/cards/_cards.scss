@@ -1,0 +1,257 @@
+@use 'atoms/colors';
+@use 'base/rounded';
+@use 'utilities/modifiers';
+// @use 'layout' as l;
+@use 'molecules/attribution';
+@use 'atoms/mixins' as m;
+
+@use 'base/breakpoints' as b;
+// @use '../atoms/deco' as d;
+
+.cards {
+    
+    &.layout--threecol-section {
+
+        
+        .layout__region {
+
+            flex: 1 1 100%;
+            
+            
+            @include b.for-desktop-up {
+
+                flex: 0 1 33%;
+            }
+        }
+
+        &.quick-fact-cards {
+
+            .layout__region {
+                flex: 1 1 100%;
+                
+               
+                @include b.for-desktop-up {
+
+                    > div {
+                        height: 100%;
+                    }
+
+                    flex: 1 0 1fr;
+
+                }
+            }
+    
+
+        }
+    }
+
+    &.layout--twocol-section {
+        > div {
+
+            flex: 1 0 100%;
+
+            @include b.for-large-desktop-up {
+
+                flex: 1 0 49%;
+            }
+        }
+    }
+
+    &.dark-bg {
+        
+            padding: 1.5em 1em;
+            background: #333;
+            margin: 2em 0;
+        
+            @include b.for-desktop-up {
+                background-color: unset;
+                margin: 0 auto;
+                padding: 0;
+            }
+    }
+
+    .card {
+
+        @include b.for-large-desktop-up {
+
+            padding: 1em 2em;
+        }
+    }
+
+    &.row-view {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        // gap: 1em;
+        margin: 0 2.5%;
+        
+
+
+        @include b.for-desktop-up {
+            flex-direction: row;
+            flex-wrap: wrap;
+            // padding: 5% 0;
+            padding: 0;
+        }
+     
+    }
+    
+    &.list-view {
+        flex-direction: column;
+        display: flex;
+
+        .card {
+            flex-direction: row;
+
+            @include b.for-desktop-up {
+                --cardMargin: 1.5em 1em 1.5em 1em;
+            }  
+            
+            // @include for-tablet-portrait-up {
+            //     --cardMargin: 1em;
+    
+            // }
+            
+            margin: var(--cardMargin);
+
+            .cover-image {
+                flex: 1;
+            }
+
+
+
+            .card-text {
+                flex: 3;
+                margin-left: 50px;
+                position: relative;
+                        text-decoration: none;
+
+            }
+
+        }
+    }
+
+    &.grid-view {
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex-direction: row;
+
+        .card {
+            flex-direction: column;
+            
+            
+
+            @include b.for-desktop-up {
+                --cardMargin: 1em 1.5em 1em 1.5em;
+            }  
+            
+            @include b.for-tablet-portrait-up {
+                --cardMargin: .5em;
+    
+            }
+
+           
+            
+            margin: var(--cardMargin);
+
+            .card-text {
+                padding: 1em 1.5em;
+                min-height: 200px;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                
+                h2 {
+                    color: var(--cardText, rgba(0,0,0,1));
+                }
+
+                p {
+                    color: hsla(var(--text-black),1);
+
+                }
+                
+            }
+    
+            &:first-of-type {
+                --topLeftRadius: 0;
+                --toprightRadius: .5em;
+                --bottomRightRadius: 0;
+                --bottomLeftRadius: .5em;
+                @extend .rounded;
+            }
+        }
+
+        a.card {
+            transform: translateY(0px);
+            transition: transform .5s ease-in-out;
+            &:hover {
+                transform: translateY(-10px);
+                transition: transform .5s ease-in-out;
+            }
+        }
+    }
+
+    .card {
+        
+        // display: flex;
+        // background-color: var(--cardBackground, #FFF);
+        // overflow: hidden;
+        text-decoration: none;
+        height: 100%;
+        // margin: 0 .75em;
+
+
+        .card-text {
+            text-decoration: none;
+            // margin: 1em;
+
+            @include b.for-desktop-up {
+                margin: 2em 3em;
+
+            }
+
+            h3 {
+                font-size: var(--step-3);
+                font-family: var(--clocktower-serif);
+                
+            }
+
+            p {
+                font-size: var(--step-1);
+                font-family: var(--clocktower-sans-serif);
+            }
+
+            a.card-btn {
+                margin: 0 auto;
+                background: var(--cardBtnBG, #B31b1b);
+                color: var(--cardTxt, #FFF);
+            }
+        }
+
+        
+        &.icon-card {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+
+            h2 {
+                
+            }
+
+            p {
+                text-align: center;
+            }
+        }
+
+        
+    }
+    
+
+}
+
+

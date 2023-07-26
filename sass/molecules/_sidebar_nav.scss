@@ -1,0 +1,65 @@
+@use 'base/breakpoints' as b;
+
+.sidebar {
+    
+    &--nav {
+        background: #F7f7f7;
+        display: block;  
+
+        nav {
+           
+            ul {
+                list-style: none;
+
+                li {
+
+                    @include b.for-desktop-up {
+                        display: block;
+                    }
+
+                    ul {
+                        list-style: none;
+                        padding-left: 1em;
+                        display: block;
+
+                       
+                        li {
+                            display: block;
+                        }
+                    }
+
+                    &.menu-item--expanded, &menu-item--collapsed
+ {
+                        
+ }                }
+            }
+
+            a {
+                border: 0px;
+                text-decoration: none;
+                color: hsla(var(--text-black), 1);
+                font-size: var(--step-0);
+
+                &:after {
+                    content: '';
+                    display: block;
+                    width: 0%;
+                    height: 2px;
+                    background-color: red;
+                }
+
+                &:hover, &:focus {
+                    width: 100%;
+                    color: hsla(var(--carnelian),1);
+                }
+            }
+        }
+    }
+
+}
+
+.side-navigation {
+    .flex-rr {
+        flex-direction: row-reverse;
+    }
+}

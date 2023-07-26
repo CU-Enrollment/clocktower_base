@@ -1,4 +1,5 @@
-@use 'base/colors';
+@use 'atoms/colors';
+@use '../base/breakpoints' as b;
 
 
 
@@ -7,14 +8,14 @@ form {
 
     background: rgb(var(--formBG, #FFF));
     padding: 1em 3em;
-    
-
 }
+
+
 
 label, legend {
     font-family: var(--clocktower-sans-serif);
     color: #333;
-    font-weight: 400;
+    font-weight: var(--regular-weight);
     font-size: var(--step-0);
     display: block;
     padding-top: .5em;
@@ -22,7 +23,7 @@ label, legend {
 
 
 // Text and Email Inputs  
-input[type="text"], input[type="email"], input[type="password"] {
+input[type="text"], input[type="email"], input[type="password"], input[type='tel'] {
     background: #FFFFFF;
     color: #333;
     font-family: var(--clocktower-sans-serif);
@@ -63,12 +64,10 @@ label + select {
 select {
 
     // Reset the select appearance
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+   
     background-color: transparent;
     border: none;
-    padding: 0 1em 0 0;
+    padding: 0;
     margin: 0;
     width: 100%;
     font-family: inherit;
@@ -78,10 +77,20 @@ select {
     outline: none;
     z-index: 1;
 
+
+    @include b.for-desktop-up {
+         appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
     //style it
 
     font-family: var(--clocktower-sans-serif);
 
+    &:focus {
+        outline: -webkit-focus-ring-color auto 1px;
+
+    }
     &::-ms-expand {
         display: none;
     }
@@ -107,7 +116,7 @@ div.select {
 
     &:after {
         content: "\f0d7";
-        font-family: 'FontAwesome';
+        font-family: var(--font-awesome);
         width: 0.8em;
         height: 0.5em;
         // background-color: rgb(var(--select-arrow));
@@ -216,6 +225,7 @@ fieldset {
 
     }
 }
+
 fieldset.checkboxes { 
 
     label {
@@ -258,7 +268,7 @@ fieldset.checkboxes {
 		&:before {
 			background-color: white;
 			border-radius: 5%;
-		    font-family: 'FontAwesome';
+		    font-family: var(--font-awesome);
             color: #333;
 		}
 	}
@@ -301,3 +311,218 @@ input[type="submit"] {
   
     }
 }
+
+
+// RADIO BUTTON
+input[type='radio'] {
+    appearance: none;
+    background: none;
+    z-index: 2;
+    opacity: .00001;
+    content: ' ';
+    position: absolute;
+    border: 1px solid;
+    border-radius: 100%;
+    // border: 1px solid;
+    height: 1.125em;
+    width: 1.125em;
+    top: .825em;
+    left: .125em;
+
+}
+
+input[type="radio"] ~ label {
+    // display: block;
+    // padding: .5em;
+    // margin-left: 1em;
+    // display: flex;
+    // align-items: center;
+    padding: .75em .5em .75em 2em;
+    display: inline-block;
+    cursor: pointer;
+    &:before {
+
+        box-shadow: 0 0 0 0px rgb(0 0 0 / 0%);
+        content: '';
+        border: 1px solid;
+        border-color: transparent;
+        border-radius: 100%;
+
+        width: 1.125em;
+        height: 1.125em;
+        position: absolute;
+        left: .125em;
+        top: .825em;
+
+    }
+
+    &:after {
+
+        position: absolute;
+        border-radius: 100%; 
+        border: 1px solid;
+        content: '';
+        width: 1.125em;
+        height: 1.125em;
+        left: .125em;
+        top: .825em;
+        border-color: #767676;
+    }
+
+   
+    
+}
+
+input[type="radio"]:checked ~ label {
+    &:before {
+        box-shadow: 0 0 0 2px #0d5192;
+
+    }
+
+    &:after {
+        box-shadow: inset 0 0 0 1em #0d5192;
+        border-color: #FFF;
+        border-width: 4px;
+    }
+
+}
+
+input[type="radio"]:focus ~ label {
+    &:before {
+        box-shadow: 0 0 0 4px #228bec;
+    }
+}
+
+
+
+
+
+
+
+
+// Checkboxes
+input[type='checkbox'] {
+    appearance: none;
+    background: none;
+    z-index: 2;
+    opacity: .00001;
+    content: ' ';
+    position: absolute;
+    border: 1px solid;
+    // border: 1px solid;
+    height: 1.125em;
+    width: 1.125em;
+    top: .825em;
+    left: .125em;
+
+}
+
+input[type="checkbox"] ~ label {
+    padding: .75em .5em .75em 2em;
+    display: inline-block;
+    cursor: pointer;
+    &:before {
+
+        box-shadow: 0 0 0 0px rgb(0 0 0 / 0%);
+        content: '';
+        border: 1px solid;
+        border-color: transparent;
+        width: 1.125em;
+        height: 1.125em;
+        position: absolute;
+        left: .125em;
+        top: .825em;
+
+    }
+
+    &:after {
+
+        position: absolute;
+        border: 1px solid;
+        content: '';
+        width: 1.125em;
+        height: 1.125em;
+        left: .125em;
+        top: .825em;
+        border-color: #767676;
+    }
+
+   
+    
+}
+
+input[type="checkbox"]:checked ~ label {
+
+
+    &:before {
+        background: #1277d4;
+
+    }
+
+    &:after {
+        // box-shadow: inset 0 0 0 1em #0d5192;
+        border: 0;
+        border-left: 3px solid #FFF;
+        border-bottom: 3px solid #FFF;
+        height: 8px;
+        width: 16px;
+        transform: rotate(310deg);
+        top: 1.05em;
+        left: .25em;
+
+    }
+
+}
+
+input[type="checkbox"]:focus-within ~ label {
+    &:before {
+        box-shadow: 0 0 0 2px #0d5192;
+    }
+}
+
+
+select {
+    border: 1px solid rgb(var(--inputBorder, #959595));
+    appearance: auto;
+    height: 2.5em;
+    font-size: var(--step--1);
+    border-radius: 0.2em;
+    color: hsl(var(--text-black));
+    &[aria-label="Month"] {
+        width: 7em;
+    }
+
+    &[aria-label="Day"] {
+        width: 4em;
+    }
+
+    &[aria-label="Year"] {
+        width: 5em;
+    }
+    &#form_6e063a93-11e7-47ce-bb20-2ff0ef2ec7cc {
+        width: 7em;
+    }
+}
+
+// // CHECKBOX
+
+// input[type="checkbox"] {
+//     appearance: none;
+//     position: absolute;
+// }       
+
+#form_205c1e36-21f0-4bca-9af6-9eec46dae343_container {
+    padding: 0;
+}
+
+
+
+/* clears the 'X' from Internet Explorer */
+input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+
+/* clears the 'X' from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }

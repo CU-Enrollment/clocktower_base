@@ -1,0 +1,8 @@
+@mixin gradientLinear {
+        background: rgb(235,235,235);
+        background: linear-gradient(var(--angle, 0deg), rgba(var(--gradient-color-one)) 0%, rgba(var(--gradient-color-two)) 100%);
+}
+
+.gradient-bg-fade {
+        @include gradientLinear();
+}

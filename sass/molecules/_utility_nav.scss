@@ -1,13 +1,27 @@
 @use '../base/breakpoints' as b;
+@use '../atoms/mixins' as m;
 
+#utility-nav {
+    
+
+    @include b.for-desktop-up {
+        margin-right: 3em;
+
+        
+
+       
+    }
+
+}
 .utility-wrap {
 
     display: none; 
     flex-direction: row;
     width: 95%;
     justify-content: space-between;
-    overflow-x: hidden;
-    padding: .25em 2.5%;
+    // overflow-x: hidden;
+    padding: 0 2.5%;
+    height: 50px;
 
     &:first-child {
         // padding-left: 2.5%;
@@ -19,16 +33,28 @@
     @include b.for-desktop-up {
         display: flex;
     }
-    #utility-nav {
+    .utility-nav {
 
         display: flex;
+        flex-direction: row;
+        // align-items: center;
+        flex: 1 0 40%;
+        justify-content: flex-end;
         align-items: center;
 
+        .layout--onecol {
+            margin: 0;
+        }
         ul.utility-nav {
             list-style: none;
             display: flex;
             flex-direction: row;
-            margin: 0;
+            // margin: .5em;
+            position: relative;
+            // top: .75em;
+            // right: 6em;
+            z-index: 10;
+
             li {
                 padding: 0 .5em;
 
@@ -39,9 +65,75 @@
                     padding: 0 0 0 .5em;
                 }
                 a {
+                    --link-color: 0, 0%, 0%;
+                    
                     font-size: var(--step--1);
                     text-decoration: none;
-                    color: var(--menuText, #333)
+                    position: relative;
+                    margin-bottom: .5em;
+                    padding-bottom: .25em;
+
+                    &.link-button {
+                        display: inline-block;
+                        padding: .25em .5em;
+                    }
+                    &:not(.link-button) {
+                        color: hsla(var(--text-black));
+                        --link-color: 0, 0%, 0%;
+
+                        @include m.linkHoverTransparent;
+                        
+                        &:before {
+                            // content: unset;
+                        }
+                            
+                        &.active, &:focus, &:hover {
+        
+                            --link-underline-color: 200, 100%, 30%, 1;
+                            --background-height: .07em;
+                            // border: 1px solid #b31b1b !important;
+                            text-decoration: none;
+                            
+        
+                                &:after {
+                                    width: 100%;
+                                    transition-duration: 0.25s;
+                                    transition-property: width ease-in;
+                                }
+        
+                                
+                        
+        
+                            button {
+        
+                                &:before {
+                                    display: inline-block;
+                                    transform: rotate(180deg);
+                                    color: #b31b1b;
+                                    transition-duration: 0.5s;
+                                    transition-property: transform;
+                                    transform-origin: center;
+                                }
+                            }
+        
+                            
+                        }
+                    }
+
+                    &.check-status {
+                        background-color: hsla(var(--carnelian), 1);
+                        color: hsla(var(--text-white),1);
+                        border: 1px solid transparent;
+                        // padding: 1em;
+                        margin: 0;
+
+                        &:hover {
+                            border-color: hsla(var(--carnelian), 1);
+                            background-color: #FFF;
+                            color: hsla(var(--carnelian), 1);
+                        }
+                  
+                    }
                 }
             }
         }

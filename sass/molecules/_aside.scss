@@ -1,0 +1,112 @@
+@use '../base/breakpoints' as b;
+
+
+aside {
+    position: relative;
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    @include b.for-tablet-portrait-up {
+        width: clamp(18em, 20em, 22em);
+        // margin: 2em;
+
+        &.pull--right {
+            // float: right;
+            margin-left: 2em;
+            grid-column: 2;
+            // grid-row: 1;
+            position: relative;
+            right: 0;
+            justify-self: flex-end;
+            transform: translateX(-25%);
+        }
+    
+        &.pull--left {
+            float: left;
+
+        }
+    
+        &.top {
+            position: absolute;
+            top: 0;
+        }
+        
+    }
+
+    figure {
+
+        width: 100%;
+
+        .cover-image {
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            // padding: 2em;
+            margin-bottom: 1em;
+    
+            img {
+                width: 400px;
+                height: 300px;
+                object-fit: cover;
+                object-position: center center;
+            }
+        }
+    
+
+       
+        figcaption {
+            position: relative;
+            font-family: var(--clocktower-sans-serif);
+            line-height: 1.75em;
+            width: 100%;
+            font-size: var(--step--1);
+    
+    
+            @include b.for-tablet-portrait-up {
+                background: linear-gradient(0deg, #ebebeb 0%, white 100%);
+    
+            }
+            p {
+                padding: 1.5em;
+                margin: 0;
+                
+                @include b.for-tablet-portrait-up {
+                    font-size: var(--step--1);
+    
+                }
+                
+    
+            }
+            span {
+
+                &.byline {
+                    
+                    
+                    background-color: #DF1E12;
+                    color: white;
+                    padding: .5em;
+                    margin: 0 auto;
+                    position: relative;
+        
+        
+                    @include b.for-tablet-portrait-up {
+        
+                        font-size: var(--step--2);
+                        position: absolute;
+                        top: 0;
+                        transform: translate(25%, -100%);
+                        right: 0;
+        
+                    }
+                }
+
+    
+             
+            }
+        }
+    }
+
+}

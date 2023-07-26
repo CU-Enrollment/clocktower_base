@@ -1,0 +1,216 @@
+@use 'utilities/functions';
+@use '../base/breakpoints' as b;
+@use '../atoms/type' as t;
+@use '../atoms/mixins';
+// Main Menu 
+
+
+
+#priority-menu {
+    display: none;
+    position: unset;
+    
+    @include b.for-desktop-up {
+        display: inline-block;
+
+    }
+
+    .priority-menu-wrap {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: #d7d7d7;
+        display: none;
+        min-width: 20vw;
+        transform: translateX(100%);
+        animation: appearRight  2s ease-in-out;
+        z-index: 1001;
+        padding-top: 5%;
+        flex-direction: column;
+        padding-right: 0;
+
+        #close-priority {
+            display: inline-block;
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            background: transparent;
+            
+            &:before {
+                content: '\f057';
+                padding: 1em;
+                font-size: var(--step-2);
+                font-family: var(--font-awesome);
+                display: inline;
+
+            }
+            
+        }
+        > ul.menu {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            max-width: unset;
+            width: 100%;
+            padding-top: 5em;
+            padding: 0;
+
+            > li {
+
+                width: 100%;
+                padding: 0 .5em;
+                box-sizing: border-box;
+                padding-right: 2em;
+                position: relative;
+
+                a {
+                    display: inline-block;
+                    height: auto;
+                    margin-left: 2em;
+                }
+
+                button {
+                    position: absolute;
+                    right: 3em;
+                }
+
+                .priority-dropdown-menu {
+                    left: 0;
+                    top: 0;
+                    position: relative !important;
+                    display: none;
+
+                    .sub-menu {
+                        top: 0;
+                        position: relative;     
+                        display: block;  
+                        background-color: transparent;
+                        li {
+                            margin: 0;
+                        }
+
+                    }
+
+                }
+            }
+        }
+
+       
+    }
+
+    
+    // ul {
+    //     li {
+    //         a {
+    //             height: auto;
+    //         }
+    //     }
+    // }
+    
+    &.hidden {
+        // display: none !important;
+    }
+    
+
+    #priority-menu-btn {
+        font-size: var(--step-2);
+        cursor: pointer;
+        background-color: transparent;
+        width: 100px;
+        font-weight: var(--light-weight);
+        position: relative;
+        margin: 0;
+        padding: 0;
+        // margin-left: .25em;
+        // padding-left: 1em;
+        color: hsla(var(--text-black));
+        border: 1px solid transparent;
+        border-radius: .25em;
+        z-index: 1000;
+
+        &:before {
+            content: '';
+            display: inline;
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background-color: #d7d7d7;
+            left: 0;
+        }
+
+        &:not([data-items=""]) {
+
+            &:after {
+
+                width: 1em;
+                height: 1em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 99em;
+                padding: .25em;
+                position: absolute;
+                top: 50%;
+                background: #e03030;
+                color: #FFF;;
+                font-size: var(--step--2);
+                left: 55%;
+                border: 2px solid #FFF;
+            }
+        }
+        
+        &:hover, &:focus {
+            color: #b31b1b;
+            border: 1px solid #b31b1b !important;
+            
+            &:before {
+                display: none;
+            }
+            &:after {
+                // color: #b31b1b 
+            }
+        }
+
+       
+    }
+
+    
+
+    &.active {
+
+        .priority-menu-wrap {
+            display: flex;
+            transform: translateX(0);
+            animation: transform  2s ease-in-out;
+
+            ul.menu {
+                li {
+
+                    &.active {
+
+                        .priority-dropdown-menu {
+                            display: block;
+                            .sub-menu {
+                                display: block;
+                            }
+
+                          
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    &:hover, &:focus {
+        #priority-menu-btn {
+            &:after {
+                // display: inline-block;
+                // transform: rotate(180deg);
+            }
+        }
+
+       
+    }
+}

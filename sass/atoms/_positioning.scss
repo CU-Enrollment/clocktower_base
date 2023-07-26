@@ -1,0 +1,18 @@
+@use 'base/breakpoints' as b;
+
+
+/// FIX TO BE NOT JUST ON IMAGE
+.pull-right {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    display: block;    
+    @include b.for-desktop-up {
+        display: inline-block;
+    
+        float: right;
+        margin-left: 1em;
+        margin-bottom: .5em;
+
+    }
+}

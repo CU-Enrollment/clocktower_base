@@ -3,40 +3,6 @@
 body {
     width: 100%;
     margin: 0;
+    background: hsla(var(--body-background));
 }
 
-.container {
-    // width: min(90%, 87.5em);
-    margin-inline: auto;
-   
-    // background: blue;
-
-    @include b.for-phone-only {
-        width: 375px;
-        overflow-x: hidden;
-        margin: 0 auto;
-    }
-
-    @include b.for-desktop-up {
-        max-width: 1200px;
-        padding-left: clamp(5%, 7%, 10%);
-        padding-right: clamp(5%, 7%, 10%);
-        width: auto;
-
-    }
-
-    @include b.for-xl-desktop-up {
-        max-width: 1400px;
-    }
-}
-
-
-
-
-@mixin absCenter {
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%);
-    transform: translateY(-50%);
-    
-}

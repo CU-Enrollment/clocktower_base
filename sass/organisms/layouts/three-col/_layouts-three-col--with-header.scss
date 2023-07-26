@@ -1,0 +1,38 @@
+@use 'base/breakpoints' as b;
+
+.layout--threecol_with_header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .layout__region {
+        box-sizing: border-box;
+        &--header {
+            flex: 1 0 100%;
+        }
+
+        &--second {
+            flex: 1 0 100%;
+
+            @include b.for-desktop-up {
+                flex: 0 1 33%;
+            }
+        }
+
+        &--third {
+            flex: 1 0 100%;
+
+            @include b.for-desktop-up {
+                flex: 0 1 33%;
+            }
+        }
+
+        &--fourth {
+            flex: 1 0 100%;
+            @include b.for-desktop-up {
+                flex: 0 1 33%;
+
+            }
+        }
+    }
+}

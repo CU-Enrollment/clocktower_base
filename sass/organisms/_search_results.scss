@@ -1,0 +1,56 @@
+@use 'atoms/buttons' as buttons;
+@use 'base/breakpoints' as b;
+@use 'atoms/img' as i;
+
+
+.search-results {
+
+    padding-top: 5em;
+
+    form {
+        position: relative;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        background: #FFF;
+
+        input[type="submit"] {
+            font-family: var(--font-awesome);
+            background: transparent;
+            border-radius: 25px;
+            color: #b31b1b;
+            font-size: var(--step-0);
+            width: auto;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            right: 1.75em;
+        }
+
+        .js-form-item {
+
+            span {
+                width: 100%;
+
+                input[type="search"] {
+                    width: 100%;
+                    height: 2em;
+                    padding-left: 1em;
+
+                }
+            }
+        }
+    }
+
+    ol {
+        list-style: none;
+        padding-left: 0;
+
+        strong {
+            font-weight: var(--regular-weight);
+            background-color: var(--highlighted, lightblue);
+            padding: .25em;
+        }
+    }
+}

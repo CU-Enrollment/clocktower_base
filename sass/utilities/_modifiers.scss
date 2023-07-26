@@ -4,3 +4,15 @@
         0 10px 15px var(--cardShadowTwo, rgba(166,173,201,0.2));
         
 }
+
+
+@mixin absCenter {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+}
+
+.centered {
+    margin: 0 auto;
+}

@@ -1,0 +1,182 @@
+@use 'base/breakpoints' as b;
+
+
+.layout {
+
+    @include b.for-tablet-portrait-up {
+
+        margin: 0 2em;
+    }
+
+    &:not(.hero-panel) {
+        // width: 100vw;
+        @include b.for-desktop-up {
+            margin: 0 auto;
+            // max-width: 1200px;
+        }
+        
+        @include b.for-xl-desktop-up {
+            // max-width: 1380px;
+        }
+    }
+    &.full-width {
+
+        // margin: 0;
+        padding: 2em 5%;
+        margin: 2em 0;
+        @include b.for-desktop-up {
+            margin: 0 auto;
+            padding: 0;
+        }
+    }
+}
+.layout-builder-block {
+    padding: 0;
+}
+
+//
+.layout--twocol-section--50-50 {
+    
+    display: flex;
+    flex-direction: column;
+
+    @include b.for-phone-only {
+        padding-bottom: 5em;
+    }
+    @include b.for-desktop-up {
+        flex-direction: row;
+    }
+    
+    .layout__region {
+        flex: 0 1 50%;
+        box-sizing: border-box;
+
+        > * {
+            margin: 2em;
+        }
+    }
+    .cards {
+
+        flex-direction: column;
+
+        @include b.for-large-desktop-up {
+            flex-direction: row;
+            gap: 10%;
+        }
+        > div {
+
+            flex: 1 1 100%;
+
+            h3 {
+                text-align: center;
+                margin-bottom: 2em;
+                font-size: var(--step-2);
+            }
+            @include b.for-large-desktop-up {
+
+                flex: 1 0 45%;
+
+                h3 {
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+
+.layout--threecol-section {
+
+    overflow: visible;
+    display: flex;    
+
+    @include b.for-phone-only {
+        // padding-bottom: 5em;
+    }
+
+    .cards {
+
+        flex-direction: column;
+
+        
+        @include b.for-large-desktop-up {
+            flex-direction: row;
+        }
+        > div {
+            
+            flex: 1 1 auto;
+            margin-bottom: 3em;
+
+            @include b.for-tablet-portrait-up {
+                width: 80%;
+                align-self: center;
+            }
+            
+            @include b.for-large-desktop-up {
+                margin-bottom: 0;
+                flex: 1 1 33%;
+            }
+        }
+    }
+}
+
+.layout__region {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    // row-gap: 1em;
+}
+
+// .layout--twocol-section--50-50 {
+//     display: flex;
+//     flex-direction: column;
+
+//     @include b.for-phone-only {
+//         padding-bottom: 5em;
+//     }
+//     @include b.for-desktop-up {
+//         flex-direction: row;
+//     }
+// }
+
+
+.layout-builder-block {
+    width: auto !important;
+}
+
+
+
+.layout--twocolnarrow-section {
+    justify-content: center;
+    display: flex;
+    padding-bottom: 5em;
+    
+    .layout__region {
+        flex: 0 0 35%;
+        margin: 0 3em;
+    }
+}
+
+.section--narrow-width {
+    justify-content: center;
+    width: 50%;
+
+    .layout__region {
+        background-color: red;
+        text-align: center;
+    }
+}
+
+
+
+
+// NEW LAYOUT BUILDER STYLES
+
+.flex {
+
+    &--2 {
+
+        &_50-50 {
+            
+        }
+    }
+}

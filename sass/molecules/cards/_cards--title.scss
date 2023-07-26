@@ -1,0 +1,111 @@
+@use 'base/breakpoints' as b;
+
+.title-cards-wrap {
+
+        @include b.for-phone-only {
+
+            margin: 0 1em;
+        }
+        @include b.for-tablet-portrait-up {
+            margin: 0 1em;
+        }
+
+h2 {
+    text-align: center;
+}
+
+    .title-cards {
+        list-style: none;
+        // grid-row-gap: 2em;
+        // grid-column-gap: 2em;
+        grid-auto-rows: 1fr;
+        grid-template-columns: 1fr;
+        margin-top: 3em;
+        padding: 0;
+        
+        @include b.for-tablet-portrait-up {
+            margin: 0 auto;
+
+        }
+
+        @include b.for-desktop-up {
+            // margin-top: 5em;
+            grid-template-columns: 1fr 1fr;
+
+            justify-content: center;
+        }
+        @include b.for-large-desktop-up {
+            
+            
+            &.grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            &.grid-3 {
+                grid-template-columns: repeat(3, 400px);
+                
+            }
+        }
+       
+
+        li {
+            flex: 1 0 33%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            
+            @include b.for-phone-only {
+                margin: .75em 0;
+                
+            }
+            
+            @include b.for-tablet-portrait-up {
+                margin: .75em;
+            }
+
+            a {
+                border: 1px solid hsla(var(--card-border));
+                background-color: hsla(var(--card-color),1);
+                text-decoration: none;
+                color: hsla(var(--text-black));
+                font-size: var(--step-2);
+                height: 100%;
+                width: 100%;
+                min-height: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;      
+                padding: 0 1em;       
+                text-align: left;   
+                
+                @include b.for-desktop-up {
+                    justify-content: center;
+                    text-align: center;
+                    font-size: var(--step-1);
+                    padding: 0 1em;
+
+                }
+
+                &:after {
+                    display: inline-block;
+                    content: "\f138";
+                    font-family: var(--font-awesome);
+                    padding-left: .5em;
+                    padding-right: .5em;
+
+                    @include b.for-desktop-up {
+                        padding-left: 1em;
+                        padding-right: 1em;
+                    }
+                }
+
+
+                &:hover, &:focus {
+                    background-color: #b31b1b;
+                    color: #FFF;
+                    border: 1px solid #b31b1b;
+                    
+                }
+            }
+        }
+    }
+}

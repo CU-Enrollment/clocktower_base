@@ -1,0 +1,74 @@
+@use 'atoms/buttons' as buttons;
+@use 'base/breakpoints' as b;
+@use 'atoms/img' as i;
+@use 'atoms/mixins' as m;
+
+
+.announcement-full {
+    .notice {
+        background: transparent;
+        text-align: left;
+        padding: 0;
+    }
+}
+
+.announcements-callout {
+    @include b.for-phone-only {
+        
+        text-align: center;
+    }
+
+    @include b.for-tablet-portrait-up {
+        h3 {
+        }
+    }
+
+    @include b.for-desktop-up {
+        margin: 0 2em;
+        h3 {
+            margin-left: 0;
+
+        }
+        p {
+            max-width: 60ch;
+        }
+        
+    }
+    .placeholder {
+        i {
+            width: 50px;
+            height: 50px;
+            color: hsla(var(--carnelian), 1);
+            display: block;
+        }
+    }
+}
+
+// Announcements Listings
+
+.announcement-listing {
+    @include m.boxShadowLight; 
+    border: 1px solid #eee;
+    margin: 2em 0;
+    padding: 1em 2em;
+
+    h2 {
+        margin-top: 0;
+        margin-bottom: .25em;
+
+        a {
+            color: hsla(var(--link-blue),1);
+            font-size: var(--step-1);
+            
+        }
+    }
+
+    p {
+        margin-top: 0;
+        max-width: unset;
+        strong {
+            font-weight: var(--regular-weight);
+            background-color: hsla(var(--highlighted), 1);
+        }
+    }
+}

@@ -1,0 +1,12 @@
+
+@use 'base/breakpoints' as b;
+
+.events-home-teaser {
+    .link-button {
+        @include b.for-phone-only {
+            margin: 0 auto;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}

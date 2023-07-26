@@ -8,7 +8,7 @@
 //     @media (min-width: 980px) { @content; }
 // }
 @mixin for-desktop-up {
-    @media (min-width: 980px) { @content; }
+    @media (min-width: 1025px) { @content; }
 }
 @mixin for-large-desktop-up {
     @media (min-width: 1280px) { @content; }

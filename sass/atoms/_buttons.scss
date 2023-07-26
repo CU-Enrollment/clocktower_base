@@ -3,6 +3,7 @@
 
 
 
+
 button {
   border: 0;
 
@@ -38,13 +39,42 @@ button {
 
     }
   }
+
+  &.search-icon {
+
+    &.mobile-search {
+      top: .75em;
+      position: relative;
+      background: transparent;
+  
+      &:before {
+        
+        font-size: var(--step-3);
+        
+        @include b.for-tablet-portrait-up {
+          color: rgb(var(--text-black));
+        }
+      }
+    }
+  }
+
+  &.mode-switch {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background-color: red;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 }
 
 
 // This is a mixin to have a solid bottom border, and on hover have it extend up on the left and right, then on the top towards the middle.
 // To extend this, use the variable --buttonBorderColor before the @mixin call. 
 @mixin bottom-to-full-outline {
-    border-bottom: 5px solid var(--buttonBorderColor, #333);
+
+    border-bottom: var(--borderWeight, 5px) solid hsl(var(--button-border-color));
     
     &:after, &:before {
         content: "";
@@ -58,15 +88,15 @@ button {
     }
 
     &:before {
-        border-right: 5px solid var(--buttonBorderColor, #333);
-        border-left: 5px solid var(--buttonBorderColor, #333);
+        border-right: var(--borderWeight, 5px) solid hsl(var(--button-border-color));
+        border-left: var(--borderWeight, 5px) solid hsl(var(--button-border-color));
         transform: scaleY(0);
         transform-origin: bottom;
     }
 
     &:after  {
         
-        border-top: 5px solid var(--buttonBorderColor, #333);
+        border-top: var(--borderWeight, 5px) solid hsl(var(--button-border-color));
         transform: scaleX(0);
     }
 
@@ -234,6 +264,7 @@ button {
 
   .menuText {
       margin-left: .5em;
+      color: hsla(var(--text-black));
   }
 
   &.mobile-toggle {
@@ -261,7 +292,7 @@ button {
           position: absolute;
           width: 30px;
           height: 3px;
-          background: var(--menuTextColor, #333);
+          background: hsla(var(--text-black));
           border-radius: 4px;
           transition: 0.5s;
       
@@ -311,16 +342,17 @@ button {
 
   &#mobile-toggle {
     z-index: 51;
-    height: 4em;
-    width: 4em;
+    height: 3em;
+    // width: 3em;
     border-radius: 99em;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     background: transparent;
     align-items: center;
     padding-top: 0px;
     position: relative;
     right: 0;
+    top: .75em;
 
     @include b.for-desktop-up {
       display: none;
@@ -356,10 +388,13 @@ button {
 
   &:focus, &:hover {
       box-shadow: none;
+      background-color: unset;
+      outline: 5px auto -webkit-focus-ring-color;
+
   }
 }
 
-.toggle-menu {
+.toggle-menu:not(.menu-breadcrumb) {
   width: 45px;
   height: 45px;
 }

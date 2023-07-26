@@ -1,0 +1,49 @@
+@use 'base/breakpoints' as b;
+
+.container {
+
+    display: block;
+    margin: 0 auto;
+
+    &--narrow-width {
+        max-width: clamp(980px, 1200px, 1000px);
+       
+
+    }
+
+    &--regular-width {
+
+        @include b.for-desktop-up {
+            max-width: clamp(980px, 1200px, 1250px);
+        }
+    
+        @include b.for-large-desktop-up {
+            max-width: clamp(1280px, 1320px, 1350px);
+    
+        }
+    
+        @include b.for-xl-desktop-up {
+            width: clamp(1380px, 1550px, 1600px);
+    
+        }
+    }
+
+
+
+    
+
+        
+
+    &--wide {
+
+        @include b.for-desktop-up {
+
+            max-width: 80vw;
+        }
+    }
+
+    &.centered {
+        margin: 0 auto;
+    }
+
+}

@@ -1,0 +1,10 @@
+@use 'atoms/buttons' as buttons;
+@use 'base/breakpoints' as b;
+@use 'atoms/img' as i;
+
+
+.news-date  {
+    font-family: var(--clocktower-sans-serif);
+    font-size: var(--step--1);
+    color: #333;
+}

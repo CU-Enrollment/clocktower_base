@@ -1,0 +1,87 @@
+@use 'base/breakpoints' as b;
+
+.intro-header {
+    // margin-top: 5em;
+    // margin-top: 2em;
+    margin: 2em auto 0;
+    grid-column: 1/4;
+    max-width: 95%;
+
+    @include b.for-tablet-portrait-up {
+        margin-top: 2em;
+    }
+
+    @include b.for-desktop-up {
+        margin-top: 0;
+    }
+    
+    &:before {
+        content: '';
+        display: block;
+        position: relative;
+        height: 2em;
+        width: 1px;
+        background-color: #333;
+        margin: 0 auto 1em;
+
+        @include b.for-desktop-up {
+            margin: 0em auto 3em;
+            height: 4em;
+
+        }
+    }
+
+    h2 {
+        text-align: center;
+        margin: 0;
+        @include b.for-desktop-up {
+            max-width: 75%;
+            padding: 0 5em;
+            margin: 0 auto;
+
+        }
+    }
+}
+
+.intro-paragraph {
+
+    margin: 2em;
+    grid-column: content;
+    position: relative;
+    margin-bottom: 3em;
+
+    &:after {
+        display: block;
+        position: absolute;
+        content: '';
+        width: 10%;
+        height: .25px;   
+        background: hsla(var(--text-black), .2);
+        left: 50%;
+        bottom: -2em;
+        transform: translate(-50%, 50%);
+    }
+
+   @include b.for-desktop-up {
+       margin: 0 0 5em;
+   }
+
+   @include b.for-large-desktop-up {
+       margin: 2em 0em 3em;
+   }
+    
+    p {
+        text-align: center;   
+        font-family: var(--clocktower-sans-serif);
+        font-size: var(--step-2);
+        margin: 0 auto;
+
+        @include b.for-desktop-up {
+            max-width: 60ch;
+        }
+    }
+
+    a {
+        font-size: var(--step-2);
+    }
+}

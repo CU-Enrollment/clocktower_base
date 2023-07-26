@@ -1,0 +1,74 @@
+@use '../../../base/breakpoints' as b;
+
+
+
+.quick-fact {
+    
+    &--icon {
+
+        max-width: 500px;
+        
+        @include b.for-tablet-portrait-up {
+            margin: 1em auto;
+            height: 100%;
+            
+        }
+        @include b.for-desktop-up {
+            margin: 1em;
+            max-width: unset;
+            // margin: 1em auto;
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2em;
+            // height: 100%;
+            
+            .fontawesome-icon {
+                // margin-top: 1em;
+                height: 4em;
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                svg {
+                    color: hsla(var(--carnelian),1);
+                    width: 3.25em;
+                    height: 3.25em;
+                }
+                i {
+                    font-size: var(--step-5);
+                    color: hsla(var(--carnelian),1);
+                    font-family: var(--font-awesome);
+                    font-weight: 200;
+                }
+            }
+        
+            h3 {
+                color: hsla(var(--carnelian),1);
+                font-family: var(--clocktower-sans-serif);
+                font-size: var(--step-1);
+                font-weight: var(--semibold);
+                text-align: center;
+                &.line-bottom {
+    
+                    &:after {
+    
+                        border-color: var(--cardIcon);
+                    }
+                
+                }
+            }
+            p {
+                color: var(--cardText);
+                font-size: var(--step-0);
+                text-align: center;
+        
+            }
+        }
+    }
+}

@@ -8,13 +8,13 @@
 }
 
 $columnGap: 2%;
-$rowGap: 2%;
+$rowGap: 4em;
 
 .card-grid {
     
     display: grid;
-    grid-column-gap: $columnGap;
-    grid-row-gap: $rowGap;
+    // grid-column-gap: $columnGap;
+    // grid-row-gap: $rowGap;
     padding: $rowGap 2em; 
 }
 
@@ -23,6 +23,9 @@ $rowGap: 2%;
     display: flex;
 }
 
+.grid {
+    display: grid;
+}
 // Grid Templates for Equal Grid Columns
 
 $max: 12;
@@ -33,7 +36,7 @@ $max: 12;
     @for $i from 1 through $max {
         $equ: 100% / $i;
         .grid-#{$i} {
-            grid-template-columns: repeat($i, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         }
         .flex-#{$i} {
             flex: 0 1 $equ;
@@ -61,12 +64,46 @@ $max: 12;
     @for $i from 1 through $max {
         $equ: 100% / $i;
         .grid-#{$i} {
-            grid-template-columns: repeat($i, 1fr);
+            grid-template-columns: repeat($i, 100%/$i);
         }
         .flex-#{$i} {
             $equ: 100% / $i;
             flex: 0 1 $equ;
         }
+
+        .grid-3-equal {
+            grid-template-columns: repeat(3, 32%);
+        }
+
+        .flex {
+            &--67-33 {
+                
+                > * {
+                    &:first-child {
+                        flex: 0 1 67%;
+                    }
+    
+                    &:last-child {
+                        flex: 0 1 33%;
+                    }
+                }
+            }
+
+            &--25-75 {
+
+                > * {
+                    &:first-child {
+                        flex: 0 1 25%;
+                    }
+    
+                    &:last-child {
+                        flex: 0 1 75%;
+                    }
+                }
+
+            }
+        }
+        
     }
 }
 
@@ -76,7 +113,7 @@ $max: 12;
     @for $i from 1 through $max {
         $equ: 100% / $i;
         .grid-#{$i} {
-            grid-template-columns: repeat($i, 1fr);
+            grid-template-columns: repeat($i, 100%/$i);
         }
         .flex-#{$i} {
             flex: 0 1 $equ;
@@ -100,60 +137,178 @@ $max: 12;
     &.center {
         justify-content: center;
     }
+    
+    &--y-center {
+        align-items: center;
+    }
 }
 
 
 
+main {
 
-
-// Layout Grid in CSS Grid. This is the main layout grid of content
-
-.container {
-    display: grid;
-    grid-template-columns: 1fr;
-    overflow-x: hidden;
-
-    @include b.for-tablet-portrait-up {
-
+    
+    // Layout Grid in CSS Grid. This is the main layout grid of content
+    
+    .container {
+    
+        // overflow-x: hidden;
+        
+        // width: min(90%, 87.5em);
+        // margin-inline: auto;
+        
+        // background: blue;
+    
+        
+        > div, article {
+            // grid-column: content;
+        
+    
+            &.grid-expanded {
+                grid-column: 1 / 5;
+            }
+    
+            // .grid-content {
+            //     grid-column: content;
+    
+            // }
+    
+            &.grid-expanded-right {
+                grid-column: 2 / 4;
+            }
+            
+            &.grid-expanded-left {
+                grid-column: 1 / 3;
+            }
+    
+        }
+        &-fluid {
+            width: 100%;
+            margin: 0;
+            
+        }
+    
+        &-wide {
+    
+    
+            @include b.for-large-desktop-up {
+                width: 75%;
+                max-width: clamp(980px, 1200px, 1260px);
+                background-color: red;
+                margin: 0 auto;
+            }
+        }
+        
     }
 
-    @include b.for-desktop-up {
-        width: clamp(980px, 1100px, 1250px);
-        margin: 0 auto;
-        grid-template-columns: [expanded-left] 7.5% [content] 1fr [expanded-right] 7.5%; 
+    .layout--twocol-section {
+
+        padding: 0 1em;
+
+        @include b.for-tablet-portrait-up {
+
+            &.layout--twocol-section--67-33 {
+
+                .layout__region--first { 
+    
+                    flex: 0 1 100%;
+
+                }
+
+                .layout__region--second { 
+    
+                    flex: 0 1 100%;
+
+                }
+            }
+        }
+
+        @include b.for-desktop-up {
+            padding: 0;
+            margin: 0 5%;
+            // gap: 1em;
+            &.layout--twocol-section--67-33 {
+
+                .layout__region--first { 
+    
+                    flex: 1 1 47%;
+                }
+
+                .layout__region--second { 
+    
+                    flex: 1 1 47%;
+
+                }
+            }
+
+        }
+
+        @include b.for-large-desktop-up {
+            padding: 0;
+            margin: 0 15%;
+
+            &.layout--twocol-section--67-33 {
+
+                .layout__region--first { 
+    
+                    flex: 0 1 65%;
+
+                }
+
+                .layout__region--second { 
+    
+                    flex: 0 1 33%;
+
+                }
+            }
+
+            &--67-33 {
+                display: flex;
+                flex-direction: row;
+            }
+
+        }
+        
     }
 
-    @include b.for-large-desktop-up {
-        width: clamp(1280px, 1320px, 1350px);
-        margin: 0 auto;
+    // @include b.for-tablet-portrait-up {
+    //     .layout--twocol-section.layout--twocol-section--33-67 > .layout__region--second, .layout--twocol-section.layout--twocol-section--67-33 > .layout__region--first {
+    //         width: 100%;
+    //     }
 
-    }
-
-    @include b.for-xl-desktop-up {
-        width: clamp(1380px, 1400px, 1600px);
-        margin: 0 auto;
-
-    }
-
-
-    .grid-expanded {
-        grid-column: 1 / 4;
-    }
-
-    .grid-content {
-        grid-column: content;
-
-    }
-
-    .grid-expanded-right {
-        grid-column: 2 / 4;
+    //     .layout--twocol-section.layout--twocol-section--33-67 > .layout__region--second, .layout--twocol-section.layout--twocol-section--67-33 > .layout__region--second {
+    //         width: 100%;
+    //     }
+    // }
+   
+    .page-sidebar {
+    
+        @include b.for-desktop-up {
+            display: grid;
+            grid-template-columns: [sidebar] 20% [content] 1fr;
+        }
+     
+    
+        .sidebar {
+            display: none;
+            @include b.for-desktop-up {
+                display: block;
+                grid-column: sidebar;
+    
+            }
+        }
+        .content {
+            grid-column: content;
+            margin-right: 20%;
+            margin-left: 5%;
+        }
+    
     }
     
-    .grid-expanded-left {
-        grid-column: 1 / 3;
+    
+    .content {
+        grid-column: content;
     }
 
-    &--fluid {
-        width: 100%;
-    }
+    
 }

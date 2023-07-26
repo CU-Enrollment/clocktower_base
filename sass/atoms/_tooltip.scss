@@ -1,0 +1,81 @@
+@use 'variables';
+@use '../base/breakpoints' as b;
+
+
+
+.tooltip-wrapper {
+    display: inline-block;
+    position: relative;
+
+    .tooltip {
+
+        display: none;
+
+        &.active {
+            display: flex;
+
+        }
+        font-size: var(--step--1);
+        font-family: var(--project-sans-serif);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        // text-align: center;
+        background-color: rgb(240, 240, 240);
+        transform: translate(-50%, calc(-100% - 10px));
+        border-radius: .25em;
+        padding: .25em .75em;
+        // @include boxShadow;
+        align-items: center;
+
+        &:before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-top: 10px solid rgb(240, 240, 240);
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+        div {
+            text-align: center;
+            font-family: var(--clocktower-sans-serif);
+            white-space: nowrap;
+            font-size: var(--step--1);
+        }
+
+        .close-tooltip {
+            position: relative;
+            border: none;
+            padding: 0;
+            margin-left: .5em;
+            &:before {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: var(--font-awesome);
+                font-size: var(--step--1);
+                content: '\f00d';
+                position: relative;
+                width: 25px;
+                height: 25px;
+                padding: .5em;
+                border: 1px solid transparent;
+                border-radius: 99em;
+
+                
+                // top: 50%;
+                // left: 50%;
+                // transform: translate(-50%, -50%);
+            }
+
+            &:hover, &:focus {
+                &:before{
+                    border: 1px solid #333;
+
+                }
+            }
+        }
+    }
+}

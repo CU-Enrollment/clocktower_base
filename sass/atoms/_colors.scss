@@ -1,0 +1,183 @@
+// Site Colors
+
+:root {
+    --menu-focus: #F7F7F7;
+    --carnelian: 0,75%,42%;
+
+
+// ****** LOCKED IN COLORS ***** // 
+
+--body-background: 0,100%,255%,1; // body background color
+
+// Text Colors
+--text-black: 0,0%,20%; // body text color
+--text-white: 0,100%,255%; // color to be used for white text
+
+// Card Colors
+--card-color: 0,0%,100%;
+--card-border: 0,0%,20%;
+--card-action: 0,0%,0%;
+--card-action-text: 0, 0%, 100%;
+
+
+--menu-background: 0, 0%, 100%;
+
+--accent-primary: var(--text-black);
+--accent-secondary: var(--text-white);
+
+
+--highlighted: 0,0%,93%;
+--link-blue: 200, 100%, 30%;
+--link-underline-color: 200, 100%, 30%, 1 ;
+
+--button-border-color: 0, 74%, 40%,1;
+--button-text: 0,75%,42%, 1;
+
+--button-bg-reverse: 0,75%,42%,1;
+--button-text-reverse: 0,100%, 100%, 1;
+
+
+
+// Cornell Secondary Palete 
+--accentRed: 0, 74%, 40%;
+
+// Accent color combinations, mostly for cards // 
+
+
+// Text Orange, Background Black, Shadow
+
+// Default accent (will be orange) 
+--accent-primary: 0,74%, 40%;
+--accent-secondary: 0, 74%, 40%;
+--accent-line: 33.7, 94%, 54%;
+
+--dark-background: 0, 0%, 0%;
+--light-background: 100, 100%, 100%;
+
+
+.accent-red {
+
+     // FLIP CARDS 
+     --accent-front-text: 0, 74%, 40%;
+     --accent-front-background: 0, 0%, 100%;
+     --accent-front-shadow: 0, 0%, 100%;
+     --accent-back-line: 0, 74%, 40%;
+}
+
+.accent-red-reverse {
+
+     // FLIP CARDS 
+     --accent-front-text: 0, 0%, 100%;
+     --accent-front-background: 0, 74%, 40%;
+     --accent-front-shadow: 0, 0%, 100%;
+     --accent-back-line: 0, 74%, 40%;
+}
+
+
+// Notice, Hints and Alerts
+
+--notice--alert: 184, 22, 21;
+--notice--alert-light: 255,235,235;
+
+--notice--hint: 1,130,52;
+--notice--hint-light: 212,255,229;
+
+
+--notice--reminder: 56,61,65;
+--notice--reminder-light: 247,247,247;
+
+// ****** END LOCKED IN COLORS ***** // 
+
+
+// Gray Linear Gradient 
+
+--gradient-color-one: 235,235,235,1;
+--gradient-color-two: 255,255,255,1;
+
+// Menu Items
+--menu-links: 51,51,51;
+--menu-links-hover: var(var(--cornellRed))
+
+
+
+
+// ------ need to assign colors ------
+
+--focusOutline: 1,95,204;
+
+
+//Text Colors
+// --lightText: 255,255,255;
+
+// Button Colors
+--buttonBG: #7c7c7c;
+--buttonText: #333333;
+
+// Form & Input Colors
+--formBG: 255,255,255;
+--inputBorder: 149,149,149;
+--inputSelected: 0,109,160;
+
+// Select Colors
+--select-border: 149,149,149;
+--select-focus: blue;
+--select-arrow: var(--select-border);
+
+
+// Link Colors
+--link-blue: 217,93%,35%;
+--link-blue-dark: 217, 93%, 20%;
+
+// Accent Colors
+
+
+--cardBackground: linear-gradient(0deg, rgba(235, 235, 235, .35) 0%, rgba(255, 255, 255, 1) 100%);
+    
+    &.dark-mode {
+        --body-background: 210,4%,10%, 1; // background of the body of the page
+        
+        // Type Colors for Dark Mode        
+        
+        --text-black: 218,5%,71%; // text color used for body text
+        
+        --header-dark: 255,255,255; // Header color
+        
+        --header-carnelian: var(--carnelian), .75; // Cornell Red version for darkmode.
+        
+
+        --link-blue: 217, 89%, 76%;
+
+        
+        
+        --card-color: 0,0%,15%;
+        --card-border: 0,0%,15%;
+
+        --gradient-color-one: 20,20,20,.9;
+        --gradient-color-two: 24,26,27,1;
+
+        // ------ still need to assign colors ---- //
+
+        --buttonBG: #5b626e;
+        --buttonText: white; 
+
+        --menu-focus: #b31b1b;
+
+        // Cards
+        --cardShadowOne: rgba(0,0,0,0.25);
+        --cardShadowTwo: rgba(15,15,15,0.3);
+        --cardBackground: rgba(30,30,30,1);
+        --cardText: rgba(255,255,255,1);
+
+        --fieldsetBG: 240,240,240;
+
+        // Dark Mode Menu
+        --mobileMenuBG: #333333;
+        --menuTextColor: #FFFFFF;  // Color of Menu Text and Dropdown Carat
+
+    }
+
+        // background: var(--bodyBG);
+    }
+
+
+

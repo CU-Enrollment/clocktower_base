@@ -1,0 +1,141 @@
+@use 'atoms/buttons' as btn;
+@use '../base/breakpoints' as b;
+
+form[id^="form"] {
+
+    @include b.for-phone-only {
+        padding: 0;
+    }
+    #form_description {
+        font-family: var(--clocktower-sans-serif);
+        font-size: var(--step-0);
+        margin-bottom: 2em;
+        font-weight: var(--light-weight);
+    }
+
+    .form_header {
+       
+        div.form_label {
+            font-family: var(--clocktower-sans-serif);
+            font-weight: var(--light-weight);
+            font-size: var(--step-1);
+            background-color: transparent;
+            color: #b31b1b;
+            padding-left: 0;
+            margin-bottom: 1em;
+            position: relative;
+            padding-bottom: 1em;
+
+            &:after {
+                content: '';
+                width: 100%;
+                height: 2px;
+                background: #b31b1b;
+                display: block;
+                position: absolute;
+                bottom: 0em;
+            }
+
+        }
+    }
+
+    .form_question {
+
+        margin-bottom: 1.5em;
+        
+        .form_response {
+            
+            min-height: 2em;
+
+            input[type="radio"] ~ label {
+
+               position: relative;
+
+               &:before, &:after {
+                top: 1em;
+               }
+            }
+        }
+        .form_label {
+            margin-bottom: .5em;
+            font-family: var(--clocktower-sans-serif);
+            font-weight: var(--light-weight);
+            font-size: var(--step-0);
+            color: #333;
+            
+        }
+
+       
+
+        select {
+            border: 1px solid rgb(var(--inputBorder, #959595));
+            appearance: revert !important;
+            height: 2.5em;
+            font-size: var(--step--1);
+            border-radius: 0.2em;
+            color: hsl(var(--text-black));
+            margin-right: 0;
+            appearance: initial;
+            -webkit-appearance: initial;
+            -moz-appearance: initial;
+            background-color: #FFF;
+            max-width: 100%;
+            
+            &[aria-label="Month"] {
+                width: 7em;
+            }
+
+            &[aria-label="Day"] {
+                width: 4em;
+            }
+
+            &[aria-label="Year"] {
+                width: 5em;
+            }
+            &#form_6e063a93-11e7-47ce-bb20-2ff0ef2ec7cc {
+                width: 7em;
+            }
+        }
+
+        textarea {
+            font-family: var(--clocktower-sans-serif);
+            font-size: var(--step--1);
+            color: #333;
+            border: 1px solid rgb(var(--inputBorder, #959595));
+            padding: .5em;
+            
+        }
+        
+    }
+}
+
+
+
+div.form_responses {
+    
+    @include b.for-desktop-up {
+        // max-width: 50%;
+        display: inline-block;
+    }
+}
+div.form_response input+ label {
+    position: relative;
+}
+
+
+.form_action {
+    button {
+        position: relative;
+        background-color: transparent;
+        border: 1px solid hsl(var(--carnelian));
+        font-size: var(--step-1);
+        padding: .25em .5em;
+        text-transform: uppercase;
+        color: hsl(var(--carnelian));
+        cursor: pointer;
+        &:hover, &:focus {
+            color: hsl(var(--text-white));
+            background: hsl(var(--carnelian));
+        }
+    }
+}

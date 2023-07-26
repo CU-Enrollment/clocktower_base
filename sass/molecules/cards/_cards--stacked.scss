@@ -1,0 +1,184 @@
+@use 'atoms/colors';
+@use 'base/rounded';
+@use 'utilities/modifiers';
+// @use 'layout' as l;
+@use 'molecules/attribution';
+@use 'atoms/mixins' as m;
+
+@use 'base/breakpoints' as b;
+// @use '../atoms/deco' as d;
+.cards {
+
+    @include b.for-phone-only {
+        // margin-bottom: 2em;
+        margin: 0 2.5% 2em;
+    }
+    &--stacked {
+        display: flex;
+        flex-direction: row;
+        
+        .layout__region {
+
+                flex: 1 0 1fr;
+                
+                    margin: 2em 0 3em;
+                
+
+                @include b.for-desktop-up {
+                    margin: 0;
+                }
+                
+            .card {
+                padding: 0;
+
+                // margin-bottom: 3em;
+
+
+                
+                @include b.for-desktop-up {
+
+                    align-self: stretch;
+                    margin: .75em;
+                    box-sizing: border-box;
+                }
+            
+                .card-content {
+                   
+                    
+                    width: 100%;
+                    overflow: hidden;
+                    height: 100%;
+                    position: relative;
+                    text-align: center;
+
+                    @include b.for-desktop-up {
+                        text-align: left;
+                        display: grid;
+                        grid-column: 1fr;
+                        grid-template-rows: [image] 330px [content] 1fr [footer] auto;
+                    }
+
+                    .card-image {
+                        overflow: hidden;
+                        // height: 100%;
+                        object-position: center center;
+                        object-fit: cover;
+                        aspect-ratio: 4/3;
+
+                            img {
+                                
+                                width: 100%;
+                                min-height: 100%;
+                                max-height: 300px;
+                                aspect-ratio: 4/3;
+                                object-fit: cover;
+                                object-position: center;
+
+                                @include b.for-tablet-portrait-up {
+                                    max-height: unset;
+                                    height: auto;
+                                }
+                              
+                            }
+                        
+                    }
+
+                    .card-text {
+
+                        position: relative;
+                        padding-bottom: 2em;
+                        padding-top: 2em;
+                        @include b.for-desktop-up {
+                            padding-top: 0;
+                            padding-bottom: 0;
+                            margin: 3em 1em 0 0;
+                        }
+
+                        div {
+                            margin-bottom: 3em;
+                        }
+                        span {
+                            &.tag {
+                       
+                                font-size: var(--step-1);
+                                font-weight: var(--semi-bold-weight);
+                                color: hsla(var(--carnelian),1);
+                                font-family: var(--clocktower-sans-serif);
+                                text-transform: uppercase;
+                                
+                                @include b.for-desktop-up {
+                                    position: absolute;
+                                    top: -1.75em;
+                                    font-size: var(--step--1);
+
+                                }
+                            }
+                        }
+                        h3 {
+                            margin-top: .25em;
+                            margin-bottom: 1.5em;
+                            font-size: var(--step-5);
+                            color: var(--text-black);
+                            position: relative;
+
+                            @include b.for-desktop-up {
+                                font-size: var(--step-3);
+
+                            }
+                            &:after {
+                                content: '';
+                                width: 30%;
+                                background-color: hsla(var(--carnelian),1);
+                                height: .5px;
+                                display: block;
+                                position: absolute;
+                                bottom: -.75em;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                @include b.for-desktop-up {
+                                    left: 0;
+                                    transform: unset;
+
+                                }
+                            }
+                        }
+
+                        p {
+                            font-size: var(--step-2);
+                            line-height: 1.5;
+
+                            @include b.for-desktop-up {
+                                font-size: var(--step-0);
+
+                            }
+                        }
+
+                    }
+                    
+                    .card-footer {
+                        position: relative;
+
+                        a {
+    
+                            &.link-button {
+                                font-size: var(--step-2);
+
+                                @include b.for-desktop-up {
+                                    font-size: var(--step-0);
+                                }
+                                // margin: 0 auto;
+                                margin: 0;
+                                // position: absolute;
+                                // bottom: 0;
+                                // margin-top: 1em;
+                                // align-self: flex-end;
+                            }
+    
+                        }
+                        
+                    }
+                }   
+            }
+        }
+    }
+}

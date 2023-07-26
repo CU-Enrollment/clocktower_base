@@ -1,0 +1,140 @@
+@use 'base/breakpoints' as b;
+
+:root {
+    --clocktower-sans-serif:  freight-sans-pro, sans-serif; // was unitext until UR changed it
+    --clocktower-serif: freight-text-pro, serif;   // was playfair-display until UR changed it
+    --font-awesome: 'Font Awesome 6 Pro';
+    --font-awesome-brands: 'Font Awesome 6 Brands';
+    --font-awesome-duotone: 'Font Awesome 6 Duotone';
+
+    // Type Scale
+    --step--2: clamp(0.69rem, 0.69rem + 0.04vw, 0.72rem);
+    --step--1: clamp(0.83rem, 0.81rem + 0.11vw, 0.90rem);
+    --step-0: clamp(1.00rem, 0.96rem + 0.21vw, 1.13rem);
+    --step-1: clamp(1.20rem, 1.13rem + 0.34vw, 1.41rem);
+    --step-2: clamp(1.44rem, 1.33rem + 0.53vw, 1.76rem);
+    --step-3: clamp(1.73rem, 1.57rem + 0.78vw, 2.20rem);
+    --step-4: clamp(2.07rem, 1.85rem + 1.12vw, 2.75rem);
+    --step-5: clamp(2.49rem, 2.17rem + 1.58vw, 3.43rem);
+    --step-6: clamp(2.99rem, 2.55rem + 2.17vw, 4.29rem);
+    --step-7: clamp(3.58rem, 2.99rem + 2.97vw, 5.36rem);
+    --step-8: clamp(4.30rem, 3.50rem + 4.01vw, 6.71rem);
+
+    --menuFont: var(--clocktower-sans-serif); // Assigning aa variable for easy type changes
+
+    --hairline-weight: 100; // Light Weight Font
+    --extra-light-weight: 200; // Thin Weight Font
+    --light-weight: 300; // Light Weight Font
+    --regular-weight: 400; // Regular Weight Font
+    --medium-weight: 500;
+    --semi-bold-weight: 600; // Semibold Weight
+    --bold-weight: 700; // Bold
+    --black-weight: 900; // Black weight
+
+    // Font Awesome Weights
+    --fa-solid: 900;
+    --fa-regular: 400;
+    --fa-light: 300;
+    --fa-duotone: 900;
+}
+
+html {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    font-weight: var(--regular-weight);
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--clocktower-serif);
+    color: rgb(var(--header-dark));
+}
+
+h1 {
+    font-size: var(--step-5);
+}
+
+h2 {
+    font-size: var(--step-4);
+    font-weight: var(--regular-weight);
+
+   
+}
+
+h3 {
+    font-size: var(--step-2);
+    color: hsla(var(--carnelian));
+    font-family: var(--clocktower-sans-serif);
+    font-weight: var(--regular-weight);
+    margin-bottom: 0;
+} 
+
+h4 {
+    font-size: var(--step-1);
+    font-weight: var(--regular-weight);
+    font-family: var(--clocktower-sans-serif);
+    margin-bottom: 0;
+    margin-top: 1em;
+
+}
+
+h5 {
+    font-size: var(--step-0);
+    font-weight: var(--regular-weight);
+    font-family: var(--clocktower-sans-serif);
+}
+
+h6 {
+    font-size: var(--step-0);
+    font-weight: var(--light-weight);
+    font-family: var(--clocktower-sans-serif);
+}
+
+p, blockquote, ul, ol, button, a {
+    font-family: var(--clocktower-sans-serif, san-serif);
+    line-height: 1.8;
+    font-weight: var(--light-weight);
+    color: hsla(var(--text-black));
+    max-width: 80ch;
+
+}
+
+
+p {
+    font-size: var(--step-1);
+
+    @include b.for-desktop-up {
+        font-size: var(--step-0);
+    }
+    
+    
+}
+a {
+    color: hsla(var(--link-blue));
+}
+
+
+
+.before {
+    display: block;
+    font-family: var(--font-awesome);
+    content: '';
+}
+
+
+
+.fa-solid {
+    font-family: var(--font-awesome);
+    font-style: normal;
+}
+
+strong {
+    font-weight: var(--medium-weight);
+}
+
+i {
+    font-family: var(--font-awesome);
+}
+
+.text-center {
+    text-align: center;
+}

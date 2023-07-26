@@ -1,19 +1,175 @@
+@use 'buttons' as btn;
+@use 'base/breakpoints' as b;
+@use 'atoms/mixins' as m;
+
 .skip-link {
     position: absolute;
     left: -999px;
     width:1px;
     height: 1px;
-    top: auto;
+    top: 1em;
     padding: 1em 1.5em;
-
+    color: black !important;
+    background:  #FFF;
+    z-index: 200;
     &:focus {
-        color: black;
         display: inline-block;
         height: auto;
         width: auto;
-        position: static;
+        position: absolute;
         margin: auto;
-        color: white;
         transition: transform 1s ease-in;
+        left: 2em;
     }
+}
+
+// inline links
+
+main {
+    // @include b.for-desktop-up {
+        p, ul:not(.toolbar-menu ) {
+
+            a {
+                &:not(.link-button, .title-card-link, .circle) {
+                    // text-decoration: none;
+                    // --background-height: .075em;
+
+                    @include m.linkHover;
+    
+                    &:hover, &:focus {
+                        // text-decoration: none;
+                        // font-weight: var(--regular-weight);
+                    }
+                }
+            }
+        }
+    // }
+}
+
+.link-button {
+
+    text-decoration: none;
+    color: var(--linkColor);
+    position: relative;
+    padding: .5em 1em;
+    text-transform: uppercase;
+    
+    margin: .5em;
+
+
+    &.solid {
+        color: hsl(var(--text-white));
+        background-color: hsla(var(--carnelian), 1);
+    }
+    // &:not(:first-of-type) {
+    //     margin-left: 1em;
+    // }
+    &.outline {
+        border: 1px solid hsla(var(--button-border-color));
+        color: hsla(var(--button-text));
+        display: inline-block;
+        text-align: center;
+
+        &:hover, &:focus {
+            background: hsla(var(--button-bg-reverse));
+            color: hsla(var(--button-text-reverse));
+        }
+    }
+
+    &.bottom-to-full {
+        --borderWeight: 1px;
+        --buttonBorderColor: var(--linkColor);
+        @include btn.bottom-to-full-outline;
+    }
+
+    &.button-full-around {
+        @include btn.button-full-around;
+
+    }
+
+    &.button-gradient-bg {
+        @include btn.button-gradient-bg;
+    }
+
+    &.btn-white {
+        --button-border-color: var(--text-white), 1;
+        --button-text: var(--text-white), 1;
+
+        &:hover &:focus {
+            --button-bg-reverse: var(--text-white);
+            --button-text-reverse: var(--text-black);
+
+            
+        }
+    }
+
+    &.stacked-full {
+        display: block;
+        
+    }
+
+
+    &--cta {
+
+
+        position: relative;
+        border-bottom: 1px solid;
+        width: auto;
+        height: auto;
+        background: hsla(var(--carnelian), 1);
+        // box-shadow: inset 0 0 0 2px var(--tabPanelText, #FFF);
+        // min-width: clamp(3em, 8em, 10em);
+        margin: 0 auto;
+        color: hsla(var(--text-white),1);
+        // margin-bottom: 2em;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: var(--regular-weight);
+        font-size: var(--step-1);
+        text-decoration: none;
+        padding: 1em;
+        z-index: 2;
+        text-shadow: none;
+        display: inline-block;
+        &:before {
+            border-right: 1px solid var(--buttonBorderColor, #333);
+            border-left: 1px solid var(--buttonBorderColor, #333);
+        } 
+        
+        &:after {
+            border-top: 1px solid var(--buttonBorderColor, #333);
+        }
+        
+        @include b.for-tablet-portrait-up {
+            
+        }
+        @include b.for-desktop-up {
+            border: 0;
+
+            &:focus {
+                // box-shadow: 0 0 0px 2px white;
+                outline: dotted;
+            
+                &:not(:focus-visible) {
+                    outline: none;
+                }
+            }
+
+            &:hover {
+                background: hsla(var(--carnelian),1);
+                color: hsla(var(--text-white),1);
+                border-color: hsla(var(--carnelian), 1);
+            }
+        }
+
+        @include b.for-large-desktop-up {
+            color: var(--tabPanelText, #FFF); 
+            text-transform: initial;
+
+            align-self: start;
+            width: auto;
+            margin: 1em 0;
+        }
+    }
+
 }

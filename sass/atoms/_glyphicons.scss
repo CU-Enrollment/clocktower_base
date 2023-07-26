@@ -13,7 +13,7 @@
     }
     
     &:before {
-        font-family: 'FontAwesome';
+        font-family: var(--font-awesome);
         display: inline-block;
         // height: 45px;
         // width: 45px;
@@ -23,16 +23,19 @@
 
     &.twitter {
         &:before {
+            font-family: var(--font-awesome-brands);
             content: '\f081';
         }
     }
     &.facebook {
         &:before {
+            font-family: var(--font-awesome-brands);
             content: '\f082';
         }
     }
     &.instagram {
         &:before {
+            font-family: var(--font-awesome-brands);
             content: '\e055';
         }
     }
@@ -57,5 +60,42 @@
             content: '\f1ac';
         }
     }
+
+    &.search-icon {
+        &:before {
+            content: '\f002';
+        }
+    }
+
+    &.blog {
+        &:before {
+            font-family: var(--font-awesome-brands);
+
+            content: '\f37c';
+        }
+    }
+
+    &.accessibility {
+        &:before {
+            content: '\f29a';
+        }
+    }
+
+    &.snapchat {
+        &:before {
+            font-family: var(--font-awesome-brands);
+
+            content: '\f2ad';
+        }
+    }
+
+    &.youtube {
+        &:before {
+            font-family: var(--font-awesome-brands);
+
+            content: '\f431';
+        }
+    }
+    
     
 }

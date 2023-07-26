@@ -1,0 +1,99 @@
+@use '../base/breakpoints' as b;
+@use 'atoms/mixins' as m;
+
+#block-breadcrumbs {
+    text-align: center;
+    // margin-top: 1em;
+    margin-bottom: 2em;
+    position: relative;
+    padding-top: 1em;
+    
+    &:before {
+        width: 10em;
+        height: 1px;
+        background-color: #f1f1f1;
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 1em;
+        transform: translateX(-50%);
+    }
+
+    @include b.for-phone-only {
+        display: none;
+    }
+    
+    @include b.for-tablet-portrait-up {
+        // grid-column: 2/6;
+        margin-bottom: 1em;
+        padding-bottom: 1em;
+    }
+    @include b.for-desktop-up {
+        // grid-column: 3/5;
+        // padding-top: 1em;
+
+    }
+
+    nav {
+        text-align: center;
+        
+        @include b.for-tablet-portrait-up {
+            margin-top: 1em;
+        }
+
+        ol {
+            list-style: none;
+            display: inline;   
+            padding-left: 0;
+   
+            li {
+                display: inline-block;
+                font-size: var(--step--1);
+
+                @include b.for-tablet-portrait-up {
+                    font-size: var(--step-1);
+                }
+                @include b.for-large-desktop-up {
+                    font-size: var(--step-0);
+
+                }
+                a {
+                    font-size: var(--step--1);
+                    @include b.for-tablet-portrait-up {
+                        font-size: var(--step-1);
+                    }
+                    @include b.for-large-desktop-up {
+                        font-size: var(--step-0);
+
+                    }
+                    @include m.linkHover;
+                    text-decoration: none;
+                    // border-bottom: 1px solid hsla(var(--link-blue),1);
+            
+                    // &:hover, &:focus {
+                    //     border-bottom: 2px solid hsla(var(--link-blue),1);
+                    // }
+                }
+                
+                &:after {
+                    content: '/';
+                    color: #767676;
+
+                }
+                
+                &:last-of-type {
+                    &:after {
+                        content: unset;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// .no-hero {
+
+//     #block-breadcrumbs {
+//         top: 0;
+//     }
+// }

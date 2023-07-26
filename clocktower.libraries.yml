@@ -4,22 +4,30 @@ global-styling:
   css:
     theme:
       css/application.css: {}
-      css/print.css: {}
+      # css/print.css: {}
 global-scripts:
   version: 1.x
   js:
-    js/script.js: {}
+    # js/script.js: {}
     js/siteOptions.js: {}
     js/menu.js: {}
     js/cards.js: {}
     js/tabPanel.js: {}
-    js/clocktower_tabPanel.js: {}
+    js/accordions.js: {}
+    js/search.js: {}
+    js/responsive_tables.js: {}
+    js/code_examples.js: {}
+    js/tooltip.js: {}
+    js/jumplink.js: {}
+    # js/modeswitch.js: {}
+
 typekit:
   version: 1.x
+  header: true
   js:
-    //use.typekit.net/akz5utf.css: {}
-    js/custom.js: {}
+    //use.typekit.net/ssd4pmk.css: {every_page: true}
+    js/custom.js: {every_page: true}
 font-awesome:
   version: 6.x
   js:
-    //kit.fontawesome.com/729a474fc8.js: {}
+    //kit.fontawesome.com/5f922d31be.js: {}

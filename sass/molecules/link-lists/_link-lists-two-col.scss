@@ -1,0 +1,62 @@
+@use 'base/breakpoints' as b;
+
+.link-list {
+    &--two-col {
+        list-style: none;
+        padding-left: 0;
+        
+        li {
+            padding: 1em 0;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            font-size: var(--step-0);
+            flex-direction: column;
+            align-items: flex-start;
+            
+            @include b.for-desktop-up {
+                flex-direction: row;
+            }
+            span {
+                font-size: var(--step-0);
+                flex: 0 1 50%;
+
+                em {
+                    font-size: var(--step--1);
+                }
+            }
+            a {
+                text-decoration: none;
+                font-family: var(--clocktower-sans-serif);
+                font-size: var(--step-0);
+                text-decoration: none;
+                display: inline-block !important;
+                right: 0;
+                
+                @include b.for-desktop-up {
+                    position: absolute !important;
+                    
+                }
+                &:hover {
+                    color: hsla(var(--carnelian),1) !important;
+
+                }
+                
+            }
+
+            &:not(:last-child) {
+                
+                    &:before {
+                        content: '';
+                        width: 100%;
+                        height: 1px;
+                        background-color: #d0d0d0;
+                        position: absolute;
+                        left: 0;
+                        bottom: -.25em;
+                    }
+            
+            }
+        }
+    }
+}

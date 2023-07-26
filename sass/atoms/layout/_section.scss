@@ -1,0 +1,89 @@
+@use 'base/breakpoints' as b;
+
+section {
+
+    &.section {
+        
+        h2.section-header {
+            display: none;
+        }
+        &--layout {
+            padding: 2em 2.5%;
+
+            &.dark-bg {
+                padding: 2em 0;
+            }
+            
+            @include b.for-desktop-up {
+                padding: 5em 0;
+            }
+        }
+
+        &--no-padding {
+            padding: 0;
+            @include b.for-desktop-up {
+                padding: 0;
+
+            }
+        }
+
+        &--show-header {
+            
+            h2.section-header {
+                display: block;
+            }
+        }
+
+    }
+
+    
+
+    
+}
+
+
+section {
+
+    .section {
+        
+        &--header {
+            width: 100%;
+        }
+    }
+}
+
+
+.section--body-text {
+        @include b.for-phone-only {
+           
+        }
+        
+        @include b.for-tablet-portrait-up {
+            padding: 0 1em;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+    
+        @include b.for-desktop-up {
+            
+            grid-template-columns: [expanded-left] 12.5% [content] 1fr [expanded-right] 12.5%; 
+
+            .layout__region {
+                grid-column: content;
+            }
+        }
+    
+        @include b.for-large-desktop-up {
+            
+            // margin: 0 auto;
+
+        }
+    
+        @include b.for-xl-desktop-up {
+            // margin: 0 auto;
+                // max-width: 1400px;
+
+        }
+
+    }

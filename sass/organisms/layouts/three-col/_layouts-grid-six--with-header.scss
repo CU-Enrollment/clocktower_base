@@ -1,0 +1,33 @@
+@use 'base/breakpoints' as b;
+
+.layout--grid_six_with_header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto !important;
+    @include b.for-desktop-up {
+        row-gap: .5em;
+        margin: 0 2.5% !important;
+    }
+    .layout__region {
+        box-sizing: border-box;
+        &--header {
+            flex: 1 0 100%;
+        }
+
+        &:not(.layout__region--header) {
+
+            flex: 1 0 100%;
+
+            @include b.for-tablet-portrait-up {
+                flex: 1 0 50%;
+            }
+            @include b.for-desktop-up {
+
+                flex: 0 1 33%;
+            }
+        }
+    
+    }
+}

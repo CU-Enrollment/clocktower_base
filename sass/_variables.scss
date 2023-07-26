@@ -1,11 +1,12 @@
-:root {
-    
-    body {
-
+html:root {
        
-        // &.animation {
-        //    @import 'animation';
-        // }
-    }
+    body {
+        
+        // --pattern: url("./../images/pattern.png");
 
+
+        &.dark-mode {
+            // --pattern: url("./../images/pattern-dark.png");
+        }
+    }
 }

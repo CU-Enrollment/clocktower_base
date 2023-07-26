@@ -1,66 +1,132 @@
-#block-socialmedia {
+@use '../base/breakpoints' as b;
+@use '../atoms/gradients' as g;
+
+#block-social {
     text-align: center;
-    background: rgb(235,235,235);
-    background: linear-gradient(0deg, rgba(235,235,235,1) 0%, rgba(255,255,255,1) 100%);
-    margin: 0 10em 5em;
+  
+    margin: 0 1em;
     
-    .social-card {
+    @include b.for-desktop-up {
+        flex-direction: row;
+        margin: 0 1em;
+    
+    }
+    @include b.for-large-desktop-up {
+        // margin: 0 10em 5em;
+    }
+
+    .social-cards {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        position: relative;
-        flex-basis: 225px; 
-        justify-content: center;
-        padding: 0 3.5em 4em;
+        padding-top: 1.5em;
         
+        
+        @include g.gradientLinear;
 
-        &:after {
-            display: block;
-            content: '';
-            height: 5em;
-            width: 1px;
-            background: #d3d3d3;
-            position: absolute;
-            right: 0;
-            bottom: 25%;
-
+        @include b.for-desktop-up {
+            flex-direction: row;
+            // margin-top: 5em;
         }
+        .social-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            justify-content: center;
+            padding: 0 3.5em 5em;
+            
+            @include b.for-desktop-up {
+                flex-basis: 225px; 
 
-        &:last-of-type {
+            }
+    
             &:after {
                 display: none;
+                content: '';
+                background: #d3d3d3;
+                position: absolute;
+                left: 50%;
+                bottom: 2em;
+                transform: translate(-50%, -50%);
+                height: 1px;
+                width: 25%;
+    
+                @include b.for-desktop-up {
+                    display: block;
+
+                    right: 0;
+                    bottom: 5.5em;
+                    height: 5em;
+                    width: 1px;
+                    left: unset;
+    
+                }
+    
             }
-        }
-        
-        h2 {
-        }
-
-        img {
-            width: 200px;
-            height: 200px;
-            mask-image: url('./../images/SocialCutout.png');
-
-        }
-
-        p {
-            margin-top: 0;
-            margin-bottom: 2em;
-        }
-        .social-icon {
-           
-            position: relative;
-            // border-radius: 99em;
-            padding: 1.25em;
-            margin-top: -1.5em;
-            // background:  #F3F3F3;
-
-
+    
+            &:last-of-type {
+                &:after {
+                    display: none;
+                }
+            }
+            
+            h2 {
+            }
+    
             img {
-                width: 35px;
-                height: auto;
-                position: relative;
-
+                width: 200px;
+                height: 200px;
+                mask-image: url('./../images/SocialCutout.png');
+    
             }
+    
+            p {
+                margin-top: 0;
+                margin-bottom: 1em;
+                font-size: var(--step-2);
+    
+                @include b.for-desktop-up {
+                    font-size: var(--step-0);
+                    margin-bottom: 2em;
+                }
+            
+            }
+            .social-icon {
+               
+                position: relative;
+                // border-radius: 99em;
+                padding: 1.25em;
+                margin-top: -1.5em;
+                // background:  #F3F3F3;
+    
+    
+                img {
+                    width: 35px;
+                    height: auto;
+                    position: relative;
+    
+                }
+            }
+        }
+    }
+}
+
+
+// inner page social lists
+
+.social-media-list {
+    list-style: none;
+    padding-left: 0;
+    li {
+        display: inline-block;
+
+        a {
+
+            &:before {
+                font-size: var(--step-2);
+                color: hsl(var(--text-black));
+            }
+           
         }
     }
 }

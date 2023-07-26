@@ -1,5 +1,23 @@
 @use '../base/breakpoints' as b;
+@use '../atoms/mixins' as m;
 
+
+body {
+    
+    .logo-dark-mode {
+        display: none;
+    }
+
+    &.dark-mode {
+        .logo-dark-mode {
+            display: block;
+        }
+
+        .logo-light-mode {
+            display: none;
+        }
+    }
+}
 
 // .cu-seal {
 //     z-index: 1;

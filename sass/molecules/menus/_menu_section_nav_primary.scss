@@ -1,0 +1,56 @@
+@use 'utilities/functions';
+@use 'base/breakpoints' as b;
+@use 'atoms/type' as t;
+@use 'atoms/mixins' as m;
+// Main Menu 
+
+#section-navigation-primary {
+    h2 {
+        margin-bottom: .25em;
+    }
+    .section-nav {
+    
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        > .menu-item {
+            display: none;
+        }   
+        > .menu-item--active-trail {
+                color: hsla(var(--carnelian),1);
+                display: block;
+    
+                > a {
+                   display: none !important;
+
+                }
+                
+                
+                ul {
+                    li.menu-item {
+                        display: block;
+                        
+                        a.is-active {
+                            color: hsla(var(--carnelian),1) !important;
+                            font-weight: var(--semi-bold-weight);
+                            margin-top: .25em;
+                        }
+                       
+                    }
+                }
+            
+            a {
+                background-size: unset;
+                // padding: 0 !important;
+    
+                &:before {
+                    bottom: -.1em !important;
+                }
+
+                &.is-active {
+                
+                }
+            }
+        }
+    }
+}

@@ -15,7 +15,9 @@ regions:
   content: 'Content'
   sidebar_first: 'Primary'
   sidebar_second: 'Secondary'
-  footer: 'Footer'
+  footer-left: 'Footer Left'
+  footer-mid: 'Footer Mid'
+  footer-right: 'Footer Right'
   page_top: 'Page top'
   page_bottom: 'Page bottom'
 
@@ -24,3 +26,4 @@ libraries:
   - 'clocktower/global-scripts'
   - 'clocktower/typekit'
   - 'clocktower/font-awesome'
+  -  'clocktower/typekit'
