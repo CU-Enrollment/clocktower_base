@@ -1,0 +1,140 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title variable.
+ *   May contain one or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom
+ *   placeholders.
+ *
+ * @see template_preprocess_html()
+ */
+#}
+
+{%
+  set body_classes = [
+    logged_in ? 'user-logged-in',
+    is_error_page ? 'error-page',
+    db_offline ? 'db-offline',
+    not root_path ? 'home' : 'secondary-page',
+    is_front ? 'front-page',
+    'animation'
+
+  ]
+  
+%}
+
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+<head>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no" />
+  <head-placeholder token="{{ placeholder_token|raw }}">
+  <title>{{ head_title|safe_join(' | ') }}</title>
+  <link rel="stylesheet" href="https://use.typekit.net/ssd4pmk.css">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TB5KH25');</script>
+  <!-- End Google Tag Manager -->
+  <css-placeholder token="{{ placeholder_token|raw }}">
+ 
+</head>
+
+<body class="animation">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB5KH25"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  {# {{ page.header }} #}
+  <a class="skip-link" href="#main-content">{{ 'Skip to main content'|t }}</a>
+  <header id="site-header" class="">
+    <div class="utility-wrap">
+      {{ page.top_header }}
+    </div>
+    <div class="hdr-wrap">
+    
+    <div id="header-left" class="hdr-left"> 
+        <a href="/"><h1 class="site-name">Cornell Undergraduate Admissions</h1></a>
+    </div>
+
+    <div id="header-right" class="hdr-right">
+        {# <nav aria-label="Main" id="main-navigation" {{ attributes.addClass(classes)|without('role', 'aria-labelledby') }}> #}
+            {{ page.main_nav }}
+        {# </nav> #}
+
+            {# {{ drupal_entity('block', 'mobile_menu', check_access=false) }}
+            {{ drupal_entity('block', 'mobile_search', check_access=false) }} #}
+    </div>
+ </div>
+    <div class="hdr-brand">
+        <a class="cu-seal" href="https://www.cornell.edu">
+          <img class="desktop-seal" src="{{ base_path ~ directory }}/images/Cornell/cornell_seal_simple_b31b1b.svg" alt="Cornell University"/>
+          <img class="mobile-seal" src="{{ base_path ~ directory }}/images/Cornell/cornell_seal_simple_b31b1b.svg" alt="Cornell University"/>
+
+        </a>
+    </div>
+
+
+   <div id="mobile-site-name">
+            <a href="/"><h1 class="site-name">Cornell Undergraduate Admissions</h1></a>
+    </div>
+
+  </header>
+<main id="main-content">
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+</main>
+  {{ footer }}
+
+  <footer id="footer">
+    <section class="section section--layout section--no-padding">
+      <div class="main-footer">
+        {{ page.footer_left }}
+        {{ page.footer_mid }}
+        {{ page.footer_right }}
+      </div>
+    </div>
+    <div class="privacy-footer">
+      <div class="section section--layout no-padding">
+        <ul>
+          <li>        
+            <a href="https://www.cupolice.cornell.edu/campus-watch/">Annual Security and Fire Safety Reports</a>
+          </li>
+          <li>
+            <a href="/land-Acknowledgment">Land Acknowledgment</a>
+          </li>
+          <li>
+            <a href="https://privacy.cornell.edu/">University Privacy</a>
+          </li>
+          <li>
+            <a href="https://accessibility.cornell.edu/information-technology/web-accessibility/web-accessibility-assistance/" class="glyphicons accessibility"><span>Web Accessibility Assistance</span></a>
+          </li>
+        </ul>
+      </div>
+        
+    </div>
+  </footer>
+  <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+
+
+</body>
+</html>

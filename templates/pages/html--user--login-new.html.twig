@@ -1,0 +1,343 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title variable.
+ *   May contain one or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom
+ *   placeholders.
+ *
+ * @see template_preprocess_html()
+ */
+#}
+{%
+  set body_classes = [
+    logged_in ? 'user-logged-in',
+    is_error_page ? 'error-page',
+    not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
+    node_type ? 'page-node-type-' ~ node_type|clean_class,
+    db_offline ? 'db-offline',
+    not root_path ? 'home' : 'secondary-page',
+    'cu-seal',
+    root_path ? 'sidebar',
+    root_path ? 'sidebar-right',
+    root_path ? 'sidebar-tint',
+    root_path ? 'sidebar-tint-fade',
+    root_path ? 'sidebar-tint-edge'
+  ]
+%}
+
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head-placeholder token="{{ placeholder_token|raw }}">
+  <title>{{ head_title|safe_join(' | ') }}</title>
+  <css-placeholder token="{{ placeholder_token|raw }}">
+  <js-placeholder token="{{ placeholder_token|raw }}">
+</head>
+<body class="animation">
+  {# {{ page.header }} #}
+
+  <a class="skip-link" href="#main-content">{{ 'Skip to main content'|t }}</a>
+
+  <header id="site-header">
+    
+    {{ page.main_nav }}
+    {# <div class="hdr-mid">
+      <a class="cu-seal" href="https://www.cornell.edu">
+          <img  src="{{ base_path ~ directory }}/images/Cornell/cornell_seal_simple_b31b1b.svg" />
+      </a>
+  </div> #}
+    {#} <a class="cu-seal" href="https://www.cornell.edu">
+    <img  src="{{ base_path ~ directory }}/images/Cornell/cornell_seal_simple_b31b1b.svg" />
+  </a> #}
+    
+
+    {# <nav id="userPreferences" aria-label="User Preferences">
+    <button class="user-preferences">
+      <i class="fas fa-user-cog" title="User Preferences"></i>
+    </button>
+    <ul>
+      <li>
+        <button class="btn-theme" id="themeToggle" role="switch" aria-checked="false" aria-label="Enable Darkmode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </li>
+    </ul>
+
+      <button class="btn-theme" id="themeToggle" role="switch" aria-checked="false" aria-label="Enable Darkmode">
+          <i class="fas fa-moon"></i>
+      </button>
+    </nav>        #}    
+
+  </header>
+  
+
+{# 
+<div class="container">
+<h2>Card Grid</h2>
+
+  <div class="cards test-cards grid-view card-flex" style="max-width: 1920px; margin: 0 auto;">
+    
+    <div class="card flex-lg-3">
+      <div class="cover-image">
+        <img src="{{ base_path ~ directory }}/images/michael-walk-lr2q_pj-XLw-unsplash.jpg">
+      </div>
+      <div class="card-text">
+        <h2>I'm a Card</h2>
+        <p>I'm not sure what kind of card I am though</p>
+      </div>
+    </div>
+
+
+  <a href="#" class="card rounded flex-lg-3">
+    <figure class="">
+      <div class="cover-image">
+        <img src="{{ base_path ~ directory }}/images/joshua-earle-C6duwascOEA-unsplash.jpg">
+      </div>
+      <figcaption class="card-text">
+          <div class="tag-list">
+            <span class="tag">Social</span>
+            <span class="tag">Gaming</span>
+          </div>
+        <h2>I'm a card in a figure</h2>
+        <p>I do well with images, honestly! </p>
+         <div class="attribution">
+            <span class="circle-image">
+              <img class="border" src="{{ base_path ~ directory }}/images/person.jpg">
+            </span>
+            <span class="info">This persons name</span>
+        </div>
+      </figcaption>
+    </figure>
+  </a>
+
+    <figure class="card top-rounded no-shadow flex-lg-3">
+      <div class="cover-image">
+        <img src="{{ base_path ~ directory }}/images/jose-carlos-ichiro-qJeT8b06iDk-unsplash.jpg">
+      </div>
+      <figcaption class="card-text">
+        <h2>I'm a card in a figure</h2>
+        <p>I do well with images, honestly! </p>
+        <a class="attribution">
+            <span class="circle-image border">
+              <img class="border" src="{{ base_path ~ directory }}/images/person.jpg">
+            </span>
+            <span class="info">This persons name</span>
+        </a>
+      </figcaption>
+    </figure>
+    <figure class="card bottom-rounded flex-lg-3">
+      <img src="{{ base_path ~ directory }}/images/mesut-kaya-bCwgFb-llPs-unsplash.jpg">
+
+      <figcaption class="card-text">
+        <h2>I'm a card in a figure</h2>
+        <p>I do well with images, honestly! </p>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="container">
+<h2>Card List</h2>
+
+  <div class="cards test-cards list-view card-flex" style="max-width: 1920px; margin: 0 auto;">
+    <div class="card flex-lg-3">
+      <div class="cover-image">
+        <img src="{{ base_path ~ directory }}/images/michael-walk-lr2q_pj-XLw-unsplash.jpg">
+      </div>
+      <div class="card-text">
+        <h2>I'm a Card</h2>
+        <p>I'm not sure what kind of card I am though</p>
+      </div>
+    </div>
+
+
+
+    <figure class="card rounded flex-lg-3">
+      <div class="cover-image">
+        <img src="{{ base_path ~ directory }}/images/joshua-earle-C6duwascOEA-unsplash.jpg">
+      </div>
+      <figcaption class="card-text">
+          <div class="tag-list">
+            <span class="tag">Social</span>
+            <span class="tag">Gaming</span>
+          </div>
+        <h2>I'm a card in a figure</h2>
+        <p>I do well with images, honestly! </p>
+         <a class="attribution">
+            <span class="circle-image">
+              <img class="border" src="{{ base_path ~ directory }}/images/person.jpg">
+            </span>
+            <span class="info">This persons name</span>
+        </a>
+      </figcaption>
+    </figure>
+
+    <figure class="card top-rounded no-shadow flex-lg-3">
+      <div class="cover-image">
+        <img src="{{ base_path ~ directory }}/images/jose-carlos-ichiro-qJeT8b06iDk-unsplash.jpg">
+      </div>
+      <figcaption class="card-text">
+        <h2>I'm a card in a figure</h2>
+        <p>I do well with images, honestly! </p>
+      </figcaption>
+    </figure>
+    <figure class="card bottom-rounded flex-lg-3">
+      <img src="{{ base_path ~ directory }}/images/mesut-kaya-bCwgFb-llPs-unsplash.jpg">
+
+      <figcaption class="card-text">
+        <h2>I'm a card in a figure</h2>
+        <p>I do well with images, honestly! </p>
+          <a class="attribution">
+            <span class="circle-image">
+              <img class="border" src="{{ base_path ~ directory }}/images/person.jpg">
+            </span>
+            <span>This persons name</span>
+        </a>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+#}
+  {# <a href="test" class="button-test">Test this</a> 
+
+  
+   <div class="tabpanel"> 
+    <div role="tablist" class="tabs">
+      <button role="tab" aria-selected="true" aria-controls="tabpanel-1" tabindex="0" id="tab-1">Prospective Students</button>
+      <button role="tab" aria-selected="false" aria-controls="tabpanel-2" tabindex="-1" id="tab-2">Parents</button>
+      <button role="tab" aria-selected="false" aria-controls="tabpanel-3" tabindex="-1" id="tab-3">Veterans</button>
+    </div>
+
+    <div class="tabgroup">
+        <div role="tabpanel" tabindex="0" aria-labelledby="tab-1" id="tabpanel-1" class="active">
+          <img src="{{ base_path ~ directory }}/images/test.png">
+          <h2>Prospective Students! Listen to us!</h2>
+          <button>Apply Now!</button>
+        </div>
+
+        <div role="tabpanel" tabindex="0" id="tabpanel-2">
+          <h2>Parents, just how overbearing are you?</h2>
+          <button>Take the quiz to see!</button>
+        </div>
+
+        <div role="tabpanel" tabindex="0" id="tabpanel-3">
+          <h2>Veterans Prepare!</h2>
+          <button>Enter the Fray!</button>
+        </div>
+    </div>
+  </div> 
+#}
+{# 
+<div class="container">
+<h1>Cornell University</h1>
+<h2>Any Person, Any Study.</h2>
+
+<p>In keeping with Ezra Cornell’s dynamic vision, here you will immerse yourself in both the liberal and the practical/applied arts and sciences. This rich complement of studies will be at the heart of your academic experience, as it always has been for our students. From electrical engineering to journalism, from hotel management to American history, at Cornell you have the freedom to explore and study what interests you most. Come live and learn amongst the more than 14,000 undergraduates from across the U.S. and 140 countries around the world. Experience for yourself what they already know.</p>
+
+</div>
+  <br><br>
+
+<div class="container">
+
+<form>
+
+<label for="fname">First Name</label>
+<input type="text" id="fname">
+<br>
+<label for="lname">Last Name</label>
+<input type="text" id="lname">
+<br>
+<label for="email">This is a label</label>
+<input type="email" id="email">
+<br>
+
+<label for="email">This is a label</label>
+<input type="email" id="email">
+<br>
+<label for="field-1">This is a label</label>
+<input type="text" id="field-1" name="texttest" placeholder="placeholder">
+<br>
+
+<label for="country">Country</label>
+<div class="select">
+  <select id="country" name="country">
+    <option value="australia">Australia</option>
+    <option value="canada">Canada</option>
+    <option value="usa">USA</option>
+  </select>
+  <span class="focus"></span>
+</div>
+
+<fieldset class="radiogroup">
+<legend>This is a fieldset</legend>
+
+<label for="radio1">
+  <input type="radio" id="radio1" name="food">
+  <span>Pizza</span>
+</label>
+
+
+<label for="radio2">
+  <input type="radio" id="radio2" name="food">
+  <span>Thai</span>
+</label>
+
+
+
+<label for="radio3">
+  <input type="radio" id="radio3" name="food">
+    <span>Subs</span>
+</label>
+</fieldset>
+
+<fieldset class="checkboxes">
+<legend>This is a fieldset</legend>
+
+<label for="check1">
+  <input type="checkbox" id="check1">
+  <span>Drinks</span>
+</label>
+
+
+
+<label for="check2">
+  <input type="checkbox" id="check2">
+  <span>Dessert</span>
+</label>
+
+
+
+<label for="check3">
+  <input type="checkbox" id="check3">
+  <span>Beer</span>
+</label>
+
+</fieldset>
+
+</form>
+</div>
+#}
+  
+  {{ page }}
+  {{ page_bottom }}
+
+  <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set count = 1 %}
+
+ 
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+
+<ul class='archive-list'>
+    {% for row in rows %}
+    {%
+        set row_classes = [
+        default_row_class ? 'views-row',
+        ]
+    %}
+    <li{{ row.attributes.addClass('flex flex--2') }}>
+        {{- row.content -}}
+    </li>
+    {% endfor %}
+</ul>
+{# 
+{% for row in rows %}
+    {% if count == '1' %}
+        <button role="tab" class="active" aria-selected="true" aria-controls="tabpanel-{{ count }}" tabindex="0" id="tab-{{ count }}">{{- row.content -}}</button>   
+    {% else %}
+        <button role="tab" aria-selected="false" aria-controls="tabpanel-{{ count }}" tabindex="-1" id="tab-{{ count }}">{{- row.content -}}</button>    
+    {% endif %}   
+
+    {% set count = count + 1 %}
+{% endfor %} #}
+

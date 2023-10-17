@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ *
+ * @ingroup themeable
+ */
+#}
+{# <div{{ attributes }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</div>
+#}
+
+<div class="hero">
+    <div class="clipped-bg wave-pattern"></div>
+    
+    <div class="container container--wide">
+      <div class="tabpanel">
+          <div role="tablist" class="tabs" aria-orientation="vertical">
+                {{ tablist }}
+
+            {# <button role="tab" aria-selected="true" aria-controls="tabpanel-1" tabindex="0" id="tab-1" class="active">Prospective Students</button>
+            <button role="tab" aria-selected="false" aria-controls="tabpanel-2" tabindex="-1" id="tab-2">Parents</button>
+            <button role="tab" aria-selected="false" aria-controls="tabpanel-3" tabindex="-1" id="tab-3">Veterans</button> #}
+        </div>
+      
+          {% block content %}
+              <div class="tabgroup">
+                  {{ content }}
+              </div>
+          {% endblock %}
+      </div>
+    </div>
+</div>
