@@ -1,0 +1,57 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "a2222a4a65d0af3ae7bb0a702633589d",
+    "packages": [
+        {
+            "name": "cu-enrollment/clocktower_layouts",
+            "version": "0.0.1-alpha",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:CU-Enrollment/clocktower_layouts.git",
+                "reference": "31bc4bd5061fdbb69e0e507bd204544e747ed53a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CU-Enrollment/clocktower_layouts/zipball/31bc4bd5061fdbb69e0e507bd204544e747ed53a",
+                "reference": "31bc4bd5061fdbb69e0e507bd204544e747ed53a",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://repo.packagist.com/cu-enrollment/dists/%package%/%version%/r%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "drupal-custom-module",
+            "notification-url": "https://repo.packagist.com/cu-enrollment/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joe Williams",
+                    "email": "jrw354@cornell.edu"
+                }
+            ],
+            "description": "Drupal Layout Builder layouts",
+            "support": {
+                "source": "https://github.com/CU-Enrollment/clocktower_layouts/tree/v0.0.1-alpha",
+                "issues": "https://github.com/CU-Enrollment/clocktower_layouts/issues"
+            },
+            "time": "2023-07-26T14:30:22+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.6.0"
+}

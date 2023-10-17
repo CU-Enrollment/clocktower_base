@@ -14,6 +14,12 @@
             "email": "jrw354@cornell.edu"
         }
     ],
+    "repositories": [
+        {"type": "composer", "url": "https://repo.packagist.com/cu-enrollment/"},
+        {"packagist.org": false}
+    ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "cu-enrollment/clocktower_layouts": "0.0.1-alpha"
+    }
 }

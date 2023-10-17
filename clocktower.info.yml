@@ -1,10 +1,10 @@
 type: theme
 base theme: false
 core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 
 name: 'Clocktower'
-description: 'Starter theme for Cornell Admissions Sites'
+description: 'Starter theme for Cornell Enrollment Sites'
 
 regions:
   navigation: 'Navigation'
