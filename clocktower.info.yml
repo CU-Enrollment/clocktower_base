@@ -1,6 +1,6 @@
 type: theme
 base theme: false
-core: 8.x
+core: 10.x
 core_version_requirement: ^9 || ^10
 
 name: 'Clocktower'
