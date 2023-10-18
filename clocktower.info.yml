@@ -1,25 +1,23 @@
 type: theme
 base theme: false
-core: 10.x
 core_version_requirement: ^9 || ^10
 
 name: 'Clocktower'
 description: 'Starter theme for Cornell Enrollment Sites'
 
 regions:
-  navigation: 'Navigation'
-  mobile_nav: 'Mobile Navigation'
-  header: 'Top Bar'
-  highlighted: 'Highlighted'
-  help: 'Help'
+  top_header: 'Enrollment Menu & Utility Nav'
+  main_nav: 'Main Navigation'
+  header: 'Header'
+  hero: 'Hero Space'
   content: 'Content'
   sidebar_first: 'Primary'
   sidebar_second: 'Secondary'
-  footer-left: 'Footer Left'
-  footer-mid: 'Footer Mid'
-  footer-right: 'Footer Right'
-  page_top: 'Page top'
   page_bottom: 'Page bottom'
+  resource_links: 'Resources'
+  footer_left: 'Footer Left'
+  footer_mid: 'Footer Mid'
+  footer_right: 'Footer Right'
 
 libraries:
   - 'clocktower/global-styling'
@@ -27,3 +25,4 @@ libraries:
   - 'clocktower/typekit'
   - 'clocktower/font-awesome'
   -  'clocktower/typekit'
+  
