@@ -112,11 +112,73 @@
                 &.active {
                     display: block;
                 }
+
+                iframe {
+                    width: 100%;
+                    aspect-ratio: 16/9;
+                    height: auto;
+                }
             }
         }
     }
+
+    
 }
 
+.tabpanel--tabs-reduced {
+
+    [role="tablist"] {
+
+        [role="tab"] {
+            font-size: var(--step-0);      
+            line-height: 1;
+            padding-bottom: 1em;
+            position: relative;
+            font-weight: var(--regular-weight);
+
+            &:hover, &:focus {
+
+                &:not(:last-of-type) {
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        width: 1px;
+                        background-color: #d4d4d4;
+                        height: 30%;
+                        top: 50%;
+                        right: 0;
+                        -webkit-transform: translateY(-50%);
+                        transform: translateY(-50%);
+                    }
+            
+                }
+            }
+
+            
+            &:not(:last-of-type) {
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    width: 1px;
+                    background-color: #d4d4d4;
+                    height: 30%;
+                    top: 50%;
+                    right: 0;
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                }
+            }
+        }
+
+
+
+        .tab-indicator {
+            height: .5em;
+            bottom: -.25em;
+        }
+    }
+}
 
 .hero {
 
@@ -679,3 +741,8 @@
 }
 
 
+
+
+.tabstyle {
+    display: none;
+}

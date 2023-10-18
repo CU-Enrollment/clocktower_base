@@ -115,7 +115,7 @@
         
         text-align: center;
         margin-top: 1em;
-        z-index: 1;
+        z-index: 50;
 
         @include b.for-desktop-up {
             position: absolute;

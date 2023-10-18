@@ -82,7 +82,7 @@
     outline: 1px dashed #d6d6d6;
     outline-offset: 1px;
     justify-content: space-between;
-    z-index: 0;
+    z-index: 100000;
     .trigger {
         position: relative !important;
         border-radius: 0%;

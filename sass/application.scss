@@ -6,6 +6,7 @@
 @use 'organisms/body';
 
 @use 'atoms/colors';
+@use 'atoms/backgrounds';
 @use 'atoms/gradients';
 @use 'atoms/placeholder';
 @use 'atoms/pager';
@@ -46,16 +47,19 @@
 @use "molecules/cards/cards--overlap";
 @use "molecules/cards/cards--title";
 @use "molecules/cards/cards--profile";
-
+@use "molecules/cards/reveal-cards/cards--reveal";
 @use "molecules/intro";
 @use "molecules/branding";
 @use "molecules/aside";
 @use "molecules/breadcrumbs";
 @use "molecules/attribution";
 @use "molecules/hero";
+@use "molecules/hero/hero_media";
 
 @use "molecules/events/events";
 @use "molecules/events/events-teaser";
+@use "molecules/events/events--table";
+@use "molecules/events/events--table-all";
 @use "molecules/utility_nav";
 @use "molecules/student_stories";
 @use "molecules/overlap_card";
@@ -78,7 +82,7 @@
 @use 'molecules/announcements';
 @use 'molecules/timeline';
 @use 'molecules/code_examples';
-
+@use 'molecules/cards/staggered-cards/cards--staggered';
 // Layouts
 @use 'organisms/layouts/two-col/layouts-two-col--with-header';
 @use 'organisms/layouts/three-col/layouts-three-col--with-header';

@@ -1,0 +1,110 @@
+@use '../../../atoms/mixins' as m;
+
+.cards--reveal {
+    gap: 1em;
+    .card {
+        padding: 0;
+        overflow: hidden;
+        border-radius: .5em;
+        aspect-ratio: 3/2;
+        position: relative;
+        box-sizing: border-box;
+
+        .card-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            padding-bottom: 1em;
+            height: 100%;
+            border-radius: .5em;
+    
+            .card-image {
+                overflow: hidden;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 0;
+
+                &:after {
+                    content: '';
+                    background: rgb(8,7,20);
+                    background: linear-gradient(0deg, rgba(8,7,20,.5) 0%, rgba(0,0,0,0) 100%);
+                    position: absolute;
+                    bottom: 0;
+                    height: 100%;
+                    left: 0;
+                    width: 100%;
+                }
+            }
+
+            .card-text {
+                position: relative;
+                z-index: 100;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                
+                &--header {
+                    h3 {
+                        margin: 0 1em;
+
+                        text-align: center;
+                        color: #FFF;
+                        padding-bottom: 2em;
+                        font-size: var(--step-2);
+                        
+                    }
+                }
+
+                &--body {
+
+                    .card-description {
+                        p {
+                            display: none;
+                            color: #FFF;
+                        }
+                    }
+
+                }
+                
+                &--actions {
+                    a {
+                        border: none;
+                        color: #FFF;
+                        background-color: hsla(var(--carnelian),1);
+                        // border: 1px solid 
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        padding: .5em 2em;
+                        border-radius: 1em;
+                    }
+
+                }
+            }
+            
+           
+        }
+
+        &:hover {
+
+            .card-image {
+                &:after {
+                    background: hsla(0,0,0,.95);
+                }
+            }
+
+            .card-text {
+                &--body {
+                    display: block;
+                }
+            }
+        }
+    }
+}

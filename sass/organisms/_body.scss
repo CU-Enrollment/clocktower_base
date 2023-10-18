@@ -23,10 +23,10 @@ body {
     .main-body {
         grid-column: 1/4;
         position: relative;
-        margin: 1em;
+        margin: 0 1em;
 
         @include b.for-desktop-up {
-            margin: 1.5em auto;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: [expanded-left] 12.5% [content] 1fr [expanded-right] 12.5%;
         }

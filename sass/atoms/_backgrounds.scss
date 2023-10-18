@@ -1,0 +1,5 @@
+@use '../atoms/gradients' as g;
+
+.bg-gradient-dark-to-light {
+    @include g.gradientLinear;
+}

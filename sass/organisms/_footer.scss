@@ -3,10 +3,10 @@
 
 footer {
     background-color: #232323;
-    
+    position: relative;
         a {
             position: relative;
-
+            text-decoration: none;
             
 
             &:after {   
@@ -25,6 +25,16 @@ footer {
                 }
             }
         }
+
+        h3 {
+            text-align: center;
+            color: hsla(var(--text-white),1);
+
+            @include b.for-desktop-up {
+                text-align: left;
+            }
+        }
+
         
         
     
@@ -210,10 +220,10 @@ footer {
                             list-style: none;
                             margin: 0;
                             padding-left: 0;
-                            margin: 0 auto;
 
                             @include b.for-phone-only {
                                 padding-left: 0;
+                                margin: 0 auto;
                             }
                             li {
                                 line-height: 2.25;
@@ -336,7 +346,8 @@ footer {
             flex: 0 0 30%;
             padding: 0 2em;
             box-sizing: border-box;
-    
+
+           
     
         }
         #block-footerright {
@@ -434,7 +445,11 @@ footer {
     }
 
     .privacy-footer {
-
+       
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
         background: #161616;
         --link-blue: 0, 100%, 100%;
         ul {
@@ -451,6 +466,7 @@ footer {
             @include b.for-desktop-up {
                 flex-direction: row;
                 padding: .5em 2em;
+                bottom: 0;
 
             }            
             
