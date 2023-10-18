@@ -23,7 +23,7 @@ label, legend {
 
 
 // Text and Email Inputs  
-input[type="text"], input[type="email"], input[type="password"], input[type='tel'] {
+input[type="text"], input[type="email"], input[type="password"], input[type='tel'], input[type='number'] {
     background: #FFFFFF;
     color: #333;
     font-family: var(--clocktower-sans-serif);
@@ -33,7 +33,7 @@ input[type="text"], input[type="email"], input[type="password"], input[type='tel
     height: 2.5em;
     border-radius: .2em;
     padding-left: .5em;
-
+    font-size: var(--step-0);
     &:focus {
         // box-shadow: 0em 0em .75em rgba(40, 130, 201, 0.502);
 
@@ -44,6 +44,7 @@ label + input[type="text"], label + input[type="email"] {
     display: block;
     font-family: var(--clocktower-sans-serif);
     margin-top: .72em;
+    font-size: var(--step-0);
 
     &::placeholder {
         font-style: italic;
@@ -280,10 +281,10 @@ input[type="submit"] {
 
 
     border: 0;
-    background: var(--buttonBG, --buttonBackground);
-    color: var(--buttonTextColor, --buttonText);
-    padding: .5em 1.25em;
-    margin: .5em 1.25em;
+    background: hsla(var(--carnelian),1);
+    color: hsla(var(--text-white),1);
+    padding: 1em 1.25em .5em;
+    margin: 0;
     position: relative;
     box-sizing: border-box;
     min-height: 45px;
@@ -526,3 +527,66 @@ input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+
+.js-form-item {
+    label {
+        padding-bottom: .5em;
+    }
+
+    .webform-element-description {
+        font-family: var(--clocktower-sans-serif);
+        font-size: var(--step--1);
+    }
+}
+
+
+.js-form-type-checkbox {
+
+    display: flex;
+    align-items: center;
+    margin-bottom: .5em;
+
+    span {
+        display: flex;
+
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        
+        appearance: auto;
+        opacity: 1;
+        position: relative;
+        top: 0;
+        left: 0;
+        border: 0;
+        padding: .5em 0;
+        margin: 0;
+        line-height: 1.5;
+        height: auto;
+        width: auto;
+        top: unset;
+        left: unset;
+    }
+
+    label {
+        padding: 0;
+        padding-left: .5em;
+        line-height: 1.5;
+        font-size: var(--step-0);
+
+    }
+
+}
+
+.checkboxes--wrapper {
+    legend {
+        font-size: var(--step-0);
+
+        .fieldset-legend {
+            font-size: var(--step-0);
+            padding-bottom: .5em;
+        }
+
+    }
+}

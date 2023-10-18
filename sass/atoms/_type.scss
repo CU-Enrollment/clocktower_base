@@ -47,33 +47,43 @@ html {
 h1,h2,h3,h4,h5,h6 {
     font-family: var(--clocktower-serif);
     color: rgb(var(--header-dark));
+    margin-top: 0;
 }
 
 h1 {
     font-size: var(--step-5);
+    margin: 1rem;
 }
 
 h2 {
     font-size: var(--step-4);
     font-weight: var(--regular-weight);
-
-   
+    
+   &.reduced {
+    font-size: var(--step-2);
+    font-family: var(--clocktower-sans-serif);
+    color: hsla(var(--text-black));
+    font-weight: var(--semi-bold-weight);
+    margin-bottom: 1rem;
+    margin-top: 0em;
+   }
 }
 
 h3 {
-    font-size: var(--step-2);
+    font-size: var(--step-1);
     color: hsla(var(--carnelian));
     font-family: var(--clocktower-sans-serif);
     font-weight: var(--regular-weight);
-    margin-bottom: 0;
+    margin-bottom: 1rem;
+    margin-top: 0rem;
 } 
 
 h4 {
     font-size: var(--step-1);
     font-weight: var(--regular-weight);
     font-family: var(--clocktower-sans-serif);
-    margin-bottom: 0;
-    margin-top: 1em;
+    margin-bottom: 1rem;
+    margin-top: 0;
 
 }
 
@@ -81,12 +91,16 @@ h5 {
     font-size: var(--step-0);
     font-weight: var(--regular-weight);
     font-family: var(--clocktower-sans-serif);
+    margin-bottom: 1rem;
+    margin-top: 0;
 }
 
 h6 {
     font-size: var(--step-0);
     font-weight: var(--light-weight);
     font-family: var(--clocktower-sans-serif);
+    margin-bottom: 1rem;
+    margin-top: 0;
 }
 
 p, blockquote, ul, ol, button, a {
@@ -95,17 +109,23 @@ p, blockquote, ul, ol, button, a {
     font-weight: var(--light-weight);
     color: hsla(var(--text-black));
     max-width: 80ch;
+    font-size: var(--step-0);
 
 }
 
 
 p {
     font-size: var(--step-1);
+    margin-top: 0;
+    margin-bottom: 1em;
 
     @include b.for-desktop-up {
         font-size: var(--step-0);
     }
     
+    a {
+        font-size: var(--step-0);
+    }
     
 }
 a {

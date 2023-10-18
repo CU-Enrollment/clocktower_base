@@ -141,19 +141,43 @@
                 color: hsla(var(--text-black),1);
 
                 &:after {
-                    content: '\f078';
                     color: hsla(var(--carnelian),1);
                     font-family: var(--font-awesome);
                     font-size: var(--step--1);
                     margin-left: 1em;
                     display: inline-block;
                 }
+
+                &button {
+                    &:after {
+                        content: '\f065';
+
+                    }
+                }
+
+            }
+
+            a.toggle-menu {
+                animation: unset;
+
+                &:hover, &:focus {
+                    color: hsla(var(--carnelian),1);
+                }
+                &:after {
+                    color: hsla(var(--carnelian),1);
+                    font-family: var(--font-awesome);
+                    font-size: var(--step--1);
+                    margin-left: 1em;
+                    display: inline-block;
+                    content: '\f054';
+
+                }
             }
 
             &.active {
 
 
-                .toggle-menu {
+                button.toggle-menu {
                     // background: linear-gradient(180deg, rgb(235, 235, 235) 0%, rgb(255, 255, 255) 100%);
                     &:after {
                         transform: rotate(180deg);

@@ -4,18 +4,30 @@
 
 // Youtube embeds 
 
-.video-container {
+.video--container {
 
     position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
+    // padding-bottom: 56.25%;
+    height: auto;
     
     iframe {
-        position: absolute;
+        position: relative;
+        display: block;
         top: 0;
         left: 0;
-        height: 100%;
+        height: auto;
         width: 100%;
+        aspect-ratio: 16/9;
+        // width: 640px;
+        // height: 360px;
+        margin-bottom: 2em;
+    }
+
+    a.link-button {
+        font-size: var(--step--1);
+        display: inline-block;
+        margin: 0;
+        margin-bottom: 2em;
     }
 }
 
@@ -318,61 +330,116 @@
 }
 
 
-.archive-list {
-    padding-left: 0;
-    max-width: unset;
-    margin-top: 5em;
+// .archive-listv {
+//     padding-left: 0;
+//     max-width: unset;
+//     margin-top: 5em;
 
-    li {
-        margin-bottom: 5em;
-        position: relative;
+//     li {
+//         margin-bottom: 5em;
+//         position: relative;
         
 
-        h2 {
-            margin: 0;
-        }
-        &:after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            bottom: -2em;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #e5e5e5;
-            height: 1px;
+//         h2 {
+//             margin: 0;
+//         }
+//         &:after {
+//             content: '';
+//             position: absolute;
+//             width: 50%;
+//             bottom: -2em;
+//             left: 50%;
+//             transform: translate(-50%, -50%);
+//             background-color: #e5e5e5;
+//             height: 1px;
 
-        }
-        .col-left {
+//         }
+//         .col-left {
     
-            .video-js {
-                position: relative;
-                aspect-ratio: 4/3;
-                height: auto;
-                width: 400px;   
+//             .video-js {
+//                 position: relative;
+//                 aspect-ratio: 4/3;
+//                 height: auto;
+//                 width: 400px;   
+//             }
+//         }
+    
+//         .col-right {
+//             margin-left: 3em;
+
+//             .accordion-group {
+//                 .accordion-item {
+
+//                     .action-items {
+//                         justify-content: flex-start;
+
+//                         a, button {
+//                             cursor: pointer;
+//                             animation: unset;
+//                             &:hover, &:focus {
+//                                 background-color: hsla(var(--carnelian),1);
+//                                 color: hsla(var(--text-white),1);
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+
+//         }
+//     }
+// }
+
+.cards {
+
+    &.video-archive {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;        
+        @include b.for-phone-only {
+            align-items: center;
+            justify-content: center;
+        }
+        @include b.for-tablet-portrait-up {
+            gap: 3em;
+        }
+
+        @include b.for-desktop-up {
+            gap: 1em;
+        }
+
+        .card {
+            flex: 0 1 100%;
+
+            @include b.for-tablet-portrait-up {
+                flex: 0 1 40%;
             }
-        }
+            @include b.for-desktop-up {
+
+                flex: 0 1 32%;
+            }
+            padding: 0;
+            h2 {
+                a {
+
+                    font-size: var(--step-3);
+                    margin-top: 0;
     
-        .col-right {
-            margin-left: 3em;
-
-            .accordion-group {
-                .accordion-item {
-
-                    .action-items {
-                        justify-content: flex-start;
-
-                        a, button {
-                            cursor: pointer;
-                            animation: unset;
-                            &:hover, &:focus {
-                                background-color: hsla(var(--carnelian),1);
-                                color: hsla(var(--text-white),1);
-                            }
-                        }
+                    @include b.for-tablet-portrait-up {
+                        font-size: var(--step-2);
                     }
                 }
             }
 
+            img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 4/3;
+
+                @include b.for-desktop-up {
+
+                    width: 300px;
+                }
+            }
         }
     }
 }

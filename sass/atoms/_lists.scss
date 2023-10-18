@@ -4,15 +4,34 @@
 
 
 dl {
+
+    font-family: var(--clocktower-sans-serif);
+    margin-left: 1em;
     dt {    
         
-        font-size: var(--step-2) !important;
+        font-size: var(--step-1) !important;
         color: hsla(var(--carnelian),1);
-        font-size: var(--regular-weight);
+        font-weight: var(--regular-weight);
         font-family: var(--clocktower-sans-serif);
+        margin-left: 0rem;
+        margin-bottom: .25em;
     }
 
     dd {
+
+        margin-left: 0rem;
+        margin-bottom: 2em;
+        font-size: var(--step-0);
+        line-height: 1.5;
+
+        a {
+            line-height: 1.5;
+        }
+
+        &:last-child {
+            margin-bottom: 0em;
+        }
+
 
     }
 }
@@ -69,19 +88,20 @@ ol {
 
 
 ul {
-
+    margin-top: 0;
+    // padding-left: 0;
     &.col-2 {
         li {
             display: flex;
             flex-direction: row;
             flex: 1 1 50%;
-
+            justify-content: space-between;
 
             > * {
                     &:first-child {
                         padding-right: 1em;
-                        flex: 0 0 100px;
-
+                        flex: 0 0 1fr;
+                        
                     }
 
                     &:last-child {
@@ -91,4 +111,47 @@ ul {
             }
         }
     }
+}
+
+
+ul.graphic {
+
+    &--horizontal {
+        @include b.for-phone-only {
+            flex-direction: column;
+        }
+        
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        padding-left: 0;
+        justify-content: space-between;
+        width: 100%;
+        max-width: unset;
+        gap: 1.5em;
+
+        
+
+        li {
+            flex: 1 0 auto;
+            @include b.for-desktop-up {
+                flex: 1 0 200px;
+
+            }
+            h3 {
+                font-size: var(--step-0);
+                text-transform: uppercase;
+                font-weight: var(--semi-bold-weight);
+            }
+            p {
+                font-size: var(--step--1);
+                width: 90%;
+            }
+        }
+    }
+}
+
+
+p ~ ul, p ~ ol, p ~ dl {
+    margin-top: 0;
 }

@@ -33,15 +33,27 @@ body {
         // @extend .container;
         
         > * {
-            grid-column: 1;
-            @include b.for-desktop-up {
-                
-                width: 100%;
-                grid-column: content;
-                // margin: 0 auto;
+            
+            &:not(img) {
+                grid-column: 1;
+                @include b.for-desktop-up {
+                    
+                    width: 100%;
+                    grid-column: content;
+                    // margin: 0 auto;
+                }
             }
         }
 
+        .inline-image {
+            grid-column: content;
+
+            img {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+            }
+        }
         ul {
 
             font-size: var(--step-1);

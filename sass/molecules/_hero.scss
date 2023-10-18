@@ -7,7 +7,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-   
     max-width: 100vw;
     overflow: hidden;
     box-sizing: border-box;
@@ -19,7 +18,7 @@
     // @include b.for-large-desktop-up {
     //     height: 50em;
     // }
-
+        
     .hero-image {
         
         width: 100%;
@@ -40,6 +39,7 @@
             z-index: 1;
             // position: absolute;
             aspect-ratio: 16/9;
+            max-height: 600px;
             clip-path: polygon(100% 0, 100% 100%, 49.75% 92%, 0 100%, 0 0);
 
 
@@ -54,14 +54,14 @@
             &:before {
                 content: '';
                 width: 100%;
-                height: 25%;
+                height: 50%;
                 background: rgba(0,0,0,1);
                 background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
                 mix-blend-mode: multiply;
                 position: absolute;
                 top: 0;
                 left: 0;
-                opacity: .85;
+                opacity: .9;
             }
 
             &:after {
@@ -116,10 +116,10 @@
         text-align: center;
         margin-top: 1em;
         z-index: 50;
-
         @include b.for-desktop-up {
+            padding-top: 200px;
             position: absolute;
-            top: 30%;
+            // top: 30%;
             // transform: translateY(50%);
             margin-top: 0;
 
@@ -135,11 +135,12 @@
             margin-top: 0;
             margin-left: 1em;
             margin-right: 1em;
-            
+            padding-top: 1em;
             @include b.for-desktop-up {
                 color: #FFF;
                 margin-right: 0;
                 margin-left: 0;
+                padding-top: 0;
                 text-shadow: 1px 1px 2px #373737, 1px 1px 12px #000;
             }
         }

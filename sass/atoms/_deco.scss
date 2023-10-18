@@ -144,6 +144,9 @@
         color: var(--notice--reminder);
         background:  rgba(var(--notice--reminder-light),.75);
         border: 1px solid rgba(var(--notice-reminder));
+        padding: 3em 0;
+        margin: 2em 0;
+
         .notice-text {
             color: rgba(var(--notice-reminder),1);
             &:before {
