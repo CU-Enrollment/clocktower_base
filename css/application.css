@@ -6630,6 +6630,19 @@ aside figure figcaption span.byline {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+.hero-home.large {
+  min-height: 60em;
+}
+@media (min-width: 1025px) {
+  .hero-home.large {
+    height: 50vh;
+  }
+}
+@media (min-width: 1280px) {
+  .hero-home.large {
+    height: 50em;
+  }
+}
 .hero-home .hero-image {
   width: 100%;
   aspect-ratio: 4/3;
