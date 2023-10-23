@@ -20,14 +20,3 @@ global-scripts:
     js/tooltip.js: {}
     js/jumplink.js: {}
     # js/modeswitch.js: {}
-
-typekit:
-  version: 1.x
-  header: true
-  js:
-    //use.typekit.net/ssd4pmk.css: {every_page: true}
-    js/custom.js: {every_page: true}
-font-awesome:
-  version: 6.x
-  js:
-    //kit.fontawesome.com/5f922d31be.js: {}
