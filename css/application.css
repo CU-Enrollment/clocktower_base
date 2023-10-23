@@ -2213,7 +2213,6 @@ main p a:not(.link-button, .title-card-link, .circle):hover, main p a:not(.link-
   position: relative;
   padding: 0.5em 1em;
   text-transform: uppercase;
-  margin: 0.5em;
 }
 .link-button.solid {
   color: hsl(var(--text-white));
